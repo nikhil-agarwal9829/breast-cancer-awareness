@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start a Campaign - Breast Cancer Awareness</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .campaign-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .campaign-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .campaign-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e91e63;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .file-upload {
+            border: 2px dashed #ddd;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: #e91e63;
+            background: #f8f9fa;
+        }
+
+        .file-upload i {
+            font-size: 2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .preview-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .preview-item {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .preview-item img,
+        .preview-item video {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .remove-preview {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .submit-button {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background: #d81557;
+            transform: translateY(-2px);
+        }
+
+        .progress-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #e91e63;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .qr-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .qr-code {
+            max-width: 200px;
+            margin: 1rem auto;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Breast Cancer Awareness</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="campaign-hero">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Start a Campaign</h1>
+            <p class="animate__animated animate__fadeInUp">Create a fundraising campaign to support breast cancer patients</p>
+        </div>
+    </div>
+
+    <div class="campaign-container">
+        <form class="campaign-form" id="campaignForm">
+            <!-- Basic Information -->
+            <div class="form-section">
+                <h2>Campaign Information</h2>
+                <div class="form-group">
+                    <label for="campaignName">Campaign Name</label>
+                    <input type="text" id="campaignName" name="campaignName" required>
+                </div>
+                <div class="form-group">
+                    <label for="campaignReason">Reason for Campaign</label>
+                    <textarea id="campaignReason" name="campaignReason" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="targetAmount">Target Amount</label>
+                    <input type="number" id="targetAmount" name="targetAmount" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="campaignDuration">Campaign Duration (in days)</label>
+                    <input type="number" id="campaignDuration" name="campaignDuration" min="1" required>
+                </div>
+            </div>
+
+            <!-- Personal Information -->
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <!-- Medical Information -->
+            <div class="form-section">
+                <h2>Medical Information</h2>
+                <div class="form-group">
+                    <label for="diseaseType">Type of Breast Cancer</label>
+                    <select id="diseaseType" name="diseaseType" required>
+                        <option value="">Select Type</option>
+                        <option value="invasive">Invasive Ductal Carcinoma</option>
+                        <option value="lobular">Invasive Lobular Carcinoma</option>
+                        <option value="inflammatory">Inflammatory Breast Cancer</option>
+                        <option value="triple-negative">Triple-Negative Breast Cancer</option>
+                        <option value="her2-positive">HER2-Positive Breast Cancer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="diagnosisDate">Diagnosis Date</label>
+                    <input type="date" id="diagnosisDate" name="diagnosisDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="medicalDocuments">Medical Documents</label>
+                    <div class="file-upload" id="medicalUpload">
+                        <i class="fas fa-file-medical"></i>
+                        <p>Click to upload medical documents</p>
+                        <input type="file" id="medicalDocuments" name="medicalDocuments" multiple accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                    </div>
+                    <div class="preview-container" id="medicalPreview"></div>
+                </div>
+            </div>
+
+            <!-- Media Upload -->
+            <div class="form-section">
+                <h2>Campaign Media</h2>
+                <div class="form-group">
+                    <label for="campaignMedia">Upload Photos/Videos</label>
+                    <div class="file-upload" id="mediaUpload">
+                        <i class="fas fa-camera"></i>
+                        <p>Click to upload photos and videos</p>
+                        <input type="file" id="campaignMedia" name="campaignMedia" multiple accept="image/*,video/*" style="display: none;">
+                    </div>
+                    <div class="preview-container" id="mediaPreview"></div>
+                </div>
+            </div>
+
+            <!-- Payment Information -->
+            <div class="form-section">
+                <h2>Payment Information</h2>
+                <div class="form-group">
+                    <label for="upiId">UPI ID</label>
+                    <input type="text" id="upiId" name="upiId" required>
+                </div>
+                <div class="qr-section">
+                    <h3>QR Code for Payments</h3>
+                    <div class="file-upload" id="qrUpload">
+                        <i class="fas fa-qrcode"></i>
+                        <p>Click to upload QR code</p>
+                        <input type="file" id="qrCode" name="qrCode" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="preview-container" id="qrPreview"></div>
+                </div>
+            </div>
+
+            <!-- Campaign Description -->
+            <div class="form-section">
+                <h2>Campaign Description</h2>
+                <div class="form-group">
+                    <label for="campaignDescription">Detailed Description</label>
+                    <textarea id="campaignDescription" name="campaignDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="impactStatement">Expected Impact</label>
+                    <textarea id="impactStatement" name="impactStatement" required></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">Create Campaign</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@breastcancerawareness.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // File upload preview functionality
+        function handleFileUpload(input, previewContainer) {
+            const files = input.files;
+            previewContainer.innerHTML = '';
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const previewItem = document.createElement('div');
+                previewItem.className = 'preview-item';
+
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    previewItem.appendChild(img);
+                } else if (file.type.startsWith('video/')) {
+                    const video = document.createElement('video');
+                    video.src = URL.createObjectURL(file);
+                    video.controls = true;
+                    previewItem.appendChild(video);
+                }
+
+                const removeButton = document.createElement('button');
+                removeButton.className = 'remove-preview';
+                removeButton.innerHTML = '×';
+                removeButton.onclick = function() {
+                    previewItem.remove();
+                };
+
+                previewItem.appendChild(removeButton);
+                previewContainer.appendChild(previewItem);
+            }
+        }
+
+        // Initialize file upload handlers
+        document.getElementById('medicalUpload').addEventListener('click', function() {
+            document.getElementById('medicalDocuments').click();
+        });
+
+        document.getElementById('mediaUpload').addEventListener('click', function() {
+            document.getElementById('campaignMedia').click();
+        });
+
+        document.getElementById('qrUpload').addEventListener('click', function() {
+            document.getElementById('qrCode').click();
+        });
+
+        document.getElementById('medicalDocuments').addEventListener('change', function() {
+            handleFileUpload(this, document.getElementById('medicalPreview'));
+        });
+
+        document.getElementById('campaignMedia').addEventListener('change', function() {
+            handleFileUpload(this, document.getElementById('mediaPreview'));
+        });
+
+        document.getElementById('qrCode').addEventListener('change', function() {
+            handleFileUpload(this, document.getElementById('qrPreview'));
+        });
+
+        // Form submission
+        document.getElementById('campaignForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Campaign created successfully!');
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breast Cancer Support</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Additional styles for proper structure */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: #fff;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #ff69b4;
+    }
+
+    .nav-links li a.active {
+      color: #ff69b4;
+    }
+
+    .hero {
+      padding-top: 80px;
+      min-height: 500px;
+      background: #f8f9fa;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .info-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .info-content-right {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .info-image {
+      max-width: 400px;
+      border-radius: 10px;
+    }
+
+    .info-text {
+      flex: 1;
+    }
+
+    .info-text h3 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .info-text p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .info-text ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-text li {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .info-text li:before {
+      content: "•";
+      color: #ff69b4;
+      position: absolute;
+      left: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: #ff69b4;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #ff4081;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .info-content,
+      .info-content-right {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .info-image {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Breast Cancer Awareness</div>
+      
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="campaign.html">Start Campaign</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="map.html" class="hover:text-pink-300">Map</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="info-content">
+          <img src="images/breast_cancer_social_card_1.png.webp" alt="Breast Cancer Awareness" class="info-image">
+          <div class="info-text">
+              <h3>What is Breast Cancer?</h3>
+              <p>Breast cancer is a disease where abnormal cells in the breast grow uncontrollably, forming a lump or tumor. It can occur in both men and women, but it is far more common in women. Early detection and treatment significantly improve survival rates.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="info-section">
+    <h2>Understanding Breast Cancer</h2>
+
+    <div class="info-content-right">
+        <img src="images/breast_cancer_social_card_2.png.webp" alt="Breast Cancer Awareness" class="info-image">
+        <div class="info-text">
+            <h3>Types of Breast Cancer</h3>
+            <p>Breast cancer is classified into different types, including:</p>
+            <ul>
+                <li><h4>Ductal Carcinoma In Situ (DCIS)</h4> A non-invasive cancer where abnormal cells are found in the lining of the breast ducts.</li>
+                <li><h4>Invasive Ductal Carcinoma (IDC)</h4> The most common type, which spreads beyond the milk ducts into surrounding tissues.</li>
+                <li><h4>Lobular Carcinoma In Situ (LCIS)</h4> Not considered a true cancer but a marker for increased risk.</li>
+                <li><h4>Invasive Lobular Carcinoma (ILC)</h4> Starts in the milk-producing lobules and can spread to nearby tissues.</li>
+                <li><h4>Triple-Negative Breast Cancer</h4> Lacks estrogen, progesterone, and HER2 receptors, making it more challenging to treat.</li>
+                <li><h4>Inflammatory Breast Cancer</h4> A rare but aggressive form where cancer cells block lymph vessels, causing redness and swelling.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-content">
+        <img src="images/breast_cancer_social_card_5.png.webp" alt="Breast Cancer Awareness" class="info-image">
+        <div class="info-text">
+            <h3>Causes and Risk Factors</h3>
+            <p>While the exact cause of breast cancer is unknown, several risk factors can increase the likelihood of developing the disease:</p>
+            <ul>
+                <li><h4>Genetic Factors</h4> A family history of breast cancer or inherited mutations in the BRCA1 and BRCA2 genes.</li>
+                <li><h4>Age</h4> The risk increases with age, especially after 50.</li>
+                <li><h4>Hormonal Factors</h4> Increased estrogen exposure due to early menstruation, late menopause, or hormone replacement therapy.</li>
+                <li><h4>Lifestyle Choices</h4> Poor diet, lack of physical activity, smoking, and alcohol consumption can contribute.</li>
+                <li><h4>Radiation Exposure</h4> Previous radiation therapy to the chest can increase risk.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-content-right">
+        <img src="images/Pink-october.jpeg.webp" alt="Breast Cancer Awareness" class="info-image">
+        <div class="info-text">
+            <h3>Symptoms of Breast Cancer</h3>
+            <p>Recognizing the symptoms early can help in timely diagnosis and treatment. Common signs include:</p>
+            <ul>
+                <li>A new lump or thickening in the breast or underarm.</li>
+                <li>Changes in breast size, shape, or appearance.</li>
+                <li>Nipple discharge (other than breast milk), especially if bloody.</li>
+                <li>Skin changes like dimpling, redness, or peeling.</li>
+                <li>Persistent pain in the breast or nipple.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-content">
+        <img src="your-image-url.jpg" alt="Breast Cancer Awareness" class="info-image">
+        <div class="info-text">
+            <h3>Importance of Early Detection</h3>
+            <p>Early detection is crucial for improving survival rates. Methods include:</p>
+            <ul>
+                <li><h4>Breast Self-Exams</h4> Regularly checking for lumps or abnormalities.</li>
+                <li><h4>Clinical Breast Exams</h4> A physical examination by a healthcare professional.</li>
+                <li><h4>Mammograms</h4> X-ray screening to detect early signs of breast cancer.</li>
+                <li><h4>Biopsy</h4> Removing a small sample of tissue for laboratory testing if abnormalities are found.</li>
+            </ul>
+        </div>
+        <a href="model.html" class="btn">Try Detection Model</a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Have any questions or need more information? Reach out to us using the form below.</p>
+    <form action="#" method="post" class="contact-form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name..." required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email..." required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" placeholder="Your message..." rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- FAQ Chat Box -->
+  <div id="faqChat" class="faq-chat">
+    <div class="faq-header">
+      <h3>FAQ Chat</h3>
+      <button id="closeFaqChat" class="close-btn">&times;</button>
+    </div>
+    <div class="faq-body">
+      <ul id="faqList">
+        <li data-answer="Breast cancer is a disease where malignant cells form in the tissues of the breast.">What is breast cancer?</li>
+        <li data-answer="Early signs include a lump, changes in size/shape, and skin dimpling.">What are the early signs of breast cancer?</li>
+        <li data-answer="Diagnosis typically involves physical exams, imaging tests like mammograms, and biopsies.">How is breast cancer diagnosed?</li>
+        <li data-answer="Treatment options include surgery, chemotherapy, radiation, and hormone therapy.">What are the treatment options available?</li>
+        <li data-answer="Survival rates vary by stage, but early detection greatly improves outcomes.">What is the survival rate for breast cancer?</li>
+        <li data-answer="Yes, although much less common, men can also develop breast cancer.">Can breast cancer affect men?</li>
+        <li data-answer="Screening usually starts at age 40 or earlier for high-risk individuals.">How often should one get screened for breast cancer?</li>
+        <li data-answer="Risk factors include genetics, age, hormonal factors, lifestyle, and radiation exposure.">What are the risk factors for breast cancer?</li>
+        <li data-answer="A healthy lifestyle, regular exercise, and limited alcohol intake can help reduce risk.">How can I reduce my risk of breast cancer?</li>
+        <li data-answer="Common symptoms include a lump, nipple discharge, and skin changes on the breast.">What are common symptoms of breast cancer?</li>
+        <li data-answer="Certain genetic mutations like BRCA1 and BRCA2 increase risk, but not all cases are hereditary.">Is breast cancer hereditary?</li>
+        <li data-answer="Balanced diet, regular exercise, and avoiding smoking/alcohol can help prevent breast cancer.">What lifestyle changes can help prevent breast cancer?</li>
+      </ul>
+    </div>
+    <div class="faq-answer">
+      <p id="faqAnswer">Click a question above to see the answer.</p>
+    </div>
+  </div>
+  <button id="openFaqChat" class="faq-open-btn">FAQ Chat</button>
+
+  <div class="contact-info">
+    <h2>Contact Us</h2>
+    <div class="contact-details">
+        <p>Email: nikhilagarwal9785@gmail.com</p>
+        <p>Phone: +91 9785836544</p>
+    </div>
+    <div class="social-links">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
+  </footer>
+
+  <!-- Inline JavaScript for FAQ Chat functionality -->
+  <script>
+    // Existing FAQ Chat functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // FAQ Chat functionality
+      document.getElementById('openFaqChat').addEventListener('click', function(){
+        document.getElementById('faqChat').style.display = 'flex';
+        this.style.display = 'none';
+      });
+      document.getElementById('closeFaqChat').addEventListener('click', function(){
+        document.getElementById('faqChat').style.display = 'none';
+        document.getElementById('openFaqChat').style.display = 'block';
+      });
+      document.querySelectorAll('#faqList li').forEach(function(item){
+        item.addEventListener('click', function(){
+          var answer = this.getAttribute('data-answer');
+          document.getElementById('faqAnswer').textContent = answer;
+        });
+      });
+
+      // Notification Panel functionality
+      const notificationToggle = document.querySelector('.notification-toggle');
+      const notificationContainer = document.querySelector('.notification-container');
+      const closeNotification = document.querySelector('.close-notification');
+
+      // Toggle notification panel
+      notificationToggle.addEventListener('click', function() {
+        notificationContainer.classList.toggle('open');
+      });
+
+      // Close notification panel
+      closeNotification.addEventListener('click', function() {
+        notificationContainer.classList.remove('open');
+      });
+
+      // Sample function to add new notifications
+      function addNotification(type, title, message) {
+        const notificationList = document.querySelector('.notification-list');
+        const newNotification = document.createElement('div');
+        newNotification.className = `notification-item ${type}-notification`;
+        
+        const icons = {
+          diet: 'utensils',
+          medicine: 'pills',
+          community: 'users',
+          exercise: 'walking'
+        };
+
+        newNotification.innerHTML = `
+          <div class="notification-icon">
+            <i class="fas fa-${icons[type]}"></i>
+          </div>
+          <div class="notification-content">
+            <div class="notification-title">${title}</div>
+            <div class="notification-message">${message}</div>
+            <div class="notification-time">Just now</div>
+          </div>
+        `;
+
+        notificationList.insertBefore(newNotification, notificationList.firstChild);
+      }
+
+      // Example: Add new notifications periodically
+      setInterval(() => {
+        const notifications = [
+          {
+            type: 'diet',
+            title: 'Meal Time Reminder',
+            message: 'Time for your healthy afternoon snack!'
+          },
+          {
+            type: 'medicine',
+            title: 'Medicine Reminder',
+            message: 'Don\'t forget to take your medication'
+          },
+          {
+            type: 'community',
+            title: 'Community Update',
+            message: 'New support group meeting scheduled'
+          },
+          {
+            type: 'exercise',
+            title: 'Exercise Time',
+            message: 'Time for your daily wellness routine'
+          }
+        ];
+
+        const randomNotification = notifications[Math.floor(Math.random() * notifications.length)];
+        addNotification(randomNotification.type, randomNotification.title, randomNotification.message);
+      }, 300000); // Add new notification every 5 minutes
+    });
+  </script>
+  <script src="js/gemini-api.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

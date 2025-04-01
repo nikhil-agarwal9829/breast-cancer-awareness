@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breast Cancer Awareness - Detection Model</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styling for the Detection Model page */
+    .upload-section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border: 2px solid #1B1833;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .upload-section p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      color: #1B1833;
+    }
+    .upload-section input[type="file"] {
+      margin: 20px 0;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      background: #f4f4f4;
+      cursor: pointer;
+    }
+    /* Style the upload button using the .btn class overrides if needed */
+    .upload-section .btn {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Breast Cancer Awareness</div>
+      <!-- Hamburger menu for mobile -->
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="model.html">Detection Model</a></li>
+        <li><a href="statistics.html">Statistics</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Detection Model Section -->
+  <section id="detection" class="info-section">
+    <h2>Breast Cancer Detection Model</h2>
+    <p>
+      Upload an image of your breast for a preliminary analysis. Our advanced detection model will analyze your image and provide initial insights regarding your condition.
+      <strong>Please note:</strong> This tool is for informational purposes only and is not a substitute for professional medical advice.
+    </p>
+    <div class="upload-section">
+      <input type="file" id="imageUpload" accept="image/*">
+      <p>
+        Choose a high-quality image file (JPEG, PNG, etc.) and click "Upload & Analyze". Our system will process your image and provide feedback shortly.
+      </p>
+      <button class="btn">Upload & Analyze</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Breast Cancer Awareness. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

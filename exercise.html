@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Guide - Breast Cancer Awareness</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .exercise-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .exercise-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .exercise-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .exercise-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .exercise-content {
+            padding: 1.5rem;
+        }
+
+        .exercise-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .exercise-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .exercise-steps {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .exercise-steps li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .exercise-steps li:before {
+            content: "•";
+            color: #e91e63;
+            position: absolute;
+            left: 0;
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .difficulty-easy {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .difficulty-medium {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .difficulty-hard {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .exercise-tips {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .exercise-tips h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .exercise-tips ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .exercise-tips li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .exercise-tips li:before {
+            content: "✓";
+            color: #2ecc71;
+            position: absolute;
+            left: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Breast Cancer Awareness</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="exercise-hero">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Exercise Guide</h1>
+            <p class="animate__animated animate__fadeInUp">Safe and effective exercises for breast cancer patients and survivors</p>
+        </div>
+    </div>
+
+    <div class="exercise-container">
+        <div class="exercise-tips">
+            <h2>Important Tips Before Starting</h2>
+            <ul>
+                <li>Always consult your healthcare provider before starting any exercise program</li>
+                <li>Start slowly and gradually increase intensity</li>
+                <li>Listen to your body and stop if you feel pain or discomfort</li>
+                <li>Stay hydrated during exercise</li>
+                <li>Wear comfortable, supportive clothing</li>
+                <li>Exercise in a well-ventilated area</li>
+                <li>Include warm-up and cool-down periods</li>
+            </ul>
+        </div>
+
+        <div class="exercise-grid">
+            <!-- Walking Exercise -->
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1571008887538-b36b32f45728?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Walking" class="exercise-image">
+                <div class="exercise-content">
+                    <span class="difficulty-badge difficulty-easy">Easy</span>
+                    <h2 class="exercise-title">Walking</h2>
+                    <p class="exercise-description">A low-impact exercise that helps improve circulation and maintain mobility.</p>
+                    <ul class="exercise-steps">
+                        <li>Start with 5-10 minutes</li>
+                        <li>Gradually increase to 30 minutes</li>
+                        <li>Maintain a comfortable pace</li>
+                        <li>Use proper footwear</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stretching Exercise -->
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Stretching" class="exercise-image">
+                <div class="exercise-content">
+                    <span class="difficulty-badge difficulty-easy">Easy</span>
+                    <h2 class="exercise-title">Gentle Stretching</h2>
+                    <p class="exercise-description">Improves flexibility and helps prevent muscle stiffness.</p>
+                    <ul class="exercise-steps">
+                        <li>Hold each stretch for 15-30 seconds</li>
+                        <li>Don't bounce or force movements</li>
+                        <li>Focus on breathing</li>
+                        <li>Include neck and shoulder stretches</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Yoga Exercise -->
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Yoga" class="exercise-image">
+                <div class="exercise-content">
+                    <span class="difficulty-badge difficulty-medium">Medium</span>
+                    <h2 class="exercise-title">Gentle Yoga</h2>
+                    <p class="exercise-description">Combines stretching, breathing, and relaxation techniques.</p>
+                    <ul class="exercise-steps">
+                        <li>Start with basic poses</li>
+                        <li>Use props for support</li>
+                        <li>Focus on breathing</li>
+                        <li>Avoid strenuous poses</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Strength Training -->
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Strength Training" class="exercise-image">
+                <div class="exercise-content">
+                    <span class="difficulty-badge difficulty-medium">Medium</span>
+                    <h2 class="exercise-title">Light Strength Training</h2>
+                    <p class="exercise-description">Helps maintain muscle mass and improve overall strength.</p>
+                    <ul class="exercise-steps">
+                        <li>Use light weights or resistance bands</li>
+                        <li>Focus on proper form</li>
+                        <li>Start with 8-10 repetitions</li>
+                        <li>Include rest periods</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@breastcancerawareness.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.exercise-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html> 

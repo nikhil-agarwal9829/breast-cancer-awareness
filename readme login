@@ -1,0 +1,96 @@
+# Login System with OTP Verification - Integration Guide
+
+This guide explains how to integrate the login system with OTP verification into the Breast Cancer Awareness website.
+
+## Files Overview
+
+1. `login.html` - The login page with OTP verification interface
+2. `login.css` - Styling specific to the login page
+3. `login.js` - Frontend JavaScript for handling the login flow and OTP verification
+4. `send_otp.php` - Server-side script for generating and sending OTP
+5. `verify_otp.php` - Server-side script for verifying the entered OTP
+
+## Integration Steps
+
+### Step 1: Add Login Link to Navbar
+
+Update your existing navbar in `index.html` by adding a login link:
+
+```html
+<ul class="nav-links">
+  <li><a href="#home">Home</a></li>
+  <li><a href="about.html">About</a></li>
+  <li><a href="model.html">Detection Model</a></li>
+  <li><a href="statistics.html">Statistics</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  <li><a href="login.html">Login</a></li>
+</ul>
+```
+
+### Step 2: Protect Restricted Pages
+
+Add this PHP snippet at the top of any pages that should be restricted to logged-in users only:
+
+```php
+<?php
+session_start();
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+    // Redirect to login page
+    header('Location: login.html');
+    exit;
+}
+?>
+```
+
+### Step 3: Add Logout Functionality
+
+Create a `logout.php` file with the following content:
+
+```php
+<?php
+session_start();
+// Clear all session variables
+$_SESSION = array();
+// Destroy the session
+session_destroy();
+// Redirect to home page
+header('Location: index.html');
+exit;
+?>
+```
+
+Then add a logout link for logged-in users:
+
+```html
+<li><a href="logout.php">Logout</a></li>
+```
+
+### Step 4: Configure SMS Gateway (Production)
+
+For production use, replace the commented code in `send_otp.php` with your actual SMS gateway integration. Common SMS gateways include:
+
+- Twilio
+- Nexmo/Vonage
+- MessageBird
+- AWS SNS
+
+## Security Considerations
+
+1. Store user credentials securely using password hashing (e.g., bcrypt)
+2. Implement rate limiting to prevent OTP brute-force attacks
+3. Use HTTPS to secure data transmission
+4. Consider implementing two-factor authentication for added security
+
+## Testing the System
+
+1. Open `login.html` in your browser
+2. Enter test credentials and click "Send OTP"
+3. For testing purposes, the OTP will be displayed in an alert
+4. Enter the OTP in the verification screen
+5. Upon successful verification, you'll be redirected to the home page
+
+## Customization
+
+- Adjust the styling in `login.css` to match your specific design preferences
+- Modify the OTP expiry time in `send_otp.php` (currently set to 5 minutes)
+- Add additional validation or user registration functionality as needed

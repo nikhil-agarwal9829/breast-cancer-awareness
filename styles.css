@@ -1,0 +1,406 @@
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f4f4;
+    line-height: 1.6;
+    color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;  /* Fixes navbar to the top */
+    top: 0;  /* Ensures it stays at the very top */
+    left: 0;
+    width: 100%;  /* Full width */
+    background: #1B1833;  /* Your existing dark blue */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;  /* Keeps it above other content */
+}
+
+
+.logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #F29F58; /* Pink on hover to emphasize breast cancer awareness */
+}
+
+/* Hamburger Menu (hidden on desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    margin-bottom: 4px;
+    border-radius: 5px;
+}
+
+/* Hero Section */
+.hero {
+    background: #441752;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-align: center; /* Centered for hero section */
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #1B1833;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    
+}
+
+.btn:hover {
+    background: #441752;
+    transform: scale(1.05);     
+}
+
+/* Info Section */
+.info-section {
+    padding: 60px 20px;
+    background: #fff;
+}
+
+.info-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.info-section p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    font-size: 1.1rem;
+    text-align: justify; /* Align text properly */
+}
+
+/* List Styling */
+.info-section ul {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    padding-left: 20px;
+    text-align: justify;
+}
+
+.info-section ul li {
+    margin-bottom: 10px;
+}
+
+/* Image Wrapping for Each <h3> Section */
+.info-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 20px auto;
+    text-align: left;
+    gap: 20px;
+}
+
+.info-content-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 20px auto;
+    text-align: right;
+    gap: 20px;
+    flex-direction: row-reverse;
+}
+
+.info-image {
+    width: 40%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.info-text {
+    width: 60%;
+}
+
+h3 {
+    color: #ff6600;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+h4 {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background: #AB4459;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        background: #004080;
+        display: none;
+        border-radius: 0 0 5px 5px;
+        text-align: center;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links.nav-active {
+        display: flex;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .info-section p,
+    .info-section ul {
+        text-align: left; /* Aligns better for small screens */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Responsive: Stack Image & Text for Small Screens */
+    .info-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .info-image {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .info-text {
+        width: 100%;
+    }
+}
+
+
+/*CONTACT US*/
+/* Contact Section */
+.contact-section {
+    padding: 60px 20px;
+    background: #F29F58;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1B1833;
+}
+
+.contact-section p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #1B1833;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #004080;
+    outline: none;
+}
+
+/* FAQ Chat Box Styles */
+.faq-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: #fff;
+    border: 2px solid #1B1833;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    z-index: 1001;
+  }
+  
+  .faq-chat .faq-header {
+    background: #1B1833;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-chat .faq-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .faq-chat .close-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .faq-chat .faq-body {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .faq-chat .faq-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .faq-chat .faq-body ul li {
+    padding: 8px;
+    margin-bottom: 5px;
+    background: #f4f4f4;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .faq-chat .faq-body ul li:hover {
+    background: #ddd;
+  }
+  
+  .faq-chat .faq-answer {
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    font-size: 0.9rem;
+    text-align: left;
+    background: #fff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  
+  .faq-open-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #1B1833;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+  
+  .faq-open-btn:hover {
+    background: #441752;
+  }
+  
+.donate-link {
+    background-color: #e91e63;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.donate-link:hover {
+    background-color: #d81557;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+

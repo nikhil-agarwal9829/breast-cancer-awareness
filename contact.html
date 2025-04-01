@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breast Cancer Awareness - Contact & Appointment</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <!-- Header with Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Breast Cancer Awareness</div>
+      <!-- Hamburger menu for mobile -->
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="campaign.html">Start Campaign</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contact & Appointment Section -->
+  <section id="contact" class="contact-section">
+    <h2>Contact Us & Book Appointment</h2>
+    <p>Have questions or need expert advice? Book your appointment by filling out the form below.</p>
+    <form action="#" method="post" class="contact-form">
+      <!-- Patient Details -->
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your full name..." required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" placeholder="Your age..." required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select your gender</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <!-- Appointment Details -->
+      <div class="form-group">
+        <label for="appointment-date">Date of Appointment:</label>
+        <input type="date" id="appointment-date" name="appointment_date" required>
+      </div>
+      <div class="form-group">
+        <label for="condition">Condition / Disease:</label>
+        <input type="text" id="condition" name="condition" placeholder="Enter your condition or disease" required>
+      </div>
+      <div class="form-group">
+        <label for="doctor">Preferred Doctor / Department:</label>
+        <input type="text" id="doctor" name="doctor" placeholder="Enter doctor's name or department" required>
+      </div>
+      <div class="form-group">
+        <label for="location">Location / Hospital:</label>
+        <input type="text" id="location" name="location" placeholder="Enter your location or preferred hospital" required>
+      </div>
+      <!-- Contact Information -->
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email address" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Additional Information:</label>
+        <textarea id="message" name="message" placeholder="Any additional details..." rows="4"></textarea>
+      </div>
+      <!-- Submit Button -->
+      <button type="submit" class="btn">Book Appointment</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Breast Cancer Awareness. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

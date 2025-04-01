@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Guide - Breast Cancer Awareness</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .medicine-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .medicine-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1585435557343-3b092092a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .medicine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .medicine-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .medicine-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .medicine-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .medicine-content {
+            padding: 1.5rem;
+        }
+
+        .medicine-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .medicine-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .medicine-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .medicine-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .medicine-list li:before {
+            content: "•";
+            color: #e91e63;
+            position: absolute;
+            left: 0;
+        }
+
+        .price-comparison {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .price-comparison h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .price-table th {
+            background: #e91e63;
+            color: white;
+        }
+
+        .price-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .assistance-programs {
+            background: #e3f2fd;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .assistance-programs h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .program-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .program-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .program-list li:before {
+            content: "✓";
+            color: #2196f3;
+            position: absolute;
+            left: 0;
+        }
+
+        .search-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-button {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-button:hover {
+            background: #d81557;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Breast Cancer Awareness</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="medicine-hero">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Medicine Guide</h1>
+            <p class="animate__animated animate__fadeInUp">Find affordable medications and financial assistance programs</p>
+        </div>
+    </div>
+
+    <div class="medicine-container">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search for medications...">
+            <button class="search-button">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+
+        <div class="price-comparison">
+            <h2>Price Comparison</h2>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Medication</th>
+                        <th>Generic Name</th>
+                        <th>Average Price</th>
+                        <th>Available Discounts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tamoxifen</td>
+                        <td>Nolvadex</td>
+                        <td>$50-100</td>
+                        <td>Patient Assistance Program</td>
+                    </tr>
+                    <tr>
+                        <td>Anastrozole</td>
+                        <td>Arimidex</td>
+                        <td>$100-200</td>
+                        <td>Manufacturer Coupon</td>
+                    </tr>
+                    <tr>
+                        <td>Letrozole</td>
+                        <td>Femara</td>
+                        <td>$150-300</td>
+                        <td>Insurance Coverage</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="assistance-programs">
+            <h2>Financial Assistance Programs</h2>
+            <ul class="program-list">
+                <li>Patient Access Network Foundation</li>
+                <li>CancerCare Co-Payment Assistance Foundation</li>
+                <li>HealthWell Foundation</li>
+                <li>Patient Advocate Foundation</li>
+                <li>NeedyMeds</li>
+                <li>RxAssist</li>
+            </ul>
+        </div>
+
+        <div class="medicine-grid">
+            <!-- Generic Medications -->
+            <div class="medicine-card">
+                <img src="https://images.unsplash.com/photo-1585435557343-3b092092a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Generic Medications" class="medicine-image">
+                <div class="medicine-content">
+                    <h2 class="medicine-title">Generic Medications</h2>
+                    <p class="medicine-description">Cost-effective alternatives to brand-name drugs.</p>
+                    <ul class="medicine-list">
+                        <li>Same active ingredients</li>
+                        <li>FDA approved</li>
+                        <li>Significantly lower cost</li>
+                        <li>Available at most pharmacies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Patient Assistance Programs -->
+            <div class="medicine-card">
+                <img src="https://images.unsplash.com/photo-1585435557343-3b092092a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Patient Assistance Programs" class="medicine-image">
+                <div class="medicine-content">
+                    <h2 class="medicine-title">Patient Assistance Programs</h2>
+                    <p class="medicine-description">Financial support from pharmaceutical companies.</p>
+                    <ul class="medicine-list">
+                        <li>Free or low-cost medications</li>
+                        <li>Income-based eligibility</li>
+                        <li>Application assistance available</li>
+                        <li>Multiple program options</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pharmacy Discount Programs -->
+            <div class="medicine-card">
+                <img src="https://images.unsplash.com/photo-1585435557343-3b092092a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Pharmacy Discount Programs" class="medicine-image">
+                <div class="medicine-content">
+                    <h2 class="medicine-title">Pharmacy Discount Programs</h2>
+                    <p class="medicine-description">Special pricing from major pharmacy chains.</p>
+                    <ul class="medicine-list">
+                        <li>No membership required</li>
+                        <li>Immediate savings</li>
+                        <li>Wide range of medications</li>
+                        <li>Available at participating locations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@breastcancerawareness.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.medicine-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html> 

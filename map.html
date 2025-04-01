@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Cancer Clinics & Hospitals</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            text-align: center;
+        }
+        h2 {
+            color: #d63384;
+        }
+        #map {
+            height: 600px;
+            width: 90%;
+            border-radius: 10px;
+            margin: 20px auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        #nearest-centers {
+            background: #fff;
+            padding: 15px;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Find Breast Cancer Clinics & Hospitals</h2>
+    <div id="map"></div>
+    <div id="nearest-centers">
+        <h3>Nearest Clinics & Hospitals</h3>
+        <ul id="center-list"></ul>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([20.5937, 78.9629], 5);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        let clinics = [];
+
+        fetch('export.geojson')
+            .then(response => response.json())
+            .then(data => {
+                clinics = data.features.map(feature => {
+                    return {
+                        name: feature.properties.name || "Unknown Clinic",
+                        type: feature.properties.amenity || feature.properties.healthcare || "Healthcare Center",
+                        lat: feature.geometry.coordinates[1],
+                        lon: feature.geometry.coordinates[0],
+                        contact: feature.properties.contact || "N/A"
+                    };
+                });
+                clinics.forEach(clinic => {
+                    L.marker([clinic.lat, clinic.lon]).addTo(map)
+                        .bindPopup(`<b>${clinic.name}</b><br>${clinic.type}<br>Contact: ${clinic.contact}`);
+                });
+            })
+            .catch(error => console.error("Error loading clinics:", error));
+
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; 
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c; 
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var userLat = position.coords.latitude;
+                var userLon = position.coords.longitude;
+                map.setView([userLat, userLon], 10);
+
+                L.marker([userLat, userLon]).addTo(map)
+                    .bindPopup("<b>You are here</b>")
+                    .openPopup();
+                
+                setTimeout(() => {
+                    let nearest = clinics.map(c => {
+                        return { ...c, distance: calculateDistance(userLat, userLon, c.lat, c.lon) };
+                    }).sort((a, b) => a.distance - b.distance).slice(0, 3);
+                    let list = document.getElementById('center-list');
+                    list.innerHTML = nearest.map(c => `<li><b>${c.name}</b> - ${c.type}<br>Distance: ${c.distance.toFixed(2)} km<br>Contact: ${c.contact}</li>`).join('');
+                }, 1000);
+            }, function(error) {
+                console.log("Geolocation error:", error.message);
+            });
+        }
+    </script>
+</body>
+</html>

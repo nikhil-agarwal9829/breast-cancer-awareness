@@ -1,0 +1,3926 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2025-03-13T07:22:21Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/312000326",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Cancer Institute"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.239884,
+          13.0061338
+        ]
+      },
+      "id": "node/312000326"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1725074782",
+        "amenity": "hospital",
+        "emergency": "yes",
+        "healthcare": "hospital",
+        "name": "Savitridevi Saboo Memorial Cancer Research Institute and Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8363443,
+          11.2726826
+        ]
+      },
+      "id": "node/1725074782"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1822746318",
+        "amenity": "hospital",
+        "emergency": "no",
+        "name": "Vishwaradhya Cancer Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.9625003,
+          14.4322216
+        ]
+      },
+      "id": "node/1822746318"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2365903278",
+        "addr:housename": "IB 175, Sector III, Salt Lake City Kolkata",
+        "addr:postcode": "700091",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Subodh Mitra Cancer Hospital and Research Centre",
+        "phone": "03323352515",
+        "source": "OpenGovernmentData",
+        "website": "http://ww16.cancerhospital.org/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.4134692,
+          22.5728078
+        ]
+      },
+      "id": "node/2365903278"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2471894143",
+        "addr:city": "Kolkata",
+        "addr:district": "Kolkata",
+        "addr:housenumber": "37",
+        "addr:postcode": "700026",
+        "addr:state": "West Bengal",
+        "addr:street": "Shyama Prasad Mukherjee Road",
+        "amenity": "hospital",
+        "check_date": "2023-09-30",
+        "healthcare": "hospital",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Chittaranjan National Cancer Institute Hospital",
+        "name:etymology:wikidata": "Q560182",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "source": "OpenGovernmentData",
+        "wheelchair": "yes",
+        "wikidata": "Q5102433",
+        "wikipedia": "en:Chittaranjan National Cancer Institute"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.3466423,
+          22.5252694
+        ]
+      },
+      "id": "node/2471894143"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2593300379",
+        "addr:country": "IN",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Rashtrasant Tukdoji Maharaj Cancer Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.1043456,
+          21.1239077
+        ]
+      },
+      "id": "node/2593300379"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2646853742",
+        "alt_name": "RCC",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Regional Cancer Centre",
+        "wikidata": "Q7309013"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9245217,
+          8.5206614
+        ]
+      },
+      "id": "node/2646853742"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3076341678",
+        "addr:full": "Danavaipeta, Rajahmundry.",
+        "amenity": "hospital",
+        "description": "Dr. G.Srinivas(Ms), Dr.G.Sri Devi (Srf)",
+        "name": "Sridevi Cancer Nursing",
+        "phone": "0883-2428055, 9440467297"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.7814609,
+          17.0080643
+        ]
+      },
+      "id": "node/3076341678"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3076341715",
+        "addr:full": "Ramchandara Rao Peta, Kambalatank, Rajahmundry.",
+        "amenity": "hospital",
+        "name": "G S L Trust Cancer Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.776819,
+          17.0148228
+        ]
+      },
+      "id": "node/3076341715"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3264661241",
+        "addr:city": "Nagpur",
+        "addr:country": "IN",
+        "addr:street": "Cancer Care Clinic & Hospital 5th Floor Vasanst Sheela Tower, Lokmat Square, Dhantoli",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Cancer Care Clinic & Hospital",
+        "phone": "0712 243 0465",
+        "website": "cancercarenagpur.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0787811,
+          21.1351842
+        ]
+      },
+      "id": "node/3264661241"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3773028057",
+        "addr:city": "Bengaluru",
+        "addr:district": "Bengaluru Urban",
+        "addr:full": "44-45/2, 2nd Cross Raja Rammohan Roy Extn Off Lalbagh Double Road",
+        "addr:postcode": "560027",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "building": "hospital",
+        "name": "HCG Cancer Hospital",
+        "source": "OpenGovernmentData",
+        "website": "https://www.hcgoncology.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.5930493,
+          12.9603157
+        ]
+      },
+      "id": "node/3773028057"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3979328318",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Chikhle Multi Speciality and Cancer Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.1039294,
+          21.1150264
+        ]
+      },
+      "id": "node/3979328318"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5539321221",
+        "amenity": "hospital",
+        "internet_access": "wlan",
+        "name": "MVR Cancer Centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.9468168,
+          11.2945142
+        ]
+      },
+      "id": "node/5539321221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5716797221",
+        "addr:district": "Bengaluru Urban",
+        "addr:full": "1st Cross, Shankarapuram, Basavanaagudi",
+        "addr:postcode": "560004",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "name": "Sri Shankara Cancer Hospital And Research Centre (A Service Unit Of Sscf)",
+        "operator:type": "private",
+        "phone": "080-26981000",
+        "source": "OpenGovernmentData",
+        "website": "http://shankaracancerfoundation.org/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.5709473,
+          12.9542624
+        ]
+      },
+      "id": "node/5716797221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6127623145",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Siddhivinayak Cancer Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.6355152,
+          16.8335601
+        ]
+      },
+      "id": "node/6127623145"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6189270336",
+        "addr:city": "Indore",
+        "addr:housenumber": "F-F 05",
+        "addr:street": "Scheme No. 54, Vijay Nagar",
+        "amenity": "clinic",
+        "email": "info@cancerhealercenter.in",
+        "healthcare:speciality": "oncology",
+        "name": "Cancer Health Center",
+        "name:hi": "कैंसर केअर सेंटर",
+        "opening_hours": "Mo-Sa 09:30-19:00",
+        "phone": "7314293343",
+        "source": "2C_Indore Field Visit 2019",
+        "website": "http://www.cancerhealer.in"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8860928,
+          22.7569843
+        ]
+      },
+      "id": "node/6189270336"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207080359",
+        "addr:city": "Indore",
+        "addr:housenumber": "161",
+        "addr:postcode": "452001",
+        "addr:street": "Kanchan Bagh, Geeta Bhawan Road",
+        "amenity": "clinic",
+        "healthcare:speciality": "oncology",
+        "name": "Dr. Arvind Dave Clinic",
+        "name:hi": "डॉ अरविंद दवे क्लीनिक",
+        "opening_hours": "Mo-Su 10:00-16:30",
+        "operator": "Dr. Anupama Dave"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8828151,
+          22.7179879
+        ]
+      },
+      "id": "node/6207080359"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6207167688",
+        "addr:city": "Indore",
+        "addr:street": "A.B Road, Indore",
+        "amenity": "hospital",
+        "capacity:beds": "1200",
+        "facility:delivery": "c-section, normal",
+        "facility:ipd": "yes",
+        "facility:opd": "yes",
+        "facility:pathology_labs": "yes",
+        "facility:radiology_labs": "yes",
+        "hospital:type": "tertiary",
+        "name": "M Y Cancer Hospital",
+        "name:hi": "एम वाय कर्क रोग हॉस्पिटल",
+        "opening_hours": "24/7",
+        "operator:type": "government",
+        "personnel:count": "500",
+        "phone": "07312524466",
+        "source": "2C_Indore Field Visit 2019"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8787151,
+          22.7138334
+        ]
+      },
+      "id": "node/6207167688"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6420585685",
+        "addr:postcode": "700104",
+        "addr:street": "Mahatma Gandhi Road",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Thakur Pukur Cancer Hospital",
+        "opening_hours": "24/7",
+        "phone": "913324536711"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.3195026,
+          22.4590152
+        ]
+      },
+      "id": "node/6420585685"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6547206093",
+        "addr:city": "Hyderabad",
+        "addr:district": "Rangareddy",
+        "addr:full": "Plot no. 1-5, New Mallikarjuna Nagar, National Highway 65, Near Chintalakunta Check post, LB Nagar",
+        "addr:postcode": "500074",
+        "addr:state": "Telangana",
+        "amenity": "hospital",
+        "email": "info@medisyshospitals.com",
+        "fax": "27840020",
+        "healthcare": "hospital",
+        "name": "MEDISYS HOSPITALS (A UNIT OF OXYEN MEDICARE CANCER CARE PVT LTD )",
+        "name:te": "మెడిసిస్ హాస్పిటల్స్",
+        "operator:type": "private",
+        "phone": "9100277722;9100277733",
+        "source": "OpenGovernmentData",
+        "website": "https://www.medisyshospitals.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.557759,
+          17.3411496
+        ]
+      },
+      "id": "node/6547206093"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6618960830",
+        "addr:city": "Pune",
+        "addr:country": "IN",
+        "addr:housenumber": "402/A",
+        "addr:neighbourhood": "Shivaji Co operative Housing Society",
+        "addr:postcode": "411016",
+        "addr:quarter": "Bhageerath",
+        "addr:street": "Janawadi Road",
+        "addr:suburb": "Gokhalenagar",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "healthcare:speciality": "oncology",
+        "name": "Seth Ramdas Shah Memorial Hospital and Research Centre",
+        "name:hi": "सेठ रामदास शहा मेमोरियल हॉस्पिटल आणि रिसर्च सेंटर",
+        "website": "https://www.sehat.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8284091,
+          18.5293628
+        ]
+      },
+      "id": "node/6618960830"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6755570870",
+        "addr:district": "Guntur",
+        "addr:full": "Pedakakani Pedakakani Pedakakani",
+        "addr:postcode": "522509",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "hospital",
+        "contact:phone": "08632556162; 6451771;",
+        "name": "Bommidala Cancer Institute",
+        "opening_hours": "24/7",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4868162,
+          16.3311243
+        ]
+      },
+      "id": "node/6755570870"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6758314954",
+        "addr:district": "Krishna",
+        "addr:full": "Besides Gowtham International School, Padavala Revu, Machawaram Down, Gunadala, Vijayawada",
+        "addr:postcode": "520004",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "hospital",
+        "contact:phone": "0866 2435900",
+        "name": "Health Care Global Curie City Cancer Centre - Vijayawada",
+        "opening_hours": "24/7",
+        "source": "OpenGovernmentData",
+        "website": "https://www.hcgoncology.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6550537,
+          16.5238862
+        ]
+      },
+      "id": "node/6758314954"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6760873916",
+        "addr:district": "Krishna",
+        "addr:full": "H.No: 33-25-33, Ch Venkata Krishnaiah Street, Suryaraopet, Vijayawada",
+        "addr:postcode": "520002",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "hospital",
+        "contact:phone": "8662436661",
+        "name": "City Cancer Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6378674,
+          16.5094934
+        ]
+      },
+      "id": "node/6760873916"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6768386211",
+        "addr:district": "Visakhapatnam",
+        "addr:full": "Seethammadhara (N.E.)",
+        "addr:postcode": "530020",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "hospital",
+        "name": "Lion Dist 324 C, Cancer Treatment and Research Center",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.3083713,
+          17.7443962
+        ]
+      },
+      "id": "node/6768386211"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6779122276",
+        "addr:street": "ashok nagar",
+        "amenity": "hospital",
+        "name": "Sai eshwara cancer and ent center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8960098,
+          12.5235865
+        ]
+      },
+      "id": "node/6779122276"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6804693330",
+        "addr:district": "East Godavari",
+        "addr:full": "Kakinada",
+        "addr:postcode": "533001",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Christian Cancer Center",
+        "source": "OpenGovernmentData",
+        "website": "http://www.christiancancercenter.org/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          82.2403398,
+          16.9836551
+        ]
+      },
+      "id": "node/6804693330"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6830204293",
+        "addr:district": "Nizamabad",
+        "addr:full": "syndicate bank, Madhavnagar, Pangra",
+        "addr:postcode": "503001",
+        "addr:state": "Telangana",
+        "amenity": "hospital",
+        "name": "Indur Cancer Hospital",
+        "opening_hours": "24/7",
+        "operator:type": "private",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.13281,
+          18.66335
+        ]
+      },
+      "id": "node/6830204293"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6886285320",
+        "addr:city": "Chennai",
+        "addr:district": "CHENNAI",
+        "addr:full": "4th Floor, Geo Tower, Old No.319, New No.465, Anna Salai, Nandanam, Chennai",
+        "addr:housenumber": "Nandanam, 320,",
+        "addr:postcode": "600035",
+        "addr:state": "Tamil Nadu",
+        "addr:street": "Anna Salai, Teynampet,",
+        "amenity": "hospital",
+        "contact:phone": "04424347288;04424331741;04424336119",
+        "email": "apollocancercentres.digital@gmail.com",
+        "healthcare": "hospital",
+        "healthcare:speciality": "oncology",
+        "name": "Apollo Cancer Centres",
+        "opening_hours": "24/7",
+        "operator:type": "private",
+        "source": "OpenGovernmentData",
+        "website": "https://apollocancercentres.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2451004,
+          13.0337515
+        ]
+      },
+      "id": "node/6886285320"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6905015648",
+        "addr:city": "Diphu",
+        "addr:district": "KARBI ANGLONG",
+        "addr:full": "Diphu, Karbi Anglong",
+        "addr:postcode": "782460",
+        "addr:state": "Assam",
+        "amenity": "hospital",
+        "contact:mobile": "9435066080",
+        "email": "bloodbank.karbianglong@gmail.com",
+        "healthcare": "hospital",
+        "name": "diphu cancer hodspital",
+        "opening_hours": "24/7",
+        "operator:type": "government",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          93.4331672,
+          25.8429968
+        ]
+      },
+      "id": "node/6905015648"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6908111090",
+        "addr:district": "West Tripura",
+        "addr:full": "Kunjaban",
+        "addr:postcode": "799006",
+        "addr:state": "Tripura",
+        "amenity": "hospital",
+        "name": "Cancer Hospital,West Tripura",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.294603,
+          23.8608346
+        ]
+      },
+      "id": "node/6908111090"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6911122301",
+        "addr:district": "Baramulla",
+        "addr:full": "Near Fruit Mandi Sopore",
+        "addr:postcode": "193201",
+        "addr:state": "Jammu and Kashmir",
+        "amenity": "hospital",
+        "name": "Hakim Sana Ullah Specialist Hospital and Cancer Center",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.4317293,
+          34.2794977
+        ]
+      },
+      "id": "node/6911122301"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6913038510",
+        "addr:district": "Kamrup",
+        "addr:full": "Gopinath Nagar",
+        "addr:postcode": "781016",
+        "addr:state": "Assam",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Dr Bhubaneswar Borooah Cancer Institue",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.7470568,
+          26.1653519
+        ]
+      },
+      "id": "node/6913038510"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6913054603",
+        "addr:district": "Kamrup",
+        "addr:full": "11th Mile, Amerigog Jorabat",
+        "addr:postcode": "781023",
+        "addr:state": "Assam",
+        "amenity": "hospital",
+        "contact:mobile": "7399478888",
+        "name": "North East Cancer Hospital And Research Institute",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.8699154,
+          26.1007508
+        ]
+      },
+      "id": "node/6913054603"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6914880538",
+        "addr:district": "Chennai",
+        "addr:full": "# 55,New Avadi Road,Kilpauk",
+        "addr:postcode": "600010",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Chennai Cancer Care",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.234026,
+          13.0762935
+        ]
+      },
+      "id": "node/6914880538"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6933760545",
+        "addr:district": "Erode",
+        "addr:full": "Velavan Nagar,Perundurai Road,Thindal",
+        "addr:postcode": "638012",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "name": "Erode Cancer Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.6686621,
+          11.313682
+        ]
+      },
+      "id": "node/6933760545"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6934685067",
+        "addr:district": "Salem",
+        "addr:full": "24, Saradha College Road",
+        "addr:postcode": "636007",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Shanmuga Hospital and Salem Cancer Institute",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.1531844,
+          11.6770178
+        ]
+      },
+      "id": "node/6934685067"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6936339695",
+        "addr:district": "Chennai",
+        "addr:full": "Flat1/B,Ii Floor,Old#No191,New#297,Precision Diagnostics Complex,Periyar Evr Salai(P.H.Road)Kilpauk",
+        "addr:postcode": "600010",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Sundaram Cancer Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2366224,
+          13.07604
+        ]
+      },
+      "id": "node/6936339695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6936874933",
+        "addr:district": "Chennai",
+        "addr:full": "175, N.S.K. Salai, Vadapalani",
+        "addr:postcode": "600026",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Paterson Cancer Center / Vijaya Health Centre Premises",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2069719,
+          13.0475826
+        ]
+      },
+      "id": "node/6936874933"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6938687901",
+        "addr:district": "Belagavi",
+        "addr:full": "9666-A-2D Ashok Nagar Behlnd Buda Office Belgaum Ashok Nagar",
+        "addr:postcode": "590010",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "name": "Belgaum Cancer Hospital Pvt Ltd",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.5277323,
+          15.8723523
+        ]
+      },
+      "id": "node/6938687901"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6950646487",
+        "addr:district": "Raipur",
+        "addr:full": "Infront Of Jain Mandir, Near Ramkrishna Care Hospital,Dawada Colony,Pachpedi Naka",
+        "addr:postcode": "492001",
+        "addr:state": "Chhattisgarh",
+        "amenity": "hospital",
+        "name": "Sanjeevani Cbcc Usa Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.6503232,
+          21.2142649
+        ]
+      },
+      "id": "node/6950646487"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6950802221",
+        "addr:district": "Alappuzha",
+        "addr:full": "Muttathiparambu, Cherthala",
+        "addr:postcode": "688524",
+        "addr:state": "Kerala",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Prathyasa Msgr Joseph Kandathil Memorial Cancer Research Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.3394773,
+          9.6641387
+        ]
+      },
+      "id": "node/6950802221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6950999156",
+        "addr:district": "Dehradun",
+        "addr:full": "Mandir Marg,Turner Road,Clement Town",
+        "addr:postcode": "248001",
+        "addr:state": "Uttarakhand",
+        "amenity": "hospital",
+        "name": "Vaidya Chandra Prakash Cancer Research Foundation",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.002518,
+          30.2820388
+        ]
+      },
+      "id": "node/6950999156"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6975861677",
+        "addr:district": "Rajkot",
+        "addr:full": "Astron Circle",
+        "addr:postcode": "360001",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Aishwarya Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.7873201,
+          22.2912382
+        ]
+      },
+      "id": "node/6975861677"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6976524028",
+        "addr:district": "Surat",
+        "addr:full": "Kadodara Road, Saroli, Saroli",
+        "addr:postcode": "395010",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "name": "Shri Bhartimalya Memorial Foundation (Bharat Cancer Hospital and Nirali Memorial Radiation Centre)",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8833135,
+          21.1896468
+        ]
+      },
+      "id": "node/6976524028"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6977728612",
+        "addr:district": "Navsari",
+        "addr:full": "M G G Civil Hospital, Station Road",
+        "addr:postcode": "396445",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "name": "Smt Lilaben Chimanlal Parikh Cancer Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9192303,
+          20.9496908
+        ]
+      },
+      "id": "node/6977728612"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6981694438",
+        "addr:district": "Ahmedabad",
+        "addr:full": "Sola Science City Road, Near Sola Brige, S.G.Highway",
+        "addr:postcode": "380060",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "email": "info.hcc@hcgahmd.com",
+        "name": "HCG Cancer Centre",
+        "operator:type": "private",
+        "source": "OpenGovernmentData",
+        "website": "https://www.hcgoncology.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.5227287,
+          23.0705004
+        ]
+      },
+      "id": "node/6981694438"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6988494095",
+        "addr:district": "Ahmedabad",
+        "addr:full": "107,Shailbhadra.OppositeAmbawadi Jain Derasar,Near Nehrunagar Circle,Ambawadi",
+        "addr:postcode": "380015",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "name": "Rushil Cancer And Endocrine Care",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.5435185,
+          23.0213053
+        ]
+      },
+      "id": "node/6988494095"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6998006362",
+        "addr:district": "Ambala",
+        "addr:full": "Gushera Ground, Ram Bag, Ambala Cantt",
+        "addr:postcode": "133001",
+        "addr:state": "Haryana",
+        "amenity": "hospital",
+        "name": "Rotary Cancer and General Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8467742,
+          30.3316191
+        ]
+      },
+      "id": "node/6998006362"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7013177640",
+        "addr:district": "Gwalior",
+        "addr:full": "Mandre Ki Mata, Cancer Hills Road, Amkhoh",
+        "addr:postcode": "474011",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Cancer Hospital And Research Institute",
+        "source": "OpenGovernmentData",
+        "website": "cancerhospitalgwalior.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.1659463,
+          26.1835644
+        ]
+      },
+      "id": "node/7013177640"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7015819770",
+        "addr:district": "Indore",
+        "addr:full": "Chl Campus, A.B. Road",
+        "addr:postcode": "452001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Chl-Cbcc Cancer Center",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8891881,
+          22.7317604
+        ]
+      },
+      "id": "node/7015819770"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7016345987",
+        "addr:district": "Jabalpur",
+        "addr:full": "Kuchaini Parisar Damoh Naka,Near Kchetriya Bus Stand",
+        "addr:postcode": "482002",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Metro Hospital and Cancer Research Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9286243,
+          23.1865812
+        ]
+      },
+      "id": "node/7016345987"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7018539753",
+        "addr:district": "Kanpur Nagar",
+        "addr:full": "113/103A, Swaroop Nagar",
+        "addr:postcode": "208002",
+        "addr:state": "Uttar Pradesh",
+        "amenity": "hospital",
+        "name": "Royal Cancer Institute and Research Centre",
+        "source": "OpenGovernmentData",
+        "website": "royalcancerinstitute.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3160292,
+          26.479268
+        ]
+      },
+      "id": "node/7018539753"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7025215055",
+        "addr:district": "Lucknow",
+        "addr:full": "2 Lucknow Cancer Institute, 1 Manas Nagar, Jaimau",
+        "addr:postcode": "226001",
+        "addr:state": "Uttar Pradesh",
+        "amenity": "hospital",
+        "name": "Raj Scanning Ltd and Lucknow Cancer Institute",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9612767,
+          26.8468326
+        ]
+      },
+      "id": "node/7025215055"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7030406319",
+        "addr:district": "Agra",
+        "addr:full": "Centre, 605, Neerav Nilkunj, Between Sikandra- Gurudwara, Guru Ka Taal",
+        "addr:postcode": "282003",
+        "addr:state": "Uttar Pradesh",
+        "amenity": "clinic",
+        "name": "Purshottamads Savitridevi Cancer Care and Research",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.9591104,
+          27.2127368
+        ]
+      },
+      "id": "node/7030406319"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7034986736",
+        "addr:district": "Saharanpur",
+        "addr:full": "Mahipura, Dehradun Road",
+        "addr:postcode": "247001",
+        "addr:state": "Uttar Pradesh",
+        "amenity": "hospital",
+        "name": "Prankur Hospital and Cancer Research Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.5752883,
+          29.9676578
+        ]
+      },
+      "id": "node/7034986736"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7035254373",
+        "addr:district": "Allahabad",
+        "addr:full": "59//18, E Lowther Road",
+        "addr:postcode": "211002",
+        "addr:state": "Uttar Pradesh",
+        "amenity": "hospital",
+        "name": "Kriti Cancer Institute and Research Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.8545359,
+          25.4491387
+        ]
+      },
+      "id": "node/7035254373"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7037183357",
+        "addr:district": "Bikaner",
+        "addr:full": "A-52, Sadul Ganj, Near S.B.I Bank",
+        "addr:postcode": "334003",
+        "addr:state": "Rajasthan",
+        "amenity": "hospital",
+        "name": "Tulsi Dharnia Memorial Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.3333111,
+          28.0154116
+        ]
+      },
+      "id": "node/7037183357"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7037514348",
+        "addr:district": "Jodhpur",
+        "addr:full": "429,Pal Link Road",
+        "addr:postcode": "342001",
+        "addr:state": "Rajasthan",
+        "amenity": "hospital",
+        "name": "Sanchetee Hospital and Cancer Institute",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9873249,
+          26.27239
+        ]
+      },
+      "id": "node/7037514348"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7040112723",
+        "addr:district": "Jaipur",
+        "addr:full": "Jawahar Lal Nehru Marg",
+        "addr:postcode": "302015",
+        "addr:state": "Rajasthan",
+        "amenity": "hospital",
+        "name": "Bhagwan Mahaveer Cancer Hospital and Research Center",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8055353,
+          26.8630701
+        ]
+      },
+      "id": "node/7040112723"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7045516010",
+        "addr:district": "Nagpur",
+        "addr:full": "11,Shankar Nagar ,West High Court Road",
+        "addr:postcode": "440010",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Central India Cancer Research Institute",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.0619201,
+          21.1330665
+        ]
+      },
+      "id": "node/7045516010"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7048127316",
+        "addr:district": "Darjeeling",
+        "addr:full": "Vill & Po - Rangapani",
+        "addr:postcode": "734434",
+        "addr:state": "West Bengal",
+        "amenity": "hospital",
+        "name": "Medica Cancer Hospital (A Unit Of North Bengal Oncology Centre Pvt Ltd ) - Darjeeling",
+        "source": "OpenGovernmentData",
+        "website": "https://www.medicacancerhospital.in/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.3664341,
+          26.6633925
+        ]
+      },
+      "id": "node/7048127316"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7049410769",
+        "addr:district": "Thane",
+        "addr:full": "1st Floor, Ajit Darshan Building, Near Petrol Pump,",
+        "addr:postcode": "400602",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Aasha Cancer Hospital and Children First",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9706731,
+          19.193409
+        ]
+      },
+      "id": "node/7049410769"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7053689148",
+        "addr:district": "Kolkata",
+        "addr:full": "109,Mahatma Gandhi Road,Thakurpukur",
+        "addr:postcode": "700063",
+        "addr:state": "West Bengal",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Saroj Gupta Cancer Centre And Research Institute",
+        "source": "OpenGovernmentData",
+        "website": "cancercentrecalcutta.org"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.3197114,
+          22.4592477
+        ]
+      },
+      "id": "node/7053689148"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7055008167",
+        "addr:district": "Nagpur",
+        "addr:full": "Plot No. 01 , Dhyaneshwar Nagar , Near Dn Gate. Manewada Cement Road",
+        "addr:postcode": "440027",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Chikhale Multispeciality and Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.1050782,
+          21.0961331
+        ]
+      },
+      "id": "node/7055008167"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7059042339",
+        "addr:district": "Amritsar",
+        "addr:full": "Shri Guru Gobind Singh Nagar Opp Gate Tung Bala, Majitha Road",
+        "addr:postcode": "143001",
+        "addr:state": "Punjab",
+        "amenity": "hospital",
+        "name": "Surjit Multi Specialty and Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.842381,
+          31.6684953
+        ]
+      },
+      "id": "node/7059042339"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7059172358",
+        "addr:district": "Mumbai",
+        "addr:full": "117-O, Hallmark, Vasant Oscar, Opp- Greenworld, Near Nirmal Life Style, Mulund",
+        "addr:postcode": "400080",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Anil Cancer Clinic",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9388078,
+          19.1681778
+        ]
+      },
+      "id": "node/7059172358"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7063805532",
+        "addr:district": "Latur",
+        "addr:full": "Deshpandey Colony, Nandi Stop, Jaaju Hospital Jawal, Osaa Road",
+        "addr:postcode": "413531",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Latur Cancer and Lacoscopy Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5610177,
+          18.3921152
+        ]
+      },
+      "id": "node/7063805532"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7065692304",
+        "addr:district": "Kolkata",
+        "addr:full": "3081, Nayabad, Kolkata",
+        "addr:postcode": "700016",
+        "addr:state": "West Bengal",
+        "amenity": "hospital",
+        "contact:phone": "033 2432 0043/39;9874210007/05",
+        "email": "info@nscri.in",
+        "healthcare": "hospital",
+        "name": "Netaji Subhash Chandra Bose Cancer Reasearch Inst",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.4076208,
+          22.4800554
+        ]
+      },
+      "id": "node/7065692304"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7065820591",
+        "addr:district": "Dhule",
+        "addr:full": "80 Ft Road,Nr Natraj Theature",
+        "addr:postcode": "424002",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Niramaya Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7827386,
+          20.8994842
+        ]
+      },
+      "id": "node/7065820591"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7073537717",
+        "addr:district": "Kolhapur",
+        "addr:full": "A/p. R. S. No. 238, Gokul Shirgaon, Karveer",
+        "addr:postcode": "416008",
+        "addr:state": "Maharashtra",
+        "amenity": "clinic",
+        "name": "Kolhapur Cancer Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.2694637,
+          16.6581584
+        ]
+      },
+      "id": "node/7073537717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7075571881",
+        "addr:district": "Nashik",
+        "addr:full": "Opposite Hotel Sandeep, Mumbai Naka, Mahamarg Bus Stand",
+        "addr:postcode": "422002",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "email": "unit2@manavatacancercentre.com",
+        "name": "Curie Manavata Cancer Centre",
+        "source": "OpenGovernmentData",
+        "website": "https://www.hcgmanavatacancer.org/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7831658,
+          19.9897261
+        ]
+      },
+      "id": "node/7075571881"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7080269609",
+        "addr:district": "Mumbai",
+        "addr:full": "403/B, 4Th Floor, Plot No-184 Bandra(W)",
+        "addr:postcode": "400050",
+        "addr:state": "Maharashtra",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "name": "Mumbai Cancer Clinic",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8343176,
+          19.0626243
+        ]
+      },
+      "id": "node/7080269609"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7081521254",
+        "addr:district": "Cuttack",
+        "addr:full": "Telengapenth, Nh-5",
+        "addr:postcode": "754001",
+        "addr:state": "Odisha",
+        "amenity": "hospital",
+        "name": "HCG Panda Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.8866879,
+          20.3872408
+        ]
+      },
+      "id": "node/7081521254"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7082370235",
+        "addr:district": "Raigarh",
+        "addr:full": "Umbharde phata, Umbarde",
+        "addr:postcode": "402107",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Mangala Nursing Home and Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.0794601,
+          18.7270787
+        ]
+      },
+      "id": "node/7082370235"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7103836472",
+        "addr:district": "Ludhiana",
+        "addr:full": "G.T. Road, Bye Pass, Sherpur",
+        "addr:postcode": "141009",
+        "addr:state": "Punjab",
+        "amenity": "hospital",
+        "contact:phone": "0161 507 6369",
+        "name": "Mohan Dai Oswal Cancer Treatment and Research Foundation",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.87917,
+          30.9342706
+        ]
+      },
+      "id": "node/7103836472"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7105995480",
+        "addr:district": "Jalandhar",
+        "addr:full": "Chunmun Complex, Near, 212, Mall Rd, New Jawahar Nagar",
+        "addr:postcode": "144001",
+        "addr:state": "Punjab",
+        "amenity": "hospital",
+        "contact:phone": "0181 222 0900",
+        "name": "Bhargava Advanced Gynae Surgen Cancer Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.5834483,
+          31.3111069
+        ]
+      },
+      "id": "node/7105995480"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7249361564",
+        "addr:block": "Thiruvattur",
+        "addr:district": "Kanniyakumari",
+        "addr:full": "Near Market, Kulasekaram Post, Main Road",
+        "addr:postcode": "629161",
+        "addr:state": "Tamil Nadu",
+        "addr:subdistrict": "Kalkulam",
+        "amenity": "hospital",
+        "name": "Sree Mookambika Cancer Centre",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.290561,
+          8.361361
+        ]
+      },
+      "id": "node/7249361564"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7252225839",
+        "addr:block": "Thanjavur Corporation",
+        "addr:district": "Thanjavur",
+        "addr:full": "165/16, Thulukkapptti, Thanjavur, Bybass Road ,Mathakkottai",
+        "addr:postcode": "613007",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "name": "Thanjavoor Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.112161,
+          10.73394
+        ]
+      },
+      "id": "node/7252225839"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7265222572",
+        "addr:block": "Salem Corporation",
+        "addr:district": "Salem",
+        "addr:full": "Kannankurichi Post, Tanmag Road",
+        "addr:postcode": "636008",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "name": "Sharon Cancer Center and General Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.1721664,
+          11.7308873
+        ]
+      },
+      "id": "node/7265222572"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7288123498",
+        "addr:district": "Chhindwara",
+        "addr:full": "Rautha Wada, Chhindwara",
+        "addr:postcode": "480001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "dr .duggad cancer doctor",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.9417442,
+          22.055028
+        ]
+      },
+      "id": "node/7288123498"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7288224396",
+        "addr:district": "Indore",
+        "addr:full": "First Floor Shalby Hospital, Janjeerwala Square, New Palasia, Indore",
+        "addr:postcode": "452001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Dr. Akash Tiwari - Cancer specialist (Medical Oncologist)",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.879375,
+          22.7288625
+        ]
+      },
+      "id": "node/7288224396"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7288631398",
+        "addr:district": "Bhopal",
+        "addr:full": "Nizamuddin Road, Opp Bhel, Indrapuri, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Navodaya Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.461701,
+          23.253032
+        ]
+      },
+      "id": "node/7288631398"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7288631425",
+        "addr:district": "Bhopal",
+        "addr:full": "Idgah Hills",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Cancer Hospital",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.380577,
+          23.27308
+        ]
+      },
+      "id": "node/7288631425"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7299355299",
+        "addr:district": "Bilaspur",
+        "addr:full": "#45, Front of Oriental Bank Of Commerce , Magrpara Road, Jarhabhata",
+        "addr:postcode": "495001",
+        "addr:state": "Chhattisgarh",
+        "amenity": "hospital",
+        "name": "Endoscopy & Surgical Clinic (Cancer Hospital)",
+        "source": "OpenGovernmentData"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          82.14376,
+          22.07918
+        ]
+      },
+      "id": "node/7299355299"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7433829905",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "healthcare:speciality": "oncology",
+        "name": "Masina Cancer Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8357371,
+          18.9749545
+        ]
+      },
+      "id": "node/7433829905"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7485849770",
+        "addr:district": "Nainital",
+        "addr:full": "Rampur, Haldwani",
+        "addr:postcode": "263139",
+        "addr:state": "Uttarakhand",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Sushila Tewari Cancer Care Unit",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.5175961,
+          29.2063945
+        ]
+      },
+      "id": "node/7485849770"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7488942244",
+        "addr:district": "Saharanpur",
+        "addr:full": "G.T.Road, Teachers Colony, Deoband",
+        "addr:postcode": "247554",
+        "addr:state": "Uttar Pradesh",
+        "amenity": "hospital",
+        "name": "Shri Ram Krishna Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.6821242,
+          29.6804101
+        ]
+      },
+      "id": "node/7488942244"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7488942284",
+        "addr:district": "Meerut",
+        "addr:full": "Mussoorie ,Mawana Road, Meerut",
+        "addr:postcode": "250001",
+        "addr:state": "Uttar Pradesh",
+        "amenity": "hospital",
+        "name": "Valentis Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.8200457,
+          29.0725343
+        ]
+      },
+      "id": "node/7488942284"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7488942306",
+        "addr:district": "Meerut",
+        "addr:full": "Near St. Thomas English Medium School, Chippi Tank, Meerut",
+        "addr:postcode": "250003",
+        "addr:state": "Uttar Pradesh",
+        "amenity": "hospital",
+        "name": "Meerut Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.7104182,
+          28.9847438
+        ]
+      },
+      "id": "node/7488942306"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7492419036",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Tertiary Cancer Care Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8419052,
+          11.2776283
+        ]
+      },
+      "id": "node/7492419036"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7503098981",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Nathalal Parekh Cancer Research Institute & Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.7751921,
+          22.2987168
+        ]
+      },
+      "id": "node/7503098981"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7509719375",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "MVR Cancer Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.9468737,
+          11.294378
+        ]
+      },
+      "id": "node/7509719375"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7513990071",
+        "addr:district": "Gorakhpur",
+        "addr:full": "Hanuman Prasad Poddar Marg, Opp. Indian Oil Petrol Pump, Gorakhpur",
+        "addr:postcode": "273006",
+        "addr:state": "Uttar Pradesh",
+        "amenity": "hospital",
+        "name": "Hanuman Prasad Poddar Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.3879774,
+          26.7722476
+        ]
+      },
+      "id": "node/7513990071"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7514621039",
+        "addr:district": "Jhansi",
+        "addr:full": "Main Road, Shivaji Nagar, Beisde Oriental Bank Of Commerce",
+        "addr:postcode": "284002",
+        "addr:state": "Uttar Pradesh",
+        "amenity": "hospital",
+        "name": "Dr. H.M. Soni Homoeopathic Cancer and Gupt Rog Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.6025055,
+          25.4536943
+        ]
+      },
+      "id": "node/7514621039"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7543715753",
+        "addr:district": "West Delhi",
+        "addr:full": "C 41A, Block S, Shivaji Park, Punjabi Bagh",
+        "addr:postcode": "110026",
+        "addr:state": "Delhi",
+        "amenity": "hospital",
+        "name": "Gaudham Cancer Ayurvedic Treatment & Research Center",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.130852,
+          28.67286
+        ]
+      },
+      "id": "node/7543715753"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7548301150",
+        "addr:district": "Kalaburagi",
+        "addr:full": "Khuba Plot, Brhampur, Gulbarga",
+        "addr:postcode": "585105",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "name": "HCG Cancer Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8314617,
+          17.3256678
+        ]
+      },
+      "id": "node/7548301150"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7562027250",
+        "addr:district": "Mysuru",
+        "addr:full": "Ramakrishnanagar, Mysore",
+        "addr:postcode": "570023",
+        "addr:state": "Karnataka",
+        "amenity": "clinic",
+        "name": "Aditi Clinic - ENT & Cancer Care Clinic",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6198807,
+          12.2811192
+        ]
+      },
+      "id": "node/7562027250"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7562027272",
+        "addr:district": "Mysuru",
+        "addr:full": "Mangalore - Mysore Highway, Chamarajapura, Chamarajapuram Mohalla, Lakshmipuram, Mysuru",
+        "addr:postcode": "570005",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "name": "Preety Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6433102,
+          12.301903
+        ]
+      },
+      "id": "node/7562027272"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7565711866",
+        "addr:district": "Bagalkot",
+        "addr:full": "Vidayagiri, Bagalkot",
+        "addr:postcode": "587103",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "name": "Kerudi Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.655719,
+          16.172544
+        ]
+      },
+      "id": "node/7565711866"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7565711914",
+        "addr:district": "Bagalkot",
+        "addr:full": "Bagalkot",
+        "addr:postcode": "587101",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "name": "Halamma Kerudi Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.6891781,
+          16.174434
+        ]
+      },
+      "id": "node/7565711914"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7568674125",
+        "addr:district": "Raichur",
+        "addr:full": "Raichur Road, Manchalepur, Raichur",
+        "addr:postcode": "584101",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "name": "Pinnacle Cancer Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3552,
+          16.215844
+        ]
+      },
+      "id": "node/7568674125"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7572526728",
+        "addr:district": "Bengaluru Urban",
+        "addr:full": "Netravati Road, Maruthi Nagar, Bengaluru",
+        "addr:postcode": "560072",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "name": "Srinivasam Cancer Care Multi Speciality Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.523151,
+          12.961509
+        ]
+      },
+      "id": "node/7572526728"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7572526764",
+        "addr:district": "Bengaluru Urban",
+        "addr:full": "Vishweshwaraiah Layout, Annapurneshwari Nagar, Bengaluru",
+        "addr:postcode": "560056",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "name": "Abivrud Cancer Care & Research Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4973049,
+          12.963967
+        ]
+      },
+      "id": "node/7572526764"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7577517043",
+        "addr:district": "East Khasi Hills",
+        "addr:full": "Mawdiangdiang, Meghalaya",
+        "addr:postcode": "793018",
+        "addr:state": "Meghalaya",
+        "amenity": "hospital",
+        "name": "Regional Cancer Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.942756,
+          25.592821
+        ]
+      },
+      "id": "node/7577517043"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7592765736",
+        "addr:district": "Surat",
+        "addr:full": "211, Raj Mandir Corner, In Front of Vastu Laxuria, Runth- Magdalla, Surat",
+        "addr:postcode": "395007",
+        "addr:state": "Gujarat",
+        "amenity": "clinic",
+        "name": "Dr. Patil's Dental Care & Oral Cancer Diagnostic Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.758064,
+          21.1466625
+        ]
+      },
+      "id": "node/7592765736"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7592765802",
+        "addr:district": "Surat",
+        "addr:full": "Plot No 1,2,3, Rajvansh Society, Opposite Spring Valley Apartments, New City Light, Surat",
+        "addr:postcode": "395007",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "name": "Ratnadeep Cancer Centre & Multispeciality Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.7977125,
+          21.1554722
+        ]
+      },
+      "id": "node/7592765802"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7602895224",
+        "addr:district": "Junagadh",
+        "addr:full": "Junagadh-Rajkot Highway, Near HP Petrol Pump, Vadal",
+        "addr:postcode": "362310",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "name": "Himalaya Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.493007,
+          21.605448
+        ]
+      },
+      "id": "node/7602895224"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7604817290",
+        "addr:district": "Surat",
+        "addr:full": "Pramukh Darshan Society, Dabholi, Surat",
+        "addr:postcode": "395004",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "name": "Sahajanand Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.816495,
+          21.235583
+        ]
+      },
+      "id": "node/7604817290"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7612104401",
+        "addr:district": "Rohtak",
+        "addr:full": "Ambedkar Chowk, Company Bagh",
+        "addr:postcode": "124001",
+        "addr:state": "Haryana",
+        "amenity": "hospital",
+        "name": "Nidaan ENT & Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.584089,
+          28.896947
+        ]
+      },
+      "id": "node/7612104401"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7612104408",
+        "addr:district": "Rohtak",
+        "addr:full": "Health Center Plot, Block B Suncity, Sector 35, Suncity Township-I",
+        "addr:postcode": "124001",
+        "addr:state": "Haryana",
+        "amenity": "hospital",
+        "name": "Positron -Multi Speciality & Cancer Hospital, Rohtak",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6241119,
+          28.913116
+        ]
+      },
+      "id": "node/7612104408"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7625491671",
+        "addr:district": "Gondia",
+        "addr:full": "Goregaon Road, Near HP Petrol Pump Dawwa, Karanja, Gondi",
+        "addr:postcode": "441601",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Reliance Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1913692,
+          21.4067335
+        ]
+      },
+      "id": "node/7625491671"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7628996035",
+        "addr:district": "Akola",
+        "addr:full": "Old RTO Road, Samata Colony, Akola",
+        "addr:postcode": "444004",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Sant Tukaram Cancer Hospital",
+        "name:etymology:wikidata": "Q468361",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.025476,
+          20.683949
+        ]
+      },
+      "id": "node/7628996035"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7631501053",
+        "addr:district": "Nagpur",
+        "addr:full": "Ring Road, Near Automotive Square Kalam Bande Nawaz Nagar, Binaki, Nagpur",
+        "addr:postcode": "440017",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "HCG NCHRI Cancer Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.1233803,
+          21.1781655
+        ]
+      },
+      "id": "node/7631501053"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7632098038",
+        "addr:district": "Amravati",
+        "addr:full": "Shyam Nagar, Amravati",
+        "addr:postcode": "444606",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Ingole Hospital and Breast Cancer Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.7702315,
+          20.9264304
+        ]
+      },
+      "id": "node/7632098038"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7632098087",
+        "addr:district": "Amravati",
+        "addr:full": "Shankar Nagar Road, Gopal Nagar, Amravati",
+        "addr:postcode": "444605",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Dr. Arora Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.7572258,
+          20.9137402
+        ]
+      },
+      "id": "node/7632098087"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7634424748",
+        "addr:district": "Nanded",
+        "addr:full": "Behind District Court, Near Andhra Samiti School, Gawalipura, Khadakpura, Nanded",
+        "addr:postcode": "431601",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Monark Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.312,
+          19.157568
+        ]
+      },
+      "id": "node/7634424748"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7637314225",
+        "addr:district": "Latur",
+        "addr:full": "Plot No P-55, MIDC Latur, Kalamb Road, Latur",
+        "addr:postcode": "413531",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Vivekanand Cancer Hospital and Optimus Oncology Radiotherapy Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.538577,
+          18.414534
+        ]
+      },
+      "id": "node/7637314225"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7637728038",
+        "addr:district": "Solapur",
+        "addr:full": "Near Gangamai Hospital, Ramwadi, Solapur",
+        "addr:postcode": "413001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Solapur Cancer Centre Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8966375,
+          17.6564413
+        ]
+      },
+      "id": "node/7637728038"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7637728084",
+        "addr:district": "Solapur",
+        "addr:full": "Barshi Road, Industrial Estate No.2, Barshi",
+        "addr:postcode": "413401",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Cancer Hospital and Research Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.704881,
+          18.257545
+        ]
+      },
+      "id": "node/7637728084"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7637728090",
+        "addr:district": "Solapur",
+        "addr:full": "Sainath Nagar, Solapur",
+        "addr:postcode": "413224",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Siddheshwar Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.9155957,
+          17.6453039
+        ]
+      },
+      "id": "node/7637728090"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7637889947",
+        "addr:district": "Satara",
+        "addr:full": "Opposite Abhaysinhraje Bhonsle Institute Of Technol Tal, Shendre",
+        "addr:postcode": "415004",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Onco Life Cancer Centre- Comprehensive Super Specialty Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.012256,
+          17.633256
+        ]
+      },
+      "id": "node/7637889947"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7643814413",
+        "addr:district": "Sangli",
+        "addr:full": "Cancer Hospital Road, Near Homeopathy College, Shivaji Nagar, Miraj",
+        "addr:postcode": "416410",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Mahatma Gandhi Cancer Hospital",
+        "name:etymology:wikidata": "Q1001",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.6393479,
+          16.8291452
+        ]
+      },
+      "id": "node/7643814413"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7653119622",
+        "addr:district": "Jalgaon",
+        "addr:full": "Vivekanand Nagar, Jilha Peth, Swatantra Chowk, Behind Hotel Rupali, Jalgaon",
+        "addr:postcode": "425001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Jeevan Jyoti Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.565228,
+          21.003211
+        ]
+      },
+      "id": "node/7653119622"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7655439044",
+        "addr:district": "Nashik",
+        "addr:full": "Swaminarayan Nagar, Nashik",
+        "addr:postcode": "422006",
+        "addr:state": "Maharastra",
+        "amenity": "clinic",
+        "name": "Hope Cancer Clinic",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8210865,
+          20.0077095
+        ]
+      },
+      "id": "node/7655439044"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7668176281",
+        "addr:district": "Kolkata",
+        "addr:full": "Tiljala",
+        "addr:postcode": "700039",
+        "addr:state": "West Bengal",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.3884232,
+          22.5267338
+        ]
+      },
+      "id": "node/7668176281"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7673773496",
+        "addr:district": "Ranchi",
+        "addr:full": "Kathal More Road, Gumla Road, Ranchi",
+        "addr:postcode": "835303",
+        "addr:state": "Jharkhand",
+        "amenity": "hospital",
+        "name": "RJS Pandey Cancer Hospital & Research",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.250867,
+          23.362788
+        ]
+      },
+      "id": "node/7673773496"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7679386752",
+        "addr:district": "Hanumangarh",
+        "addr:full": "Bhadra",
+        "addr:postcode": "335501",
+        "addr:state": "Rajasthan",
+        "amenity": "hospital",
+        "name": "Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.1772403,
+          29.1012501
+        ]
+      },
+      "id": "node/7679386752"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7682191293",
+        "addr:district": "Sikar",
+        "addr:full": "Sarswati Nagar, Sikar",
+        "addr:postcode": "332001",
+        "addr:state": "Rajasthan",
+        "amenity": "hospital",
+        "name": "Rathi Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.144241,
+          27.590849
+        ]
+      },
+      "id": "node/7682191293"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7691521587",
+        "addr:district": "Bharatpur",
+        "addr:full": "Bharatpur",
+        "addr:postcode": "321001",
+        "addr:state": "Rajasthan",
+        "amenity": "hospital",
+        "name": "Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4786086,
+          27.2134311
+        ]
+      },
+      "id": "node/7691521587"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7695123019",
+        "addr:district": "Jaipur",
+        "addr:full": "Jagatpura",
+        "addr:postcode": "302017",
+        "addr:state": "Rajasthan",
+        "amenity": "clinic",
+        "name": "Chirakshi ENT and Cancer Clinic",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.832021,
+          26.837706
+        ]
+      },
+      "id": "node/7695123019"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7712727517",
+        "addr:district": "Sundargarh",
+        "addr:full": "Gopopali",
+        "addr:postcode": "769004",
+        "addr:state": "Odhisa",
+        "amenity": "hospital",
+        "name": "Pushpanjali Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          84.7839077,
+          22.2495718
+        ]
+      },
+      "id": "node/7712727517"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7712918689",
+        "addr:district": "Sambalpur",
+        "addr:full": "Burla",
+        "addr:postcode": "768017",
+        "addr:state": "Odhisa",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Burla Cancer Hospital",
+        "name:ur": "برلا کینسر ہسپتال",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.8772702,
+          21.4982581
+        ]
+      },
+      "id": "node/7712918689"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7724366125",
+        "addr:district": "Malappuram",
+        "addr:postcode": "676306",
+        "addr:state": "Kerala",
+        "amenity": "hospital",
+        "name": "Karuna Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8820895,
+          11.0378158
+        ]
+      },
+      "id": "node/7724366125"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7790661653",
+        "addr:district": "East Godavari",
+        "addr:full": "Syamala Nagar, Gandhipuram, Rajahmundry",
+        "addr:postcode": "533103",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "hospital",
+        "name": "Ascent Cancer And Multispeciality Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.7918325,
+          17.00735
+        ]
+      },
+      "id": "node/7790661653"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7791769505",
+        "addr:district": "West Godavari",
+        "addr:full": "Powerpet, Eluru",
+        "addr:postcode": "534002",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "hospital",
+        "name": "Susrutha ENT & Skin Hospital & HCG Cancer Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.1007623,
+          16.7156367
+        ]
+      },
+      "id": "node/7791769505"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7799862511",
+        "addr:district": "Krishna",
+        "addr:full": "Vijayawada",
+        "addr:postcode": "520010",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "clinic",
+        "name": "Vikram Gastro And Cancer Centres",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.643052,
+          16.507866
+        ]
+      },
+      "id": "node/7799862511"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7799862523",
+        "addr:district": "Krishna",
+        "addr:full": "Moghalrajpuram, Labbipet, Vijayawada",
+        "addr:postcode": "520010",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "clinic",
+        "name": "Ravi's American Cancer Care",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6455969,
+          16.5055011
+        ]
+      },
+      "id": "node/7799862523"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7803945967",
+        "addr:district": "Sri Potti Sriramulu Nellore",
+        "addr:full": "Nellore",
+        "addr:postcode": "524004",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "hospital",
+        "name": "IRCS Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9594211,
+          14.4271695
+        ]
+      },
+      "id": "node/7803945967"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7812225279",
+        "addr:district": "Anantapur",
+        "addr:full": "Rapthadu",
+        "addr:postcode": "515003",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "hospital",
+        "name": "Sree Pragna Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.6215272,
+          14.6368248
+        ]
+      },
+      "id": "node/7812225279"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7813417190",
+        "addr:district": "Kurnool",
+        "addr:full": "Maruthi Nagar, Sree Rama Nagar, Kurnool",
+        "addr:postcode": "518002",
+        "addr:state": "Andhra Pradesh",
+        "amenity": "hospital",
+        "name": "Omega Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.063547,
+          15.795726
+        ]
+      },
+      "id": "node/7813417190"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7822543433",
+        "addr:district": "Chengalpattu",
+        "addr:full": "Kothandam Nagar, Chromepet",
+        "addr:postcode": "600044",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "HCG Cancer Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.143138,
+          12.9575434
+        ]
+      },
+      "id": "node/7822543433"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7836354420",
+        "addr:district": "Thanjavur",
+        "addr:full": "Bairagi Thoppu, Kumbakonam",
+        "addr:postcode": "612001",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.3927394,
+          10.9641495
+        ]
+      },
+      "id": "node/7836354420"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7838884144",
+        "addr:district": "Dharmapuri",
+        "addr:full": "Indhira Nagar, Dharmapur",
+        "addr:postcode": "636701",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Dharmapuri Cancer Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.1574084,
+          12.1252142
+        ]
+      },
+      "id": "node/7838884144"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7840837204",
+        "addr:district": "Salem",
+        "addr:full": "Kondalampatti, Salem",
+        "addr:postcode": "636010",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "name": "Universal Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.1267767,
+          11.6336739
+        ]
+      },
+      "id": "node/7840837204"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7842748086",
+        "addr:district": "Erode",
+        "addr:full": "Erode",
+        "addr:postcode": "638001",
+        "addr:state": "Tamil Nadu",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Onco Foundation Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.7183601,
+          11.3340957
+        ]
+      },
+      "id": "node/7842748086"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7843071196",
+        "addr:district": "Erode",
+        "addr:full": "Kankapuram",
+        "addr:postcode": "638102",
+        "addr:state": "Tamil Nadu",
+        "amenity": "clinic",
+        "name": "Erode Cancer Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.649152,
+          11.3732
+        ]
+      },
+      "id": "node/7843071196"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7847111730",
+        "addr:district": "Tirunelveli",
+        "addr:full": "Murugankurichi, Palayamkottai, Tirunelveli",
+        "addr:postcode": "627002",
+        "addr:state": "Tamil Nadu",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "name": "Sree Velsanth Cancer Care Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.7305734,
+          8.7255734
+        ]
+      },
+      "id": "node/7847111730"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7850406414",
+        "addr:district": "Ludhiana",
+        "addr:full": "Civil Lines",
+        "addr:postcode": "141001",
+        "addr:state": "Punjab",
+        "amenity": "clinic",
+        "name": "Child Cancer Clinic",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.833491,
+          30.904558
+        ]
+      },
+      "id": "node/7850406414"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7855959187",
+        "addr:district": "Sahibzada Ajit Singh Nagar",
+        "addr:full": "Firozpur Bangar",
+        "addr:postcode": "140901",
+        "addr:state": "Punjab",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Homi Bhabha Cancer Hospital and Research Centre",
+        "name:etymology:wikidata": "Q325611",
+        "source": "Local Knowledge",
+        "wikidata": "Q114344816",
+        "wikipedia": "en:Homi Bhabha Cancer Hospital and Research Centre, New Chandigarh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.742453,
+          30.818388
+        ]
+      },
+      "id": "node/7855959187"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7858749513",
+        "addr:district": "Bathinda",
+        "addr:postcode": "151001",
+        "addr:state": "Punjab",
+        "amenity": "hospital",
+        "name": "Punjab Cancer Care & Multispeciality Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.9463059,
+          30.2112209
+        ]
+      },
+      "id": "node/7858749513"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7858749548",
+        "addr:district": "Bathinda",
+        "addr:full": "Model Town, Bathinda",
+        "addr:postcode": "151001",
+        "addr:state": "Punjab",
+        "amenity": "hospital",
+        "name": "Bansal Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.953757,
+          30.209373
+        ]
+      },
+      "id": "node/7858749548"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7859081737",
+        "addr:district": "Hoshiarpur",
+        "addr:full": "Chak Bamu",
+        "addr:postcode": "144305",
+        "addr:state": "Punjab",
+        "amenity": "clinic",
+        "name": "World Cancer Care",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.591404,
+          31.760033
+        ]
+      },
+      "id": "node/7859081737"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7861755237",
+        "addr:district": "Kutch",
+        "addr:full": "Mandvi",
+        "addr:postcode": "370465",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Jankalyan cancer Research Hospice and Dialysis Centre",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.372789,
+          22.845355
+        ]
+      },
+      "id": "node/7861755237"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7864832132",
+        "addr:district": "Panch Mahal",
+        "addr:full": "Vavdi, Godhra",
+        "addr:postcode": "389001",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Sunrise Kidney and Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.6514832,
+          22.7784941
+        ]
+      },
+      "id": "node/7864832132"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7865765836",
+        "addr:district": "Tarn Taran",
+        "addr:postcode": "143401",
+        "addr:state": "Punjab",
+        "amenity": "hospital",
+        "name": "Omax Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.938662,
+          31.439713
+        ]
+      },
+      "id": "node/7865765836"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7865826046",
+        "addr:district": "Sri Muktsar Sahib",
+        "addr:postcode": "152026",
+        "addr:state": "Punjab",
+        "amenity": "hospital",
+        "name": "Adesh Charitable Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.5299018,
+          30.477855
+        ]
+      },
+      "id": "node/7865826046"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7865877422",
+        "addr:district": "Sangrur",
+        "addr:full": "Sangrur",
+        "addr:postcode": "148001",
+        "addr:state": "Punjab",
+        "amenity": "hospital",
+        "name": "Homi Baba Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.857318,
+          30.2387
+        ]
+      },
+      "id": "node/7865877422"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7866013222",
+        "addr:district": "Vadodara",
+        "addr:full": "Alkapuri",
+        "addr:postcode": "390020",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "name": "Himalaya Cancer Hospital & Research Institute",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.176878,
+          22.3067785
+        ]
+      },
+      "id": "node/7866013222"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7866013225",
+        "addr:district": "Vadodara",
+        "addr:full": "Bhayli, Vadodara",
+        "addr:postcode": "391410",
+        "addr:state": "Gujarat",
+        "amenity": "hospital",
+        "name": "Sterling Cancer Hospital",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.129788,
+          22.285062
+        ]
+      },
+      "id": "node/7866013225"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7866496261",
+        "addr:district": "Faridkot",
+        "addr:full": "Rauwala",
+        "addr:postcode": "151205",
+        "addr:state": "Punjab",
+        "amenity": "hospital",
+        "name": "World Cancer Care Camp In Punjab",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.948726,
+          30.446238
+        ]
+      },
+      "id": "node/7866496261"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7867159915",
+        "addr:district": "Anand",
+        "addr:full": "Amul Dairy Road",
+        "addr:postcode": "388001",
+        "addr:state": "Gujarat",
+        "amenity": "clinic",
+        "name": "Dr. Sharma's Cancer Clinic",
+        "source": "Local Knowledge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9690299,
+          22.5511521
+        ]
+      },
+      "id": "node/7867159915"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7930495900",
+        "addr:city": "Visakhapatnam",
+        "addr:housenumber": "Plot No.10,11 &12",
+        "addr:postcode": "530040",
+        "address": "Plot No.10,11 &12, APIIC Health City, Chinagadili, Arilova, Visakhapatnam, Andhra Pradesh– 530040",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "HCG Cancer Centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.3057236,
+          17.7638753
+        ]
+      },
+      "id": "node/7930495900"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7934165413",
+        "addr:city": "Visakhapatnam",
+        "addr:postcode": "530053",
+        "addr:street": "Marripalem, Aganampudi Village, Gajuvaka Mandalam National Highway 16",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Homi Bhabha Cancer Hospital & Research Centre",
+        "name:etymology:wikidata": "Q325611",
+        "wikidata": "Q65059030",
+        "wikipedia": "en:Homi Bhabha Cancer Hospital and Research Centre, Visakhapatnam"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.1144238,
+          17.6898831
+        ]
+      },
+      "id": "node/7934165413"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8188038418",
+        "addr:full": "Renjala, Karnataka",
+        "addr:state": "Karnataka",
+        "amenity": "hospital",
+        "name": "Krishna Cancer And Neurology Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.0774111,
+          13.1287044
+        ]
+      },
+      "id": "node/8188038418"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8261036632",
+        "addr:city": "Thane",
+        "addr:housenumber": "46",
+        "addr:postcode": "401107",
+        "addr:street": "Surya Shopping Center, Next To ICICI Bank, Srishti Complex, Mira Road",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "healthcare:speciality": "HOMEOPATH_PHYSICIAN",
+        "name": "Dr.Singh's Advanced Homeopathy FOR CANCER KIDNEY AND DIABETES",
+        "website": "https://www.drsinghadvancedhomeopathy.in/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8694764,
+          19.2748918
+        ]
+      },
+      "id": "node/8261036632"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8266027399",
+        "addr:city": "Pune",
+        "addr:housenumber": "C/o PallEx Healthcare,Sr.No 251/1/11,",
+        "addr:postcode": "411007",
+        "addr:street": "DP Road,Opp Aundh telephone exchange, Aundh",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "healthcare:speciality": "Oncologist",
+        "name": "OncoWin Cancer Clinic",
+        "website": "https://www.oncowin.in/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8024728,
+          18.5594375
+        ]
+      },
+      "id": "node/8266027399"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8889495211",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Cochin Cancer Research Centre",
+        "operator": "Department of Health and Family Welfare",
+        "operator:type": "government",
+        "ref": "1051",
+        "type": "23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.3543132,
+          10.0534587
+        ]
+      },
+      "id": "node/8889495211"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9730853893",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Kidwai Cancer Institute Radiation Block"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.5971575,
+          12.9355966
+        ]
+      },
+      "id": "node/9730853893"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9742734120",
+        "addr:city": "Pune",
+        "addr:postcode": "411048",
+        "addr:street": "Flat no. 002, Natasha Enclave, NIBM Road,Maharashtra, India",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "healthcare:speciality": "oncology",
+        "name": "Health Havens Clinic",
+        "opening_hours": "24/7",
+        "operator": "Novosalus",
+        "operator:type": "private",
+        "website": "https://www.healthhavenspune.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8967532,
+          18.4770909
+        ]
+      },
+      "id": "node/9742734120"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9922125770",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Bhargav Cancer Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.0653504,
+          22.4617222
+        ]
+      },
+      "id": "node/9922125770"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10137248081",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "PRATHYASHA CANCER CENTRE"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.3775221,
+          9.6422161
+        ]
+      },
+      "id": "node/10137248081"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10172964134",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Siddheshwar Cancer Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.9155688,
+          17.6453747
+        ]
+      },
+      "id": "node/10172964134"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10294576078",
+        "addr:city": "Chennai",
+        "addr:housenumber": "No. 33",
+        "addr:postcode": "600083",
+        "addr:street": "35th Street, Opp JFA Showroom, Ashok Nagar",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Vasantha Memorial Cancer Centre",
+        "phone": "+91 9791048379"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2146876,
+          13.040756
+        ]
+      },
+      "id": "node/10294576078"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10300636347",
+        "amenity": "hospital",
+        "check_date": "2023-01-02",
+        "healthcare": "hospital",
+        "healthcare:speciality": "oncology",
+        "name": "Lakshya cancer hospital",
+        "name:en": "Lakshya cancer hospital",
+        "name:mr": "लक्ष्य कॅन्सर हॉस्पिटल",
+        "operator:type": "private",
+        "phone": "+91 80072 41918"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7773987,
+          18.6025763
+        ]
+      },
+      "id": "node/10300636347"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11573471909",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "CANCER BLOCK"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5206575,
+          9.6354619
+        ]
+      },
+      "id": "node/11573471909"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11697528414",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Ananta heart and cancer hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          82.7192786,
+          26.7999833
+        ]
+      },
+      "id": "node/11697528414"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11760048562",
+        "healthcare": "hospital",
+        "name": "Cancer Care Hospital, Kokrajhar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.28086,
+          26.4635258
+        ]
+      },
+      "id": "node/11760048562"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11775278179",
+        "amenity": "hospital",
+        "name": "Indian Cancer Institute"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2419692,
+          28.5483823
+        ]
+      },
+      "id": "node/11775278179"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11938622049",
+        "addr:district": "Hyderabad",
+        "addr:place": "Red Hills, Lakadikapul, Hyderabad",
+        "addr:state": "Telangana",
+        "addr:street": "Red Hills, Lakadikapul,",
+        "addr:subdistrict": "Nampally",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "MNJ Institute of Oncology and Regional Cancer Center",
+        "operational_status": "operational",
+        "operator:type": "government",
+        "source": "OpenDataTelangana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.4601927,
+          17.392244
+        ]
+      },
+      "id": "node/11938622049"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12409978196",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "healthcare:speciality": "oncology",
+        "name": "Sri Krishna Clinic & Cancer Research"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.2941063,
+          9.9648803
+        ]
+      },
+      "id": "node/12409978196"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12455554526",
+        "addr:city": "Ajmer",
+        "addr:district": "Ajmer",
+        "addr:postcode": "305023",
+        "addr:street": "Aryabhatta Campus, Chachiyawas,",
+        "amenity": "hospital",
+        "contact:facebook": "https://www.facebook.com/profile.php?id=61570922111984&mibextid=ZbWKwL",
+        "description": "First Cancer & Super Speciality Center in Ajmer",
+        "emergency": "yes",
+        "healthcare": "hospital",
+        "healthcare:speciality": "oncology;palliative;physiotherapy",
+        "mobile": "918000176428",
+        "name": "Aadinath Cancer Medicity Hospital Ajmer",
+        "opening_hours": "24/7",
+        "website": "https://aadinathmedicity.com/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.682983,
+          26.5636625
+        ]
+      },
+      "id": "node/12455554526"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12573856473",
+        "addr:city": "Mumbai",
+        "addr:postcode": "400021",
+        "addr:street": "Maharshi Karve Rd, Nariman Point",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Indian Cancer Society"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8274992,
+          18.9231434
+        ]
+      },
+      "id": "node/12573856473"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12574052918",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "healthcare:speciality": "oncology;dermatology",
+        "name": "Rajagiri Cancer Center",
+        "operator": "Rajagiri Hospitals",
+        "operator:type": "private"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.3887428,
+          10.0871358
+        ]
+      },
+      "id": "node/12574052918"
+    }
+  ]
+}

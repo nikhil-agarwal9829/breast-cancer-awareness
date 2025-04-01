@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Wellness Features - Breast Cancer Awareness</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .feature-content {
+            padding: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .feature-button {
+            background: linear-gradient(45deg, #e91e63, #ff4081);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .feature-button:hover {
+            background: linear-gradient(45deg, #ff4081, #e91e63);
+            transform: scale(1.05);
+        }
+
+        .notification-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .notification-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+
+        .notification-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .notification-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Breast Cancer Awareness</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="features.html" class="active">Features</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="campaign.html">Start Campaign</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="features-container">
+        <h1 class="animate__animated animate__fadeInDown">Health & Wellness Features</h1>
+        
+        <div class="feature-grid">
+            <!-- Exercise Section -->
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Exercise" class="feature-image">
+                <div class="feature-content">
+                    <h2 class="feature-title">Exercise Guide</h2>
+                    <p class="feature-description">Discover safe and effective exercises specifically designed for breast cancer patients and survivors.</p>
+                    <a href="exercise.html" class="feature-button">View Exercises</a>
+                </div>
+            </div>
+
+            <!-- Diet Section -->
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" 
+                     alt="Diet" class="feature-image">
+                <div class="feature-content">
+                    <h2 class="feature-title">Nutrition Guide</h2>
+                    <p class="feature-description">Learn about the best foods and diet plans to support your recovery and overall health.</p>
+                    <a href="diet.html" class="feature-button">View Diet Plans</a>
+                </div>
+            </div>
+
+            <!-- Remedies Section -->
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" 
+                     alt="Remedies" class="feature-image">
+                <div class="feature-content">
+                    <h2 class="feature-title">Home Remedies</h2>
+                    <p class="feature-description">Explore natural remedies and complementary therapies to manage side effects.</p>
+                    <a href="remedies.html" class="feature-button">View Remedies</a>
+                </div>
+            </div>
+
+            <!-- Medicine Section -->
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1585435557343-3b092092a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Medicine" class="feature-image">
+                <div class="feature-content">
+                    <h2 class="feature-title">Medicine Guide</h2>
+                    <p class="feature-description">Find information about medications, their side effects, and affordable alternatives.</p>
+                    <a href="medicine.html" class="feature-button">View Medicines</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Section -->
+        <div class="notification-section">
+            <h2>Stay Updated with Notifications</h2>
+            <p>Get personalized reminders for exercises, diet plans, and medication schedules.</p>
+            <form class="notification-form">
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="notification-options">
+                    <div class="notification-option">
+                        <input type="checkbox" id="exercise" name="notifications" value="exercise">
+                        <label for="exercise">Exercise Reminders</label>
+                    </div>
+                    <div class="notification-option">
+                        <input type="checkbox" id="diet" name="notifications" value="diet">
+                        <label for="diet">Diet Plans</label>
+                    </div>
+                    <div class="notification-option">
+                        <input type="checkbox" id="medicine" name="notifications" value="medicine">
+                        <label for="medicine">Medicine Reminders</label>
+                    </div>
+                </div>
+                <button type="submit" class="feature-button">Enable Notifications</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@breastcancerawareness.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html> 
