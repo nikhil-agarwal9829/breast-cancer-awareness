@@ -14,6 +14,9 @@ A comprehensive website dedicated to breast cancer awareness, education, and sup
 - Diet and exercise recommendations
 - Medicine reminders
 - Community support group information
+- User-friendly navigation
+- Mobile-responsive design
+- Accessibility features
 
 ## Technologies Used
 
@@ -24,6 +27,8 @@ A comprehensive website dedicated to breast cancer awareness, education, and sup
 - Google Fonts
 - Interactive Maps
 - Real-time Chat System
+- Responsive Design Framework
+- Modern UI/UX Principles
 
 ## Project Structure
 
@@ -66,23 +71,39 @@ Visit the live website at: https://nikhil-agarwal9829.github.io/breast-cancer-aw
 - Types and symptoms
 - Risk factors and prevention
 - Treatment options
+- Early detection methods
+- Screening guidelines
 
 ### 2. Interactive Chat
 - 24/7 support through AI-powered chat
 - Quick responses to common questions
 - Personalized information delivery
+- Multi-language support
+- Context-aware responses
 
 ### 3. Notification System
 - Diet reminders
 - Medicine schedules
 - Community updates
 - Exercise recommendations
+- Customizable notification preferences
+- Priority-based alerts
 
 ### 4. Community Support
 - Support group information
 - Community events
 - Success stories
 - Resource sharing
+- Peer support network
+- Expert consultation
+
+### 5. User Interface
+- Clean and intuitive design
+- Easy navigation
+- Mobile-first approach
+- Accessibility features
+- Dark/Light mode support
+- Responsive layout
 
 ## Contributing
 
@@ -102,4 +123,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - Font Awesome for icons
 - Google Fonts for typography
-- All contributors and supporters 
+- All contributors and supporters
+- Healthcare professionals for medical accuracy
+- Community members for feedback and suggestions 
