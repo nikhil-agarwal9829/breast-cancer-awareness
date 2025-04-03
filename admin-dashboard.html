@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Breast Cancer Awareness</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-ribbon"></i>
+                <span>Admin Panel</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-tab="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li data-tab="appointments">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Appointments</span>
+                </li>
+                <li data-tab="contacts">
+                    <i class="fas fa-address-book"></i>
+                    <span>Contact Requests</span>
+                </li>
+                <li data-tab="hospitals">
+                    <i class="fas fa-hospital"></i>
+                    <span>Hospital Data</span>
+                </li>
+                <li data-tab="medicines">
+                    <i class="fas fa-pills"></i>
+                    <span>Medicine Orders</span>
+                </li>
+                <li data-tab="users">
+                    <i class="fas fa-users"></i>
+                    <span>User Management</span>
+                </li>
+                <li id="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header>
+                <div class="header-content">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="admin-profile">
+                        <div class="notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <img src="images/admin-avatar.png" alt="Admin" class="avatar">
+                        <span class="admin-name">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-section active" id="dashboard-content">
+                <div class="stats-cards">
+                    <div class="card">
+                        <div class="card-icon appointments">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Total Appointments</h3>
+                            <p>248</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon contacts">
+                            <i class="fas fa-address-book"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Contact Requests</h3>
+                            <p>156</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon hospitals">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Registered Hospitals</h3>
+                            <p>32</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon medicines">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Medicine Orders</h3>
+                            <p>89</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>New Appointment</h4>
+                                <p>Sarah Johnson scheduled an appointment</p>
+                                <span class="time">2 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>New Registration</h4>
+                                <p>New user registered: John Smith</p>
+                                <span class="time">15 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Medicine Order</h4>
+                                <p>New medicine order received</p>
+                                <span class="time">1 hour ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appointments Section -->
+            <div class="content-section" id="appointments-content">
+                <h2>Appointments</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Patient Name</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Hospital</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample data -->
+                            <tr>
+                                <td>#AP001</td>
+                                <td>Sarah Johnson</td>
+                                <td>2024-03-15</td>
+                                <td>10:00 AM</td>
+                                <td>City Hospital</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td>
+                                    <button class="btn-action approve"><i class="fas fa-check"></i></button>
+                                    <button class="btn-action reject"><i class="fas fa-times"></i></button>
+                                </td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Contacts Section -->
+            <div class="content-section" id="contacts-content">
+                <h2>Contact Requests</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample data -->
+                            <tr>
+                                <td>#CR001</td>
+                                <td>John Smith</td>
+                                <td>john@example.com</td>
+                                <td>General Inquiry</td>
+                                <td>2024-03-14</td>
+                                <td><span class="status new">New</span></td>
+                                <td>
+                                    <button class="btn-action view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-action reply"><i class="fas fa-reply"></i></button>
+                                </td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Hospitals Section -->
+            <div class="content-section" id="hospitals-content">
+                <h2>Hospital Data</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Hospital Name</th>
+                                <th>Location</th>
+                                <th>Contact</th>
+                                <th>Services</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample data -->
+                            <tr>
+                                <td>#H001</td>
+                                <td>City Hospital</td>
+                                <td>123 Main St, City</td>
+                                <td>555-0123</td>
+                                <td>Screening, Treatment</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>
+                                    <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-action delete"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Medicines Section -->
+            <div class="content-section" id="medicines-content">
+                <h2>Medicine Orders</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Patient Name</th>
+                                <th>Medicine</th>
+                                <th>Quantity</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample data -->
+                            <tr>
+                                <td>#M001</td>
+                                <td>Emily Brown</td>
+                                <td>Medicine A</td>
+                                <td>2</td>
+                                <td>2024-03-14</td>
+                                <td><span class="status processing">Processing</span></td>
+                                <td>
+                                    <button class="btn-action approve"><i class="fas fa-check"></i></button>
+                                    <button class="btn-action view"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html> 

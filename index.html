@@ -3,27 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Breast Cancer Support</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Breast Cancer Support - Awareness & Community</title>
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/chat.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Animation Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+
   <style>
     /* Additional styles for proper structure */
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       line-height: 1.6;
+      background-color: #f9f9f9; /* Light background */
     }
 
     .navbar {
       background-color: #fff;
-      padding: 1rem;
+      padding: 1rem 2rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       position: fixed;
       width: 100%;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ff69b4;
     }
 
     .nav-links {
@@ -36,57 +51,112 @@
 
     .nav-links li a {
       text-decoration: none;
-      color: #333;
+      color: #555;
       font-weight: 500;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
     }
 
     .nav-links li a:hover {
       color: #ff69b4;
+      transform: translateY(-2px);
     }
 
     .nav-links li a.active {
       color: #ff69b4;
+      font-weight: 700;
     }
 
+    .hamburger {
+      display: none; /* Will be shown on smaller screens */
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background-color: #333;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Hero Section Base Styles */
     .hero {
-      padding-top: 80px;
-      min-height: 500px;
-      background: #f8f9fa;
+      padding-top: 100px; /* Adjust for fixed navbar */
+      min-height: 100vh; /* Full viewport height */
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #vanta-bg { /* Container for Vanta.js */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
     .hero-content {
-      max-width: 1200px;
-      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
       padding: 2rem;
+      background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+      border-radius: 15px;
     }
 
-    .info-content {
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Info Section Base Styles */
+    .info-section {
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    .info-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .info-content, .info-content-right {
       display: flex;
       align-items: center;
       gap: 2rem;
-      margin: 2rem 0;
+      margin: 2rem auto;
       background: white;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      max-width: 1200px;
     }
 
     .info-content-right {
-      display: flex;
       flex-direction: row-reverse;
-      align-items: center;
-      gap: 2rem;
-      margin: 2rem 0;
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
     .info-image {
       max-width: 400px;
       border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
     }
 
     .info-text {
@@ -94,8 +164,15 @@
     }
 
     .info-text h3 {
-      color: #333;
+      color: #ff69b4;
       margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .info-text h4 {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      color: #555;
     }
 
     .info-text p {
@@ -115,314 +192,329 @@
     }
 
     .info-text li:before {
-      content: "•";
+      content: "\f00c"; /* FontAwesome check icon */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
       color: #ff69b4;
       position: absolute;
       left: 0;
+      font-size: 1rem;
     }
 
+    /* Button Styles */
     .btn {
       display: inline-block;
-      padding: 0.8rem 1.5rem;
-      background: #ff69b4;
+      padding: 0.8rem 1.8rem;
+      background: linear-gradient(45deg, #ff69b4, #c77dff);
       color: white;
       text-decoration: none;
       border-radius: 25px;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      border: none;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
     }
 
     .btn:hover {
-      background: #ff4081;
+      background: linear-gradient(45deg, #c77dff, #ff69b4);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(199, 125, 255, 0.5);
     }
 
+    /* Footer Base Styles */
     footer {
       background: #333;
       color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
       margin-top: 2rem;
     }
 
-    /* Responsive design */
+    /* Responsive design adjustments */
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
+        display: none; /* Hide links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Below navbar */
+        left: 0;
+        background: white;
+        width: 100%;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       }
 
-      .info-content,
-      .info-content-right {
+      .nav-links.active {
+        display: flex; /* Show when active */
+      }
+
+      .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .info-content, .info-content-right {
         flex-direction: column;
         text-align: center;
       }
 
       .info-image {
-        max-width: 100%;
+        max-width: 80%;
+        margin-bottom: 1rem;
       }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+
+    /* Utility Class for Margins */
+    .section-padding {
+      padding: 80px 20px;
     }
   </style>
 </head>
 <body>
+  <!-- Vanta.js Background Container -->
+  <div id="vanta-bg"></div>
+
   <header>
     <nav class="navbar">
-      <div class="logo">Breast Cancer Awareness</div>
-      
+      <div class="logo">BC Awareness</div>
       <div class="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="community.html">Community</a></li>
-        <li><a href="donate.html">Donate</a></li>
-        <li><a href="campaign.html">Start Campaign</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="map.html" class="hover:text-pink-300">Map</a></li>
+        <li><a href="#home" class="active hvr-underline-from-center">Home</a></li>
+        <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+        <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+        <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+        <li><a href="donate.html" class="hvr-underline-from-center">Donate</a></li>
+        <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+        <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="info-content">
-          <img src="images/breast_cancer_social_card_1.png.webp" alt="Breast Cancer Awareness" class="info-image">
-          <div class="info-text">
-              <h3>What is Breast Cancer?</h3>
-              <p>Breast cancer is a disease where abnormal cells in the breast grow uncontrollably, forming a lump or tumor. It can occur in both men and women, but it is far more common in women. Early detection and treatment significantly improve survival rates.</p>
-          </div>
-      </div>
+    <div class="hero-content" data-aos="fade-up">
+      <h1 class="animate__animated animate__fadeInDown">Hope. Strength. Support.</h1>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">Join our community dedicated to breast cancer awareness, early detection, and mutual support. Together, we are stronger.</p>
+      <a href="#about" class="btn hvr-pulse-grow animate__animated animate__fadeInUp animate__delay-2s">Learn More</a>
     </div>
   </section>
 
-  <section id="about" class="info-section">
-    <h2>Understanding Breast Cancer</h2>
+  <!-- Existing About Section (with AOS) -->
+  <section id="about" class="info-section section-padding">
+    <h2 data-aos="fade-down">Understanding Breast Cancer</h2>
 
-    <div class="info-content-right">
-        <img src="images/breast_cancer_social_card_2.png.webp" alt="Breast Cancer Awareness" class="info-image">
+    <div class="info-content" data-aos="fade-right">
+        <img src="images/breast_cancer_social_card_1.png.webp" alt="What is Breast Cancer" class="info-image hvr-grow">
+        <div class="info-text">
+            <h3>What is Breast Cancer?</h3>
+            <p>Breast cancer is a disease where abnormal cells in the breast grow uncontrollably, forming a lump or tumor. It affects millions worldwide, primarily women, but men can also be diagnosed. Early detection through regular screenings and awareness of symptoms drastically improves treatment outcomes and survival rates.</p>
+            <a href="learn_more_what_is.html" class="btn hvr-forward">Read Deep Dive</a>
+        </div>
+    </div>
+
+    <div class="info-content-right" data-aos="fade-left">
+        <img src="images/breast_cancer_social_card_2.png.webp" alt="Types of Breast Cancer" class="info-image hvr-grow">
         <div class="info-text">
             <h3>Types of Breast Cancer</h3>
-            <p>Breast cancer is classified into different types, including:</p>
+            <p>Understanding the type is crucial for effective treatment. Common types include:</p>
             <ul>
-                <li><h4>Ductal Carcinoma In Situ (DCIS)</h4> A non-invasive cancer where abnormal cells are found in the lining of the breast ducts.</li>
-                <li><h4>Invasive Ductal Carcinoma (IDC)</h4> The most common type, which spreads beyond the milk ducts into surrounding tissues.</li>
-                <li><h4>Lobular Carcinoma In Situ (LCIS)</h4> Not considered a true cancer but a marker for increased risk.</li>
-                <li><h4>Invasive Lobular Carcinoma (ILC)</h4> Starts in the milk-producing lobules and can spread to nearby tissues.</li>
-                <li><h4>Triple-Negative Breast Cancer</h4> Lacks estrogen, progesterone, and HER2 receptors, making it more challenging to treat.</li>
-                <li><h4>Inflammatory Breast Cancer</h4> A rare but aggressive form where cancer cells block lymph vessels, causing redness and swelling.</li>
+                <li><h4>Ductal Carcinoma In Situ (DCIS):</h4> Non-invasive, confined to milk ducts.</li>
+                <li><h4>Invasive Ductal Carcinoma (IDC):</h4> Most common, spreads beyond ducts.</li>
+                <li><h4>Invasive Lobular Carcinoma (ILC):</h4> Starts in lobules, can spread.</li>
+                <li><h4>Triple-Negative:</h4> Lacks common receptors, often aggressive.</li>
+                <li><h4>Inflammatory:</h4> Rare, aggressive, causes skin changes.</li>
             </ul>
+            <a href="learn_more_types.html" class="btn hvr-forward">Explore Types</a>
         </div>
     </div>
 
-    <div class="info-content">
-        <img src="images/breast_cancer_social_card_5.png.webp" alt="Breast Cancer Awareness" class="info-image">
+    <div class="info-content" data-aos="fade-right">
+        <img src="images/breast_cancer_social_card_5.png.webp" alt="Risk Factors" class="info-image hvr-grow">
         <div class="info-text">
             <h3>Causes and Risk Factors</h3>
-            <p>While the exact cause of breast cancer is unknown, several risk factors can increase the likelihood of developing the disease:</p>
+            <p>While the exact cause isn't always clear, key risk factors include:</p>
             <ul>
-                <li><h4>Genetic Factors</h4> A family history of breast cancer or inherited mutations in the BRCA1 and BRCA2 genes.</li>
-                <li><h4>Age</h4> The risk increases with age, especially after 50.</li>
-                <li><h4>Hormonal Factors</h4> Increased estrogen exposure due to early menstruation, late menopause, or hormone replacement therapy.</li>
-                <li><h4>Lifestyle Choices</h4> Poor diet, lack of physical activity, smoking, and alcohol consumption can contribute.</li>
-                <li><h4>Radiation Exposure</h4> Previous radiation therapy to the chest can increase risk.</li>
+                <li>Genetics (e.g., BRCA mutations, family history)</li>
+                <li>Age (risk increases over 50)</li>
+                <li>Hormonal factors (early menstruation, late menopause)</li>
+                <li>Lifestyle (diet, exercise, alcohol)</li>
+                <li>Radiation exposure</li>
             </ul>
+            <a href="learn_more_risks.html" class="btn hvr-forward">Assess Your Risk</a>
         </div>
     </div>
 
-    <div class="info-content-right">
-        <img src="images/Pink-october.jpeg.webp" alt="Breast Cancer Awareness" class="info-image">
+    <div class="info-content-right" data-aos="fade-left">
+        <img src="images/Pink-october.jpeg.webp" alt="Symptoms" class="info-image hvr-grow">
         <div class="info-text">
-            <h3>Symptoms of Breast Cancer</h3>
-            <p>Recognizing the symptoms early can help in timely diagnosis and treatment. Common signs include:</p>
+            <h3>Symptoms to Watch For</h3>
+            <p>Early detection saves lives. Be aware of changes like:</p>
             <ul>
-                <li>A new lump or thickening in the breast or underarm.</li>
-                <li>Changes in breast size, shape, or appearance.</li>
-                <li>Nipple discharge (other than breast milk), especially if bloody.</li>
-                <li>Skin changes like dimpling, redness, or peeling.</li>
-                <li>Persistent pain in the breast or nipple.</li>
+                <li>New lump or thickening in breast or underarm</li>
+                <li>Change in breast size, shape, or appearance</li>
+                <li>Nipple discharge (other than milk), inversion, or pain</li>
+                <li>Skin changes (dimpling, redness, peeling, swelling)</li>
+                <li>Persistent breast pain</li>
             </ul>
+            <a href="learn_more_symptoms.html" class="btn hvr-forward">Symptom Checker Guide</a>
         </div>
-    </div>
-
-    <div class="info-content">
-        <img src="your-image-url.jpg" alt="Breast Cancer Awareness" class="info-image">
-        <div class="info-text">
-            <h3>Importance of Early Detection</h3>
-            <p>Early detection is crucial for improving survival rates. Methods include:</p>
-            <ul>
-                <li><h4>Breast Self-Exams</h4> Regularly checking for lumps or abnormalities.</li>
-                <li><h4>Clinical Breast Exams</h4> A physical examination by a healthcare professional.</li>
-                <li><h4>Mammograms</h4> X-ray screening to detect early signs of breast cancer.</li>
-                <li><h4>Biopsy</h4> Removing a small sample of tissue for laboratory testing if abnormalities are found.</li>
-            </ul>
-        </div>
-        <a href="model.html" class="btn">Try Detection Model</a>
     </div>
   </section>
 
-  <section id="contact" class="contact-section">
-    <h2>Contact Us</h2>
-    <p>Have any questions or need more information? Reach out to us using the form below.</p>
-    <form action="#" method="post" class="contact-form">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Your name..." required>
+  <!-- New Statistics Section -->
+  <section id="stats" class="section-padding" style="background: linear-gradient(135deg, #fde4f2, #e1d4fa);">
+    <h2 data-aos="fade-down">Impact by the Numbers</h2>
+    <div class="stats-container" data-aos="fade-up">
+      <div class="stat-item hvr-grow">
+        <i class="fas fa-users"></i>
+        <span class="stat-number" data-target="2300000">0</span>
+        <p>New Cases Annually Worldwide</p>
       </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Your email..." required>
+      <div class="stat-item hvr-grow">
+        <i class="fas fa-ribbon"></i>
+        <span class="stat-number" data-target="90">0</span>%
+        <p>5-Year Survival Rate (Early Stage)</p>
       </div>
-      <div class="form-group">
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" placeholder="Your message..." rows="5" required></textarea>
+      <div class="stat-item hvr-grow">
+        <i class="fas fa-hand-holding-heart"></i>
+        <span class="stat-number" data-target="100000">0</span>+
+        <p>Community Members Supported</p>
       </div>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+      <div class="stat-item hvr-grow">
+        <i class="fas fa-dollar-sign"></i>
+        <span class="stat-number" data-target="500000">0</span>+
+        <p>Raised for Research & Support</p>
+      </div>
+    </div>
   </section>
 
-  <!-- FAQ Chat Box -->
-  <div id="faqChat" class="faq-chat">
-    <div class="faq-header">
-      <h3>FAQ Chat</h3>
-      <button id="closeFaqChat" class="close-btn">&times;</button>
-    </div>
-    <div class="faq-body">
-      <ul id="faqList">
-        <li data-answer="Breast cancer is a disease where malignant cells form in the tissues of the breast.">What is breast cancer?</li>
-        <li data-answer="Early signs include a lump, changes in size/shape, and skin dimpling.">What are the early signs of breast cancer?</li>
-        <li data-answer="Diagnosis typically involves physical exams, imaging tests like mammograms, and biopsies.">How is breast cancer diagnosed?</li>
-        <li data-answer="Treatment options include surgery, chemotherapy, radiation, and hormone therapy.">What are the treatment options available?</li>
-        <li data-answer="Survival rates vary by stage, but early detection greatly improves outcomes.">What is the survival rate for breast cancer?</li>
-        <li data-answer="Yes, although much less common, men can also develop breast cancer.">Can breast cancer affect men?</li>
-        <li data-answer="Screening usually starts at age 40 or earlier for high-risk individuals.">How often should one get screened for breast cancer?</li>
-        <li data-answer="Risk factors include genetics, age, hormonal factors, lifestyle, and radiation exposure.">What are the risk factors for breast cancer?</li>
-        <li data-answer="A healthy lifestyle, regular exercise, and limited alcohol intake can help reduce risk.">How can I reduce my risk of breast cancer?</li>
-        <li data-answer="Common symptoms include a lump, nipple discharge, and skin changes on the breast.">What are common symptoms of breast cancer?</li>
-        <li data-answer="Certain genetic mutations like BRCA1 and BRCA2 increase risk, but not all cases are hereditary.">Is breast cancer hereditary?</li>
-        <li data-answer="Balanced diet, regular exercise, and avoiding smoking/alcohol can help prevent breast cancer.">What lifestyle changes can help prevent breast cancer?</li>
-      </ul>
-    </div>
-    <div class="faq-answer">
-      <p id="faqAnswer">Click a question above to see the answer.</p>
-    </div>
-  </div>
-  <button id="openFaqChat" class="faq-open-btn">FAQ Chat</button>
+  <!-- New Features Section -->
+  <section id="features" class="section-padding">
+      <h2 data-aos="fade-down">Our Platform Features</h2>
+      <div class="features-grid" data-aos="fade-up">
+          <div class="feature-card hvr-float-shadow">
+              <i class="fas fa-comments"></i>
+              <h3>Support Forums</h3>
+              <p>Connect with others, share experiences, and find emotional support in our safe community forums.</p>
+              <a href="forums.html" class="feature-link">Join Discussion</a>
+          </div>
+          <div class="feature-card hvr-float-shadow">
+              <i class="fas fa-book-medical"></i>
+              <h3>Resource Library</h3>
+              <p>Access reliable information, articles, and guides about diagnosis, treatment, and survivorship.</p>
+              <a href="resources.html" class="feature-link">Explore Resources</a>
+          </div>
+          <div class="feature-card hvr-float-shadow">
+              <i class="fas fa-calendar-check"></i>
+              <h3>Appointment Helper</h3>
+              <p>Keep track of appointments, medications, and symptoms with our easy-to-use tools.</p>
+              <a href="tools.html" class="feature-link">Use Tools</a>
+          </div>
+          <div class="feature-card hvr-float-shadow">
+              <i class="fas fa-map-marked-alt"></i>
+              <h3>Find Specialists</h3>
+              <p>Locate nearby hospitals, doctors, and support centers using our interactive map.</p>
+              <a href="map.html" class="feature-link">Find Care</a>
+          </div>
+      </div>
+  </section>
 
-  <div class="contact-info">
-    <h2>Contact Us</h2>
-    <div class="contact-details">
-        <p>Email: nikhilagarwal9785@gmail.com</p>
-        <p>Phone: +91 9785836544</p>
-    </div>
-    <div class="social-links">
-        <h3>Follow Us</h3>
-        <div class="social-icons">
-            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+  <!-- New Community Highlight Section -->
+  <section id="community" class="section-padding" style="background-color: #fff;">
+      <h2 data-aos="fade-down">Voices from Our Community</h2>
+      <div class="testimonials-container" data-aos="fade-up">
+          <div class="testimonial-card hvr-grow">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User Testimonial" class="testimonial-img">
+              <p>"Finding this community was a turning point in my journey. The support and shared stories gave me strength I didn't know I had."</p>
+              <h4>- Sarah J.</h4>
+          </div>
+          <div class="testimonial-card hvr-grow">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User Testimonial" class="testimonial-img">
+              <p>"The resources here are invaluable. I felt so lost after my diagnosis, but the guides helped me understand my options."</p>
+              <h4>- Maria R.</h4>
+          </div>
+          <div class="testimonial-card hvr-grow">
+              <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="User Testimonial" class="testimonial-img">
+              <p>"As a partner, finding support was hard. This platform provided a space for caregivers too. Highly recommend."</p>
+              <h4>- David K.</h4>
+          </div>
+      </div>
+      <div style="text-align: center; margin-top: 30px;" data-aos="fade-up">
+        <a href="community.html" class="btn hvr-pulse-grow">Join Our Community</a>
+      </div>
+  </section>
+
+  <!-- New Call to Action Section -->
+  <section id="cta" class="section-padding" style="background: url('images/cta-background.jpg') no-repeat center center/cover; color: white; text-align: center;">
+    <div class="cta-overlay" style="background: rgba(0, 0, 0, 0.6); padding: 60px 20px; border-radius: 10px;">
+        <h2 data-aos="zoom-in" style="color: white;">Take Action Today</h2>
+        <p data-aos="zoom-in" data-aos-delay="200" style="font-size: 1.1rem; margin-bottom: 30px;">Whether you need support, want to help, or wish to raise awareness, you can make a difference.</p>
+        <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
+            <a href="donate.html" class="btn hvr-icon-forward">Donate Now <i class="fas fa-arrow-right hvr-icon"></i></a>
+            <a href="campaign.html" class="btn hvr-icon-forward" style="margin-left: 15px; background: #fff; color: #ff69b4; border: 1px solid #ff69b4;">Start a Campaign <i class="fas fa-arrow-right hvr-icon"></i></a>
         </div>
+    </div>
+  </section>
+
+  <!-- Live Chat Button -->
+  <button id="chat-toggle" class="chat-toggle hvr-buzz-out">
+    <i class="fas fa-comments"></i>
+  </button>
+
+  <!-- Chat Container -->
+  <div id="chat-container" class="chat-container">
+    <div class="chat-header">
+      <h3>Chat Support</h3>
+      <button id="close-chat" class="close-chat">&times;</button>
+    </div>
+    <div id="message-display" class="message-display">
+      <!-- Messages will appear here -->
+    </div>
+    <div class="input-area">
+      <textarea id="message-input" placeholder="Ask about breast cancer..."></textarea>
+      <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
 
   <footer>
-    <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
+    <p>&copy; 2024 Breast Cancer Awareness & Support. All Rights Reserved.</p>
+    <!-- Add social media links or other footer content here -->
   </footer>
 
-  <!-- Inline JavaScript for FAQ Chat functionality -->
-  <script>
-    // Existing FAQ Chat functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      // FAQ Chat functionality
-      document.getElementById('openFaqChat').addEventListener('click', function(){
-        document.getElementById('faqChat').style.display = 'flex';
-        this.style.display = 'none';
-      });
-      document.getElementById('closeFaqChat').addEventListener('click', function(){
-        document.getElementById('faqChat').style.display = 'none';
-        document.getElementById('openFaqChat').style.display = 'block';
-      });
-      document.querySelectorAll('#faqList li').forEach(function(item){
-        item.addEventListener('click', function(){
-          var answer = this.getAttribute('data-answer');
-          document.getElementById('faqAnswer').textContent = answer;
-        });
-      });
-
-      // Notification Panel functionality
-      const notificationToggle = document.querySelector('.notification-toggle');
-      const notificationContainer = document.querySelector('.notification-container');
-      const closeNotification = document.querySelector('.close-notification');
-
-      // Toggle notification panel
-      notificationToggle.addEventListener('click', function() {
-        notificationContainer.classList.toggle('open');
-      });
-
-      // Close notification panel
-      closeNotification.addEventListener('click', function() {
-        notificationContainer.classList.remove('open');
-      });
-
-      // Sample function to add new notifications
-      function addNotification(type, title, message) {
-        const notificationList = document.querySelector('.notification-list');
-        const newNotification = document.createElement('div');
-        newNotification.className = `notification-item ${type}-notification`;
-        
-        const icons = {
-          diet: 'utensils',
-          medicine: 'pills',
-          community: 'users',
-          exercise: 'walking'
-        };
-
-        newNotification.innerHTML = `
-          <div class="notification-icon">
-            <i class="fas fa-${icons[type]}"></i>
-          </div>
-          <div class="notification-content">
-            <div class="notification-title">${title}</div>
-            <div class="notification-message">${message}</div>
-            <div class="notification-time">Just now</div>
-          </div>
-        `;
-
-        notificationList.insertBefore(newNotification, notificationList.firstChild);
-      }
-
-      // Example: Add new notifications periodically
-      setInterval(() => {
-        const notifications = [
-          {
-            type: 'diet',
-            title: 'Meal Time Reminder',
-            message: 'Time for your healthy afternoon snack!'
-          },
-          {
-            type: 'medicine',
-            title: 'Medicine Reminder',
-            message: 'Don\'t forget to take your medication'
-          },
-          {
-            type: 'community',
-            title: 'Community Update',
-            message: 'New support group meeting scheduled'
-          },
-          {
-            type: 'exercise',
-            title: 'Exercise Time',
-            message: 'Time for your daily wellness routine'
-          }
-        ];
-
-        const randomNotification = notifications[Math.floor(Math.random() * notifications.length)];
-        addNotification(randomNotification.type, randomNotification.title, randomNotification.message);
-      }, 300000); // Add new notification every 5 minutes
-    });
-  </script>
-  <script src="js/gemini-api.js"></script>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script src="js/chat.js"></script>
+  <script src="js/main.js"></script> <!-- New main JS file -->
 </body>
 </html>
