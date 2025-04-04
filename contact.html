@@ -3,99 +3,401 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Breast Cancer Awareness - Contact & Appointment</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Contact Us - VIT Hope Ribbon</title>
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/chat.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+  <style>
+    /* Navbar Styles */
+    .navbar {
+      background-color: #f8f0ff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ff69b4;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .nav-links li a:hover {
+      color: #ff69b4;
+      transform: translateY(-2px);
+    }
+
+    .nav-links li a.active {
+      color: #ff69b4;
+      font-weight: 700;
+    }
+
+    /* Hero Section */
+    .contact-hero {
+      height: 60vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      margin-top: 70px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 2rem;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* Contact Section */
+    .contact-container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info {
+      padding: 2rem;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .contact-info h3 {
+      color: #ff69b4;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+      padding: 1rem;
+      background: #f8f0ff;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .info-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .info-item i {
+      font-size: 1.5rem;
+      color: #ff69b4;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(255,105,180,0.2);
+    }
+
+    .info-item h4 {
+      color: #333;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .info-item p {
+      color: #555;
+      margin: 0;
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    .contact-form {
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #ff69b4;
+      outline: none;
+    }
+
+    .submit-btn {
+      background: linear-gradient(45deg, #ff69b4, #c77dff);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-shadow: 0 4px 10px rgba(255,105,180,0.4);
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(45deg, #c77dff, #ff69b4);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(199,125,255,0.5);
+    }
+
+    /* Map Section */
+    .map-section {
+      margin-top: 4rem;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .map-section iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .contact-info, .contact-form {
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header with Navigation -->
-  <header>
+  <!-- Navigation -->
     <nav class="navbar">
-      <div class="logo">Breast Cancer Awareness</div>
-      <!-- Hamburger menu for mobile -->
+    <div class="logo">VIT Hope Ribbon</div>
       <div class="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="community.html">Community</a></li>
-        <li><a href="donate.html">Donate</a></li>
-        <li><a href="campaign.html">Start Campaign</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+      <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+      <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+      <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+      <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+      <li><a href="DONATION.html" class="hvr-underline-from-center">Donation</a></li>
+      <li><a href="contact.html" class="active hvr-underline-from-center">Contact</a></li>
+      <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
       </ul>
     </nav>
-  </header>
 
-  <!-- Contact & Appointment Section -->
-  <section id="contact" class="contact-section">
-    <h2>Contact Us & Book Appointment</h2>
-    <p>Have questions or need expert advice? Book your appointment by filling out the form below.</p>
-    <form action="#" method="post" class="contact-form">
-      <!-- Patient Details -->
-      <div class="form-group">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" placeholder="Your full name..." required>
-      </div>
-      <div class="form-group">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" placeholder="Your age..." required>
-      </div>
-      <div class="form-group">
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender" required>
-          <option value="">Select your gender</option>
-          <option value="female">Female</option>
-          <option value="male">Male</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <!-- Appointment Details -->
-      <div class="form-group">
-        <label for="appointment-date">Date of Appointment:</label>
-        <input type="date" id="appointment-date" name="appointment_date" required>
-      </div>
-      <div class="form-group">
-        <label for="condition">Condition / Disease:</label>
-        <input type="text" id="condition" name="condition" placeholder="Enter your condition or disease" required>
-      </div>
-      <div class="form-group">
-        <label for="doctor">Preferred Doctor / Department:</label>
-        <input type="text" id="doctor" name="doctor" placeholder="Enter doctor's name or department" required>
-      </div>
-      <div class="form-group">
-        <label for="location">Location / Hospital:</label>
-        <input type="text" id="location" name="location" placeholder="Enter your location or preferred hospital" required>
-      </div>
-      <!-- Contact Information -->
-      <div class="form-group">
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Your email address" required>
-      </div>
-      <div class="form-group">
-        <label for="message">Additional Information:</label>
-        <textarea id="message" name="message" placeholder="Any additional details..." rows="4"></textarea>
-      </div>
-      <!-- Submit Button -->
-      <button type="submit" class="btn">Book Appointment</button>
-    </form>
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="hero-content">
+      <h1 class="animate__animated animate__fadeInDown">Get in Touch</h1>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">We're here to help and answer any questions you might have</p>
+    </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Contact Section -->
+  <div class="contact-container">
+    <div class="contact-grid">
+      <div class="contact-info" data-aos="fade-right">
+        <h3>Contact Information</h3>
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Address</h4>
+            <p>VIT University, Vellore<br>Tamil Nadu, India 632014</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <h4>Phone</h4>
+            <p>+91 123 456 7890</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4>Email</h4>
+            <p>support@vithoperibbon.org</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h4>Working Hours</h4>
+            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+      </div>
+      </div>
+      </div>
+
+      <div class="contact-form" data-aos="fade-left">
+        <h3>Send us a Message</h3>
+        <form>
+      <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+      </div>
+      <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required placeholder="Enter subject">
+      </div>
+      <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Enter your message"></textarea>
+          </div>
+          <button type="submit" class="submit-btn hvr-pulse-grow">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-section" data-aos="fade-up">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5831650717247!2d79.15259811482193!3d12.969419090855802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad479f0ccbe067%3A0xfef222e5f36ecdeb!2sVellore%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1647887574080!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <!-- Live Chat Button -->
+  <button id="chat-toggle" class="chat-toggle hvr-buzz-out">
+    <i class="fas fa-comments"></i>
+  </button>
+
+  <!-- Chat Container -->
+  <div id="chat-container" class="chat-container">
+    <div class="chat-header">
+      <h3>Contact Support</h3>
+      <button id="close-chat" class="close-chat">&times;</button>
+    </div>
+    <div id="message-display" class="message-display">
+      <!-- Messages will appear here -->
+      </div>
+    <div class="input-area">
+      <textarea id="message-input" placeholder="Type your message..."></textarea>
+      <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+      </div>
+      </div>
+
   <footer>
-    <p>&copy; 2025 Breast Cancer Awareness. All rights reserved.</p>
+    <p>&copy; 2024 VIT Hope Ribbon. All Rights Reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="js/main.js"></script>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="js/chat.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+
+    // Mobile Navigation Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      const navLinksItems = document.querySelectorAll('.nav-links a');
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      // Close menu when clicking a link
+      navLinksItems.forEach(item => {
+        item.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

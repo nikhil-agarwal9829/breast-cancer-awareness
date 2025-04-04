@@ -3,48 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise Guide - Breast Cancer Awareness</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Exercise Guide - VIT Hope Ribbon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
     <style>
-        .exercise-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
+        /* Hero Section */
         .exercise-hero {
+            height: 60vh;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                        url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+                        url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3');
             background-size: cover;
             background-position: center;
-            height: 40vh;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             text-align: center;
-            margin-bottom: 3rem;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Exercise Content */
+        .exercise-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
         }
 
         .exercise-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .exercise-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
 
         .exercise-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .exercise-image {
@@ -59,19 +76,19 @@
 
         .exercise-title {
             font-size: 1.5rem;
-            color: #2c3e50;
+            color: #333;
             margin-bottom: 1rem;
         }
 
         .exercise-description {
             color: #666;
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
         .exercise-steps {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
-            margin: 1rem 0;
         }
 
         .exercise-steps li {
@@ -81,87 +98,181 @@
         }
 
         .exercise-steps li:before {
-            content: "•";
-            color: #e91e63;
+            content: "→";
             position: absolute;
             left: 0;
+            color: #ff69b4;
         }
 
-        .difficulty-badge {
+        .back-button {
             display: inline-block;
-            padding: 0.3rem 0.8rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,105,180,0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,105,180,0.4);
+        }
+
+        .tips-section {
+            background: linear-gradient(135deg, #fde4f2, #e1d4fa);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .tips-section h2 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 1.5rem;
             border-radius: 15px;
-            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .tip-card i {
+            color: #ff69b4;
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .difficulty-easy {
-            background: #e8f5e9;
-            color: #2e7d32;
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .exercise-container {
+                padding: 0 1rem;
+            }
+
+            .exercise-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .difficulty-medium {
-            background: #fff3e0;
-            color: #ef6c00;
+        /* Navbar Styles */
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .difficulty-hard {
-            background: #ffebee;
-            color: #c62828;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff69b4;
         }
 
-        .exercise-tips {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-        }
-
-        .exercise-tips h2 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .exercise-tips ul {
-            list-style-type: none;
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
             padding: 0;
         }
 
-        .exercise-tips li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
-        .exercise-tips li:before {
-            content: "✓";
-            color: #2ecc71;
-            position: absolute;
-            left: 0;
+        .nav-links a:hover {
+            color: #ff69b4;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
             }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-brand">Breast Cancer Awareness</div>
+        <div class="logo">VIT Hope Ribbon</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+            <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+            <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+            <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+            <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+            <li><a href="DONATION.html" class="hvr-underline-from-center">Donation</a></li>
+            <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+            <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
         </ul>
     </nav>
 
@@ -173,133 +284,95 @@
     </div>
 
     <div class="exercise-container">
-        <div class="exercise-tips">
-            <h2>Important Tips Before Starting</h2>
-            <ul>
-                <li>Always consult your healthcare provider before starting any exercise program</li>
-                <li>Start slowly and gradually increase intensity</li>
-                <li>Listen to your body and stop if you feel pain or discomfort</li>
-                <li>Stay hydrated during exercise</li>
-                <li>Wear comfortable, supportive clothing</li>
-                <li>Exercise in a well-ventilated area</li>
-                <li>Include warm-up and cool-down periods</li>
-            </ul>
-        </div>
+        <a href="features.html" class="back-button hvr-icon-back">
+            <i class="fas fa-arrow-left hvr-icon"></i> Back to Features
+        </a>
 
         <div class="exercise-grid">
-            <!-- Walking Exercise -->
-            <div class="exercise-card">
-                <img src="https://images.unsplash.com/photo-1571008887538-b36b32f45728?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+            <!-- Gentle Stretching -->
+            <div class="exercise-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b" 
+                     alt="Gentle Stretching" class="exercise-image">
+                <div class="exercise-content">
+                    <h3 class="exercise-title">Gentle Stretching</h3>
+                    <p class="exercise-description">Start with gentle stretches to improve flexibility and reduce stiffness.</p>
+                    <ul class="exercise-steps">
+                        <li>Shoulder rolls - 10 times each direction</li>
+                        <li>Neck stretches - hold 15 seconds each side</li>
+                        <li>Arm circles - 10 times each direction</li>
+                        <li>Wrist rotations - 10 times each direction</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Walking -->
+            <div class="exercise-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8" 
                      alt="Walking" class="exercise-image">
                 <div class="exercise-content">
-                    <span class="difficulty-badge difficulty-easy">Easy</span>
-                    <h2 class="exercise-title">Walking</h2>
-                    <p class="exercise-description">A low-impact exercise that helps improve circulation and maintain mobility.</p>
+                    <h3 class="exercise-title">Walking Program</h3>
+                    <p class="exercise-description">A progressive walking program to build endurance safely.</p>
                     <ul class="exercise-steps">
-                        <li>Start with 5-10 minutes</li>
+                        <li>Start with 5-10 minutes daily</li>
                         <li>Gradually increase to 30 minutes</li>
-                        <li>Maintain a comfortable pace</li>
-                        <li>Use proper footwear</li>
+                        <li>Maintain comfortable pace</li>
+                        <li>Walk on even surfaces</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Stretching Exercise -->
-            <div class="exercise-card">
-                <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Stretching" class="exercise-image">
-                <div class="exercise-content">
-                    <span class="difficulty-badge difficulty-easy">Easy</span>
-                    <h2 class="exercise-title">Gentle Stretching</h2>
-                    <p class="exercise-description">Improves flexibility and helps prevent muscle stiffness.</p>
-                    <ul class="exercise-steps">
-                        <li>Hold each stretch for 15-30 seconds</li>
-                        <li>Don't bounce or force movements</li>
-                        <li>Focus on breathing</li>
-                        <li>Include neck and shoulder stretches</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Yoga Exercise -->
-            <div class="exercise-card">
-                <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+            <!-- Yoga -->
+            <div class="exercise-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b" 
                      alt="Yoga" class="exercise-image">
                 <div class="exercise-content">
-                    <span class="difficulty-badge difficulty-medium">Medium</span>
-                    <h2 class="exercise-title">Gentle Yoga</h2>
-                    <p class="exercise-description">Combines stretching, breathing, and relaxation techniques.</p>
+                    <h3 class="exercise-title">Modified Yoga</h3>
+                    <p class="exercise-description">Gentle yoga poses to improve flexibility and reduce stress.</p>
                     <ul class="exercise-steps">
-                        <li>Start with basic poses</li>
-                        <li>Use props for support</li>
-                        <li>Focus on breathing</li>
-                        <li>Avoid strenuous poses</li>
+                        <li>Cat-Cow Stretch</li>
+                        <li>Child's Pose</li>
+                        <li>Modified Downward Dog</li>
+                        <li>Seated Twists</li>
                     </ul>
                 </div>
             </div>
+        </div>
 
-            <!-- Strength Training -->
-            <div class="exercise-card">
-                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Strength Training" class="exercise-image">
-                <div class="exercise-content">
-                    <span class="difficulty-badge difficulty-medium">Medium</span>
-                    <h2 class="exercise-title">Light Strength Training</h2>
-                    <p class="exercise-description">Helps maintain muscle mass and improve overall strength.</p>
-                    <ul class="exercise-steps">
-                        <li>Use light weights or resistance bands</li>
-                        <li>Focus on proper form</li>
-                        <li>Start with 8-10 repetitions</li>
-                        <li>Include rest periods</li>
-                    </ul>
+        <div class="tips-section">
+            <h2>Exercise Safety Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card" data-aos="fade-up">
+                    <i class="fas fa-heart"></i>
+                    <h3>Listen to Your Body</h3>
+                    <p>Start slowly and stop if you feel pain or discomfort.</p>
+                </div>
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-clock"></i>
+                    <h3>Timing Matters</h3>
+                    <p>Exercise when your energy levels are highest.</p>
+                </div>
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Consult Your Doctor</h3>
+                    <p>Get medical clearance before starting any exercise program.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@breastcancerawareness.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 VIT Hope Ribbon. All Rights Reserved.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Add animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.exercise-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            });
-
-            cards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'all 0.5s ease-out';
-                observer.observe(card);
-            });
+        AOS.init({
+            duration: 1000,
+            once: true
         });
     </script>
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
 </body>
 </html> 

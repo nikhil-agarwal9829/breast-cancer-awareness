@@ -3,138 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health & Wellness Features - Breast Cancer Awareness</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>VIT Hope Ribbon - Features</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/chat.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
     <style>
+        /* Base styles from about.html */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .navbar {
+            background-color: #f8f0ff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff69b4;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links li a:hover {
+            color: #ff69b4;
+            transform: translateY(-2px);
+        }
+
+        .nav-links li a.active {
+            color: #ff69b4;
+            font-weight: 700;
+        }
+
+        /* Features specific styles */
         .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1400px;
+            margin: 120px auto 60px;
             padding: 2rem;
+        }
+
+        .features-container h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .features-container h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+            margin: 1rem auto;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 2rem;
+            padding: 0 1rem;
         }
 
         .feature-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 0.5s ease-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
         }
 
         .feature-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-image {
+            transform: scale(1.05);
         }
 
         .feature-content {
-            padding: 1.5rem;
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .feature-title {
             font-size: 1.5rem;
-            color: #2c3e50;
+            color: #333;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .feature-description {
             color: #666;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
         }
 
         .feature-button {
-            background: linear-gradient(45deg, #e91e63, #ff4081);
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
             color: white;
-            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #ff69b4, #ff8dc7);
             border: none;
-            border-radius: 25px;
-            cursor: pointer;
+            border-radius: 50px;
+            text-decoration: none;
             transition: all 0.3s ease;
-            width: 100%;
-            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            margin-top: auto;
         }
 
         .feature-button:hover {
-            background: linear-gradient(45deg, #ff4081, #e91e63);
-            transform: scale(1.05);
+            background: linear-gradient(45deg, #ff8dc7, #ff69b4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
         }
 
+        /* Notification Section */
         .notification-section {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
+            background: linear-gradient(135deg, #fde4f2, #e1d4fa);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .notification-section h2 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .notification-form {
             max-width: 500px;
-            margin: 0 auto;
+            margin: 2rem auto 0;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
         }
 
         .form-group input {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-top: 0.5rem;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #ff69b4;
+            outline: none;
         }
 
         .notification-options {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1rem;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
+            text-align: left;
         }
 
         .notification-option {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        .notification-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #ff69b4;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #ff69b4;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff69b4;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .features-container {
+                margin-top: 100px;
+                padding: 1rem;
+            }
+
+            .features-container h1 {
+                font-size: 2rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0;
+            }
+
+            .feature-image {
+                height: 200px;
+            }
+
+            .notification-section {
+                padding: 2rem 1rem;
+            }
+
+            .notification-form {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-brand">Breast Cancer Awareness</div>
+        <div class="logo">VIT Hope Ribbon</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="features.html" class="active">Features</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="campaign.html">Start Campaign</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+            <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+            <li><a href="features.html" class="active hvr-underline-from-center">Features</a></li>
+            <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+            <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+            <li><a href="donate.html" class="hvr-underline-from-center">Donate</a></li>
+            <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+            <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
         </ul>
     </nav>
 
@@ -142,6 +356,17 @@
         <h1 class="animate__animated animate__fadeInDown">Health & Wellness Features</h1>
         
         <div class="feature-grid">
+            <!-- Symptom Checker Section -->
+            <div class="feature-card">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Symptom Checker" class="feature-image">
+                <div class="feature-content">
+                    <h2 class="feature-title">Symptom Checker</h2>
+                    <p class="feature-description">Use our interactive symptom checker to identify potential breast cancer symptoms and get guidance on next steps.</p>
+                    <a href="new.html" class="feature-button">Check Symptoms</a>
+                </div>
+            </div>
+
             <!-- Exercise Section -->
             <div class="feature-card">
                 <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
@@ -177,8 +402,7 @@
 
             <!-- Medicine Section -->
             <div class="feature-card">
-                <img src="https://images.unsplash.com/photo-1585435557343-3b092092a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Medicine" class="feature-image">
+                <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Medicine Guide" class="feature-image">
                 <div class="feature-content">
                     <h2 class="feature-title">Medicine Guide</h2>
                     <p class="feature-description">Find information about medications, their side effects, and affordable alternatives.</p>
@@ -216,29 +440,18 @@
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@breastcancerawareness.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 VIT Hope Ribbon - Supporting Breast Cancer Awareness. All Rights Reserved.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Add animation on scroll
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Add animation on scroll for feature cards
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.feature-card');
             
@@ -249,17 +462,28 @@
                         entry.target.style.transform = 'translateY(0)';
                     }
                 });
+            }, {
+                threshold: 0.1
             });
 
             cards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'all 0.5s ease-out';
                 observer.observe(card);
             });
         });
     </script>
     <script src="js/main.js"></script>
     <script src="js/chat.js"></script>
+
+    <div class="chat-support">
+        <div class="chat-header">
+            <span>Chat Support</span>
+            <button class="close-chat">×</button>
+        </div>
+        <div class="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 </body>
 </html> 

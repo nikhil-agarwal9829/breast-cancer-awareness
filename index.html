@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Breast Cancer Support - Awareness & Community</title>
+  <title>VIT Hope Ribbon - Breast Cancer Awareness</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/chat.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -23,7 +23,7 @@
     }
 
     .navbar {
-      background-color: #fff;
+      background-color: #f8f0ff; /* Changed from #fff to soft lavender */
       padding: 1rem 2rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       position: fixed;
@@ -94,13 +94,29 @@
       overflow: hidden;
     }
 
-    #vanta-bg { /* Container for Vanta.js */
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+    /* Added Video Background CSS */
+    #bg-video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -2; /* Behind overlay and content */
+        transform: translateX(-50%) translateY(-50%);
+        background-size: cover;
+    }
+
+    /* Added Video Overlay CSS */
+    .video-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay */
+        z-index: -1; /* Between video and content */
     }
 
     .hero-content {
@@ -292,15 +308,47 @@
     .section-padding {
       padding: 80px 20px;
     }
+
+    /* Chat Widget Styles (Additions) */
+    .predefined-questions-area {
+      padding: 10px;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .predefined-question-btn {
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      padding: 5px 12px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .predefined-question-btn:hover {
+      background-color: #e0e0e0;
+    }
   </style>
 </head>
 <body>
-  <!-- Vanta.js Background Container -->
-  <div id="vanta-bg"></div>
+  <!-- REMOVED Vanta.js Background Container -->
+  <!-- <div id="vanta-bg"></div> -->
+
+  <!-- Added Video Background -->
+  <video autoplay muted playsinline id="bg-video">
+      <!-- Source will be set by JavaScript -->
+      Your browser does not support HTML5 video.
+  </video>
+  <div class="video-overlay"></div> <!-- Overlay Div -->
 
   <header>
     <nav class="navbar">
-      <div class="logo">BC Awareness</div>
+      <div class="logo">VIT Hope Ribbon</div>
       <div class="hamburger">
         <span></span>
         <span></span>
@@ -310,8 +358,9 @@
         <li><a href="#home" class="active hvr-underline-from-center">Home</a></li>
         <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
         <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+        <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
         <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
-        <li><a href="donate.html" class="hvr-underline-from-center">Donate</a></li>
+        <li><a href="DONATION.html" class="hvr-underline-from-center">Donation</a></li>
         <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
         <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
       </ul>
@@ -320,7 +369,7 @@
 
   <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="hero-content" data-aos="fade-up">
+    <div class="hero-content">
       <h1 class="animate__animated animate__fadeInDown">Hope. Strength. Support.</h1>
       <p class="animate__animated animate__fadeInUp animate__delay-1s">Join our community dedicated to breast cancer awareness, early detection, and mutual support. Together, we are stronger.</p>
       <a href="#about" class="btn hvr-pulse-grow animate__animated animate__fadeInUp animate__delay-2s">Learn More</a>
@@ -336,7 +385,7 @@
         <div class="info-text">
             <h3>What is Breast Cancer?</h3>
             <p>Breast cancer is a disease where abnormal cells in the breast grow uncontrollably, forming a lump or tumor. It affects millions worldwide, primarily women, but men can also be diagnosed. Early detection through regular screenings and awareness of symptoms drastically improves treatment outcomes and survival rates.</p>
-            <a href="learn_more_what_is.html" class="btn hvr-forward">Read Deep Dive</a>
+            <a href="about.html" class="btn hvr-forward">Read Deep Dive</a>
         </div>
     </div>
 
@@ -352,7 +401,7 @@
                 <li><h4>Triple-Negative:</h4> Lacks common receptors, often aggressive.</li>
                 <li><h4>Inflammatory:</h4> Rare, aggressive, causes skin changes.</li>
             </ul>
-            <a href="learn_more_types.html" class="btn hvr-forward">Explore Types</a>
+            <a href="medical.html" class="btn hvr-forward">Explore Types</a>
         </div>
     </div>
 
@@ -368,7 +417,7 @@
                 <li>Lifestyle (diet, exercise, alcohol)</li>
                 <li>Radiation exposure</li>
             </ul>
-            <a href="learn_more_risks.html" class="btn hvr-forward">Assess Your Risk</a>
+            <a href="features.html" class="btn hvr-forward">Assess Your Risk</a>
         </div>
     </div>
 
@@ -384,7 +433,7 @@
                 <li>Skin changes (dimpling, redness, peeling, swelling)</li>
                 <li>Persistent breast pain</li>
             </ul>
-            <a href="learn_more_symptoms.html" class="btn hvr-forward">Symptom Checker Guide</a>
+            <a href="new.html" class="btn hvr-forward">Symptom Checker Guide</a>
         </div>
     </div>
   </section>
@@ -421,10 +470,16 @@
       <h2 data-aos="fade-down">Our Platform Features</h2>
       <div class="features-grid" data-aos="fade-up">
           <div class="feature-card hvr-float-shadow">
+              <i class="fas fa-info-circle"></i>
+              <h3>About Us</h3>
+              <p>Learn about our mission, vision, and commitment to breast cancer awareness and support.</p>
+              <a href="about.html" class="feature-link">Learn More</a>
+          </div>
+          <div class="feature-card hvr-float-shadow">
               <i class="fas fa-comments"></i>
               <h3>Support Forums</h3>
               <p>Connect with others, share experiences, and find emotional support in our safe community forums.</p>
-              <a href="forums.html" class="feature-link">Join Discussion</a>
+              <a href="community.html" class="feature-link">Join Discussion</a>
           </div>
           <div class="feature-card hvr-float-shadow">
               <i class="fas fa-book-medical"></i>
@@ -436,13 +491,19 @@
               <i class="fas fa-calendar-check"></i>
               <h3>Appointment Helper</h3>
               <p>Keep track of appointments, medications, and symptoms with our easy-to-use tools.</p>
-              <a href="tools.html" class="feature-link">Use Tools</a>
+              <a href="medical.html" class="feature-link">Use Tools</a>
           </div>
           <div class="feature-card hvr-float-shadow">
               <i class="fas fa-map-marked-alt"></i>
               <h3>Find Specialists</h3>
               <p>Locate nearby hospitals, doctors, and support centers using our interactive map.</p>
               <a href="map.html" class="feature-link">Find Care</a>
+          </div>
+          <div class="feature-card hvr-float-shadow">
+              <i class="fas fa-pills"></i>
+              <h3>Medicine Guide</h3>
+              <p>Find comprehensive information about medications, their side effects, and affordable alternatives.</p>
+              <a href="medicine.html" class="feature-link">View Medicines</a>
           </div>
       </div>
   </section>
@@ -478,8 +539,8 @@
         <h2 data-aos="zoom-in" style="color: white;">Take Action Today</h2>
         <p data-aos="zoom-in" data-aos-delay="200" style="font-size: 1.1rem; margin-bottom: 30px;">Whether you need support, want to help, or wish to raise awareness, you can make a difference.</p>
         <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
-            <a href="donate.html" class="btn hvr-icon-forward">Donate Now <i class="fas fa-arrow-right hvr-icon"></i></a>
-            <a href="campaign.html" class="btn hvr-icon-forward" style="margin-left: 15px; background: #fff; color: #ff69b4; border: 1px solid #ff69b4;">Start a Campaign <i class="fas fa-arrow-right hvr-icon"></i></a>
+            <a href="DONATION.html" class="btn hvr-icon-forward">Donate Now <i class="fas fa-arrow-right hvr-icon"></i></a>
+            <a href="DONATION.html#campaign" class="btn hvr-icon-forward" style="margin-left: 15px; background: #fff; color: #ff69b4; border: 1px solid #ff69b4;">Start a Campaign <i class="fas fa-arrow-right hvr-icon"></i></a>
         </div>
     </div>
   </section>
@@ -509,12 +570,49 @@
     <!-- Add social media links or other footer content here -->
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <!-- Added AOS Initialization -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script src="js/chat.js"></script>
   <script src="js/main.js"></script> <!-- New main JS file -->
+
+  <!-- Initialize AOS -->
+  <script>
+    AOS.init({
+        duration: 1000, // values from 0 to 3000, with step 50ms
+        once: true, // whether animation should happen only once - while scrolling down
+    });
+
+    // --- Sequential Video Background Logic ---
+    const videoPlayer = document.getElementById('bg-video');
+    // IMPORTANT: Assumes videos are in a 'vid' folder and named video1.mp4, video2.mp4, video3.mp4
+    const videoSources = [
+        'vid/video1.mp4',
+        'vid/video2.mp4',
+        'vid/video3.mp4'
+    ];
+    let currentVideoIndex = 0;
+
+    function playNextVideo() {
+        currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+        videoPlayer.src = videoSources[currentVideoIndex];
+        videoPlayer.load();
+        videoPlayer.play().catch(error => {
+            console.error("Video autoplay failed:", error);
+        });
+    }
+
+    videoPlayer.addEventListener('ended', playNextVideo);
+
+    if (videoSources.length > 0) {
+        videoPlayer.src = videoSources[currentVideoIndex];
+        videoPlayer.play().catch(error => {
+            console.error("Initial video autoplay failed:", error);
+        });
+    }
+
+    // --- Chat Toggle Logic ---
+    const chatToggle = document.getElementById('chat-toggle');
+  </script>
 </body>
 </html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Symptom Checker - VIT Hope Ribbon</title>
+  <!-- seo starts here  -->
+  <meta name="description" content="Your one stop for everything related to Breast Cancer, including, symptoms, treatment, faqs, etc."/>
+  <meta name="author" content="Ashutosh Dash">
+  <meta name="keywords"
+          content="breast cancer, breast, cancer, awareness, breast cancer awareness, breast cancer treatment, breast cancer symptoms, treatment, symptoms, breast cancer faqs, breast cancer faq, open source, open sourcing, contributing to open source" />
+
+  <meta name="robots" content="index,follow" />
+  <meta name="Googlebot" content="index,follow" />
+  <meta name="AdsBot-Google" content="index,follow" />
+  <meta property="og:site_name" content="https://breastcancerawareness.netlify.app/">
+  <meta property="og:title" content="Symptom Checker - VIT Hope Ribbon">
+  <meta property="og:description" content="Your one stop for everything related to Breast Cancer, including, symptoms, treatment, faqs, etc."/>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://breastcancerawareness.netlify.app/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="https://breastcancerawareness.netlify.app/">
+  <meta name="application-name" content="Symptom Checker - VIT Hope Ribbon" />
+  <meta name="apple-mobile-web-app-title" content="Symptom Checker - VIT Hope Ribbon" />
+  <meta name="summary" content="An open source project aimed at creating awareness against Breast Cancer">
+<!-- seo ends here  -->
+
+<!-- links including fonts and third part library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+  <link rel="stylesheet" href="css/symptoms.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courgette&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap">
+
+  <!-- favicon  -->
+  <link rel="icon" href="images/pink-ribbon-logo-png-transparent-719x899.ico" type="image/ico">
+  
+  <!-- Inline styles for symptom scroller -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Navigation Styles */
+    .navbar {
+      background: white;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff69b4;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ff69b4;
+    }
+
+    .nav-links a.active {
+      color: #ff69b4;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 1024px) {
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(255,105,180,0.9), rgba(182,102,210,0.9)),
+                  url('https://img.freepik.com/free-photo/doctor-with-stethoscope-hands-hospital-background_1423-1.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+      margin-top: 60px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Symptom Scroller Styles */
+    .symptom-scroller-container {
+      width: 90%;
+      margin: 2rem auto;
+      overflow: hidden;
+      position: relative;
+      padding: 1rem 0;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .symptom-scroller-content {
+      display: flex;
+      width: 200%;
+      animation: scrollSymptoms 15s linear infinite;
+    }
+
+    .symptom-card {
+      flex: 0 0 19%;
+      margin: 0 0.5%;
+      padding: 15px;
+      background-color: #fdeaf1;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .symptom-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .symptom-card img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .symptom-card h6 {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #d1387c;
+      margin: 0;
+    }
+
+    .symptom-scroller-container:hover .symptom-scroller-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollSymptoms {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Symptom Checker Section */
+    .checker-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .checker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .checker-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .checker-card h3 {
+      color: #ff69b4;
+      margin-bottom: 1rem;
+    }
+
+    .checker-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .checker-card ul li {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .checker-card ul li:before {
+      content: "\f054";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: #ff69b4;
+    }
+
+    .btn {
+      background: #ff69b4;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .btn:hover {
+      background: #ff4da6;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .symptom-card {
+        flex-basis: 30%;
+      }
+
+      .symptom-scroller-content {
+        width: 333%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .symptom-card {
+        flex-basis: 45%;
+      }
+
+      .symptom-scroller-content {
+        width: 500%;
+      }
+    }
+  </style>
+</head>
+<body onload="loader()">
+
+  <div id="loading"></div>
+  
+    <nav class="navbar">
+        <div class="logo">VIT Hope Ribbon</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+            <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+            <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+            <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+            <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+            <li><a href="DONATION.html" class="hvr-underline-from-center">Donation</a></li>
+            <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+            <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
+        </ul>
+    </nav>
+    <br>
+    <!-- content starts here  -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Symptom Checker</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Identify potential breast cancer symptoms and get guidance on next steps</p>
+        </div>
+    </section>
+
+    <div class="symptom-scroller-container">
+        <div class="symptom-scroller-content">
+            <!-- Original 5 Symptoms -->
+            <div class="symptom-card">
+                <img src="images/breast-cancer-infographic-vector-22319678 (another copy).jpg" alt="Lump in Breast">
+                <h6>Lump in the breast</h6>
+            </div>
+            <div class="symptom-card">
+                <img src="images/breast-cancer-infographic-vector-22319678 (4th copy).jpg" alt="Bloody Discharge">
+                <h6>Bloody discharge</h6>
+            </div>
+            <div class="symptom-card">
+                <img src="images/breast-cancer-infographic-vector-22319678 (5th copy).jpg" alt="Skin Destruction">
+                <h6>The destruction of the skin</h6>
+            </div>
+            <div class="symptom-card">
+                <img src="images/breast-cancer-infographic-vector-22319678 (6th copy).jpg" alt="Breast Pain">
+                <h6>Pain of breast</h6>
+            </div>
+            <div class="symptom-card">
+                <img src="images/breast-cancer-infographic-vector-22319678 (7th copy).jpg" alt="Dimpled Breast">
+                <h6>Dimpled depressed</h6>
+            </div>
+            <!-- Duplicated for seamless scrolling -->
+            <div class="symptom-card">
+                <img src="images/breast-cancer-infographic-vector-22319678 (another copy).jpg" alt="Lump in Breast">
+                <h6>Lump in the breast</h6>
+            </div>
+            <div class="symptom-card">
+                <img src="images/breast-cancer-infographic-vector-22319678 (4th copy).jpg" alt="Bloody Discharge">
+                <h6>Bloody discharge</h6>
+            </div>
+            <div class="symptom-card">
+                <img src="images/breast-cancer-infographic-vector-22319678 (5th copy).jpg" alt="Skin Destruction">
+                <h6>The destruction of the skin</h6>
+            </div>
+            <div class="symptom-card">
+                <img src="images/breast-cancer-infographic-vector-22319678 (6th copy).jpg" alt="Breast Pain">
+                <h6>Pain of breast</h6>
+            </div>
+            <div class="symptom-card">
+                <img src="images/breast-cancer-infographic-vector-22319678 (7th copy).jpg" alt="Dimpled Breast">
+                <h6>Dimpled depressed</h6>
+            </div>
+        </div>
+    </div>
+
+    <section class="checker-section">
+        <h2>Common Symptoms to Watch For</h2>
+        <div class="checker-grid">
+            <div class="checker-card">
+                <h3><i class="fas fa-exclamation-circle"></i> Warning Signs</h3>
+                <ul>
+                    <li>New lump in the breast or underarm</li>
+                    <li>Thickening or swelling of part of the breast</li>
+                    <li>Irritation or dimpling of breast skin</li>
+                    <li>Redness or flaky skin in the nipple area</li>
+                    <li>Pulling in of the nipple</li>
+                    <li>Nipple discharge other than breast milk</li>
+                    <li>Any change in the size or shape of the breast</li>
+                    <li>Pain in any area of the breast</li>
+                </ul>
+                <a href="medical.html" class="btn">Consult a Doctor</a>
+            </div>
+
+            <div class="checker-card">
+                <h3><i class="fas fa-clipboard-check"></i> When to Get Checked</h3>
+                <ul>
+                    <li>If you notice any new breast changes</li>
+                    <li>During your regular breast self-exam</li>
+                    <li>If you have a family history of breast cancer</li>
+                    <li>For regular mammogram screenings (age 40+)</li>
+                    <li>If you experience persistent breast pain</li>
+                    <li>When recommended by your healthcare provider</li>
+                </ul>
+                <a href="#" class="btn" onclick="showAppointmentForm()">Schedule Screening</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- content ends here  -->
+
+    <br>
+    <!-- Site footer -->
+    <footer>
+        <p>&copy; 2024 VIT Hope Ribbon - Supporting Breast Cancer Awareness. All Rights Reserved.</p>
+    </footer>
+    <!-- footer ends here -->
+
+
+  <script>
+      var preloader = document.getElementById("loading");
+      function loader(){
+        preloader.style.display = 'none';
+      }
+
+      function showAppointmentForm() {
+        window.location.href = 'medical.html#appointment';
+      }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

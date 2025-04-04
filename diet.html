@@ -3,318 +3,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition Guide - Breast Cancer Awareness</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Nutrition Guide - VIT Hope Ribbon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
     <style>
-        .diet-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .diet-hero {
+        .hero-section {
+            height: 60vh;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                        url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+                        url('https://images.unsplash.com/photo-1490818387583-1baba5e638af');
             background-size: cover;
             background-position: center;
-            height: 40vh;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             text-align: center;
-            margin-bottom: 3rem;
+            color: white;
+            margin-top: 70px;
         }
 
-        .nutrition-grid {
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .diet-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,105,180,0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,105,180,0.4);
+        }
+
+        .meal-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-bottom: 4rem;
         }
 
-        .nutrition-card {
+        .meal-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
 
-        .nutrition-card:hover {
-            transform: translateY(-10px);
+        .meal-card:hover {
+            transform: translateY(-5px);
         }
 
-        .nutrition-image {
+        .meal-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
 
-        .nutrition-content {
+        .meal-content {
             padding: 1.5rem;
         }
 
-        .nutrition-title {
+        .meal-title {
             font-size: 1.5rem;
-            color: #2c3e50;
+            color: #333;
             margin-bottom: 1rem;
         }
 
-        .nutrition-description {
+        .meal-description {
             color: #666;
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
-        .nutrition-list {
-            list-style-type: none;
+        .meal-ingredients {
+            list-style: none;
             padding: 0;
-            margin: 1rem 0;
         }
 
-        .nutrition-list li {
+        .meal-ingredients li {
             margin-bottom: 0.5rem;
             padding-left: 1.5rem;
             position: relative;
         }
 
-        .nutrition-list li:before {
+        .meal-ingredients li:before {
             content: "•";
-            color: #e91e63;
             position: absolute;
             left: 0;
-        }
-
-        .meal-plan {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-        }
-
-        .meal-plan h2 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .meal-plan ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .meal-plan li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .meal-plan li:before {
-            content: "✓";
-            color: #2ecc71;
-            position: absolute;
-            left: 0;
+            color: #ff69b4;
         }
 
         .nutrition-tips {
-            background: #fff3e0;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
+            background: linear-gradient(135deg, #fde4f2, #e1d4fa);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 4rem;
+            text-align: center;
         }
 
         .nutrition-tips h2 {
-            color: #2c3e50;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .tip-card i {
+            color: #ff69b4;
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .nutrition-tips ul {
-            list-style-type: none;
+        .meal-plan {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 4rem;
+        }
+
+        .meal-plan h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .meal-schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .schedule-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .schedule-item h3 {
+            color: #ff69b4;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .diet-container {
+                padding: 0 1rem;
+            }
+
+            .meal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
             padding: 0;
         }
 
-        .nutrition-tips li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
-        .nutrition-tips li:before {
-            content: "✓";
-            color: #e91e63;
-            position: absolute;
-            left: 0;
+        .nav-links a:hover {
+            color: #ff69b4;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
             }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-brand">Breast Cancer Awareness</div>
+        <div class="logo">VIT Hope Ribbon</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+            <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+            <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+            <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+            <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+            <li><a href="DONATION.html" class="hvr-underline-from-center">Donation</a></li>
+            <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+            <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
         </ul>
     </nav>
 
-    <div class="diet-hero">
+    <div class="hero-section">
         <div class="hero-content">
             <h1 class="animate__animated animate__fadeInDown">Nutrition Guide</h1>
-            <p class="animate__animated animate__fadeInUp">Healthy eating tips and meal plans for breast cancer patients and survivors</p>
+            <p class="animate__animated animate__fadeInUp">Healthy eating tips and meal plans for a balanced lifestyle</p>
         </div>
     </div>
 
     <div class="diet-container">
-        <div class="nutrition-tips">
-            <h2>General Nutrition Tips</h2>
-            <ul>
-                <li>Stay hydrated by drinking plenty of water</li>
-                <li>Eat a variety of colorful fruits and vegetables</li>
-                <li>Choose whole grains over refined grains</li>
-                <li>Include lean protein in your diet</li>
-                <li>Limit processed foods and added sugars</li>
-                <li>Eat smaller, more frequent meals if needed</li>
-                <li>Listen to your body's hunger and fullness cues</li>
-            </ul>
-        </div>
+        <a href="features.html" class="back-button hvr-icon-back">
+            <i class="fas fa-arrow-left hvr-icon"></i> Back to Features
+        </a>
 
-        <div class="nutrition-grid">
-            <!-- Fruits and Vegetables -->
-            <div class="nutrition-card">
-                <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Fruits and Vegetables" class="nutrition-image">
-                <div class="nutrition-content">
-                    <h2 class="nutrition-title">Fruits and Vegetables</h2>
-                    <p class="nutrition-description">Rich in antioxidants and essential nutrients.</p>
-                    <ul class="nutrition-list">
-                        <li>Berries (blueberries, strawberries)</li>
-                        <li>Leafy greens (spinach, kale)</li>
-                        <li>Cruciferous vegetables (broccoli, cauliflower)</li>
-                        <li>Citrus fruits (oranges, grapefruits)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Lean Proteins -->
-            <div class="nutrition-card">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
-                     alt="Lean Proteins" class="nutrition-image">
-                <div class="nutrition-content">
-                    <h2 class="nutrition-title">Lean Proteins</h2>
-                    <p class="nutrition-description">Essential for muscle maintenance and recovery.</p>
-                    <ul class="nutrition-list">
-                        <li>Fish (salmon, tuna)</li>
-                        <li>Poultry (chicken, turkey)</li>
-                        <li>Legumes (beans, lentils)</li>
-                        <li>Eggs and dairy</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Whole Grains -->
-            <div class="nutrition-card">
-                <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Whole Grains" class="nutrition-image">
-                <div class="nutrition-content">
-                    <h2 class="nutrition-title">Whole Grains</h2>
-                    <p class="nutrition-description">Provide sustained energy and fiber.</p>
-                    <ul class="nutrition-list">
-                        <li>Brown rice</li>
-                        <li>Quinoa</li>
-                        <li>Oats</li>
-                        <li>Whole wheat bread</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Healthy Fats -->
-            <div class="nutrition-card">
-                <img src="https://images.unsplash.com/photo-1601049541282-2e712d69a5a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Healthy Fats" class="nutrition-image">
-                <div class="nutrition-content">
-                    <h2 class="nutrition-title">Healthy Fats</h2>
-                    <p class="nutrition-description">Support overall health and nutrient absorption.</p>
-                    <ul class="nutrition-list">
-                        <li>Avocados</li>
+        <div class="meal-grid">
+            <!-- Breakfast -->
+            <div class="meal-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8" 
+                     alt="Healthy Breakfast" class="meal-image">
+                <div class="meal-content">
+                    <h3 class="meal-title">Power Breakfast</h3>
+                    <p class="meal-description">Start your day with a nutrient-rich breakfast that provides sustained energy.</p>
+                    <ul class="meal-ingredients">
+                        <li>Oatmeal with berries</li>
+                        <li>Greek yogurt</li>
                         <li>Nuts and seeds</li>
-                        <li>Olive oil</li>
-                        <li>Fatty fish</li>
+                        <li>Fresh fruit</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lunch -->
+            <div class="meal-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" 
+                     alt="Healthy Lunch" class="meal-image">
+                <div class="meal-content">
+                    <h3 class="meal-title">Balanced Lunch</h3>
+                    <p class="meal-description">A colorful and nutritious lunch to keep you energized throughout the day.</p>
+                    <ul class="meal-ingredients">
+                        <li>Quinoa salad</li>
+                        <li>Grilled chicken or tofu</li>
+                        <li>Mixed vegetables</li>
+                        <li>Olive oil dressing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Dinner -->
+            <div class="meal-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288" 
+                     alt="Healthy Dinner" class="meal-image">
+                <div class="meal-content">
+                    <h3 class="meal-title">Light Dinner</h3>
+                    <p class="meal-description">A light and satisfying dinner that's easy to digest.</p>
+                    <ul class="meal-ingredients">
+                        <li>Grilled fish</li>
+                        <li>Steamed vegetables</li>
+                        <li>Brown rice</li>
+                        <li>Herb seasoning</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="meal-plan">
-            <h2>Sample Meal Plan</h2>
-            <ul>
-                <li><strong>Breakfast:</strong> Oatmeal with berries and nuts</li>
-                <li><strong>Mid-morning snack:</strong> Greek yogurt with honey</li>
-                <li><strong>Lunch:</strong> Grilled chicken salad with avocado</li>
-                <li><strong>Afternoon snack:</strong> Mixed nuts and dried fruit</li>
-                <li><strong>Dinner:</strong> Baked salmon with quinoa and vegetables</li>
-                <li><strong>Evening snack:</strong> Fresh fruit or herbal tea</li>
-            </ul>
+            <h2>Sample Daily Schedule</h2>
+            <div class="meal-schedule">
+                <div class="schedule-item">
+                    <h3>7:30 AM</h3>
+                    <p>Breakfast</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>10:30 AM</h3>
+                    <p>Morning Snack</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>1:00 PM</h3>
+                    <p>Lunch</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>4:00 PM</h3>
+                    <p>Evening Snack</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>7:00 PM</h3>
+                    <p>Dinner</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="nutrition-tips">
+            <h2>Nutrition Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card" data-aos="fade-up">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Eat the Rainbow</h3>
+                    <p>Include colorful fruits and vegetables in your diet for a variety of nutrients.</p>
+                </div>
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-glass-water"></i>
+                    <h3>Stay Hydrated</h3>
+                    <p>Drink plenty of water throughout the day to maintain good health.</p>
+                </div>
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-clock"></i>
+                    <h3>Regular Meals</h3>
+                    <p>Eat at regular intervals to maintain stable blood sugar levels.</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@breastcancerawareness.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 VIT Hope Ribbon. All Rights Reserved.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Add animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.nutrition-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            });
-
-            cards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'all 0.5s ease-out';
-                observer.observe(card);
-            });
+        AOS.init({
+            duration: 1000,
+            once: true
         });
     </script>
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
 </body>
 </html> 

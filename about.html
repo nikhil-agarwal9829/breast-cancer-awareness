@@ -3,84 +3,336 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Breast Cancer Awareness - About</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>VIT Hope Ribbon - About Us</title>
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/chat.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
   <style>
-    /* Additional styling specific to the About page */
+    /* Base styles from index.html */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+
+    .navbar {
+      background-color: #f8f0ff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ff69b4;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .nav-links li a:hover {
+      color: #ff69b4;
+      transform: translateY(-2px);
+    }
+
+    .nav-links li a.active {
+      color: #ff69b4;
+      font-weight: 700;
+    }
+
+    /* Hero Section Styles */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      color: white;
+      padding: 0 2rem;
+      margin-top: 60px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      padding: 2rem;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      display: block;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+      line-height: 1.6;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    .learn-more-btn {
+      display: inline-block;
+      padding: 1.2rem 3rem;
+      font-size: 1.2rem;
+      color: white;
+      background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out forwards;
+      animation-delay: 1s;
+    }
+
+    .learn-more-btn:hover {
+      background: linear-gradient(45deg, #ff8dc7, #ff69b4);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+      }
+    }
+
+    /* Update info-section padding since we moved the title to hero */
+    .info-section {
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    .info-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #333;
+      animation: fadeInDown 1s ease;
+    }
+
     .about-content {
       max-width: 1000px;
       margin: 40px auto;
       text-align: justify;
       font-size: 1.1rem;
-      line-height: 1.6;
+      line-height: 1.8;
+      color: #666;
+      padding: 0 20px;
     }
+
     .about-content p {
       margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
     }
+
     .middle-images {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
-      margin: 40px auto;
+      gap: 30px;
+      margin: 60px auto;
+      max-width: 1200px;
+      padding: 0 20px;
     }
+
     .middle-images img {
       max-width: 80%;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
     }
+
+    .middle-images img:hover {
+      transform: translateY(-5px);
+    }
+
     .ngo-section {
-      max-width: 1200px;
-      margin: 40px auto;
-      text-align: center;
+      background: linear-gradient(135deg, #fde4f2, #e1d4fa);
+      padding: 60px 20px;
+      margin-top: 40px;
     }
+
     .ngo-section h3 {
-      margin-bottom: 20px;
-      color: #1B1833;
-      font-size: 1.8rem;
-    }
-    .ngo-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .ngo-item {
-      background: #f4f4f4;
-      padding: 15px;
-      border-radius: 8px;
-      width: 250px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .ngo-item img {
-      width: 100%;
-      border-radius: 5px;
-    }
-    .ngo-item h4 {
-      margin: 10px 0 5px;
-      color: #1B1833;
-    }
-    .ngo-item p {
-      font-size: 0.9rem;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
       color: #333;
     }
+
+    .ngo-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .ngo-item {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .ngo-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .ngo-item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .ngo-item h4 {
+      color: #ff69b4;
+      margin: 15px 0 10px;
+      font-size: 1.3rem;
+    }
+
+    .ngo-item p {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
     .video-section {
-      max-width: 800px;
-      margin: 40px auto;
+      padding: 60px 20px;
+      background: #fff;
       text-align: center;
     }
+
     .video-section h3 {
-      margin-bottom: 20px;
-      color: #1B1833;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #333;
     }
+
     .video-section iframe {
+      max-width: 800px;
       width: 100%;
       height: 450px;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .middle-images img {
+        max-width: 95%;
+      }
+
+      .ngo-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      .video-section iframe {
+        height: 350px;
+      }
     }
   </style>
 </head>
@@ -88,35 +340,49 @@
   <!-- Header with Navigation -->
   <header>
     <nav class="navbar">
-      <div class="logo">Breast Cancer Awareness</div>
-      <!-- Hamburger menu for mobile -->
+      <div class="logo">VIT Hope Ribbon</div>
       <div class="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="community.html">Community</a></li>
-        <li><a href="donate.html">Donate</a></li>
-        <li><a href="campaign.html">Start Campaign</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+        <li><a href="about.html" class="active hvr-underline-from-center">About</a></li>
+        <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+        <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+        <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+        <li><a href="DONATION.html" class="hvr-underline-from-center">Donation</a></li>
+        <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+        <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="animate__animated animate__fadeInDown">
+        <span>Hope.</span>
+        <span>Strength.</span>
+        <span>Support.</span>
+      </h1>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">
+        Join our community dedicated to breast cancer awareness, early detection, and mutual support. Together, we are stronger.
+      </p>
+      <a href="#about" class="learn-more-btn animate__animated animate__fadeInUp animate__delay-2s">Learn More</a>
+    </div>
+  </section>
+
   <!-- About Section -->
   <section id="about" class="info-section">
-    <h2>About Breast Cancer Awareness</h2>
     <div class="about-content">
-      <p>
+      <p data-aos="fade-up">
         Breast cancer awareness is vital for early detection, prevention, and effective treatment.
         Our organization is dedicated to educating the public about the importance of regular screenings,
         self-examinations, and timely diagnosis. We believe that knowledge and early intervention save lives.
       </p>
-      <p>
+      <p data-aos="fade-up" data-aos-delay="100">
         We work closely with various non-governmental organizations (NGOs) and healthcare partners to
         spread awareness, provide support, and fund research on breast cancer. Our collective efforts aim
         to empower individuals and communities to take proactive steps towards a healthier future.
@@ -125,31 +391,31 @@
 
     <!-- Middle Images -->
     <div class="middle-images">
-      <img src="images\download (1).jpeg" alt="Breast Cancer Awareness Campaign">
-      <img src="images\ngo.jpeg" alt="Community Outreach Program">
+      <img src="images/download (1).jpeg" alt="Breast Cancer Awareness Campaign" data-aos="fade-up">
+      <img src="images/ngo.jpeg" alt="Community Outreach Program" data-aos="fade-up" data-aos-delay="100">
     </div>
   </section>
 
   <!-- NGOs Section -->
   <section class="ngo-section">
-    <h3>Our Partner NGOs</h3>
+    <h3 data-aos="fade-down">Our Partner NGOs</h3>
     <div class="ngo-list">
-      <div class="ngo-item">
+      <div class="ngo-item" data-aos="fade-up">
         <img src="images/one.png" alt="NGO One">
         <h4>NGO One</h4>
         <p>Committed to providing support and resources to breast cancer patients.</p>
       </div>
-      <div class="ngo-item">
+      <div class="ngo-item" data-aos="fade-up" data-aos-delay="100">
         <img src="images/hope.jpeg" alt="Hope Foundation">
         <h4>Hope Foundation</h4>
         <p>Dedicated to raising awareness and funding research in breast cancer.</p>
       </div>
-      <div class="ngo-item">
+      <div class="ngo-item" data-aos="fade-up" data-aos-delay="200">
         <img src="images/life.jpeg" alt="LifeCare Initiative">
         <h4>LifeCare Initiative</h4>
         <p>Works on community outreach programs for early detection and support.</p>
       </div>
-      <div class="ngo-item">
+      <div class="ngo-item" data-aos="fade-up" data-aos-delay="300">
         <img src="images/woman.png" alt="Women's Health Trust">
         <h4>Women's Health Trust</h4>
         <p>Advocates for women's health and provides critical services and education.</p>
@@ -158,18 +424,29 @@
   </section>
 
   <!-- Video Section -->
-<section class="video-section">
-  <h3>Breast Cancer Awareness Video</h3>
-  <iframe src="https://www.youtube.com/embed/sEz-EENxCE4?start=19" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-  </iframe>
-</section>
+  <section class="video-section">
+    <h3 data-aos="fade-down">Breast Cancer Awareness Video</h3>
+    <div data-aos="zoom-in">
+      <iframe src="https://www.youtube.com/embed/sEz-EENxCE4?start=19" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+      </iframe>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Breast Cancer Awareness. All rights reserved.</p>
+    <p>&copy; 2024 VIT Hope Ribbon - Supporting Breast Cancer Awareness. All Rights Reserved.</p>
   </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
   <script src="js/main.js"></script>
   <script src="js/chat.js"></script>
 </body>

@@ -3,384 +3,773 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community - Breast Cancer Awareness</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Community - VIT Hope Ribbon</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/chat.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
     <style>
-        .community-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        /* Base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
         }
 
+        /* Navbar Styles */
+        .navbar {
+            background-color: #f8f0ff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff69b4;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links li a:hover {
+            color: #ff69b4;
+            transform: translateY(-2px);
+        }
+
+        .nav-links li a.active {
+            color: #ff69b4;
+            font-weight: 700;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #333;
+            transition: all 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #f8f0ff;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+
+        /* Hero Section Styles */
         .community-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 40vh;
+            height: 60vh;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
-            margin-bottom: 3rem;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1573497019418-b400bb3ab074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin-top: 70px;
         }
 
-        .community-grid {
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Support Groups Section */
+        .support-groups {
+            padding: 4rem 2rem;
+            background: #f8f0ff;
+        }
+
+        .groups-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .main-content {
+        .group-card {
             background: white;
             border-radius: 15px;
             padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .sidebar {
-            display: flex;
-            flex-direction: column;
+        .group-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .group-card:nth-child(1)::before {
+            background-image: url('https://images.unsplash.com/photo-1573497019418-b400bb3ab074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .group-card:nth-child(2)::before {
+            background-image: url('https://images.unsplash.com/photo-1576089172869-4f5f6f315620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .group-card:nth-child(3)::before {
+            background-image: url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .group-card:hover::before {
+            opacity: 0.2;
+        }
+
+        .group-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .group-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Success Stories Carousel */
+        .success-stories {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 3rem 0;
+        }
+
+        .story-slide {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .story-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+            border: 3px solid #ff69b4;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Discussion Forums */
+        .forums {
+            padding: 4rem 2rem;
+            background: #fafafa;
+        }
+
+        .forum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .community-card {
+        .forum-card {
             background: white;
             border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .post-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
+        .forum-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+            z-index: 0;
         }
 
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 1rem;
+        .forum-card:nth-child(1)::before {
+            background-image: url('https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2091&q=80');
         }
 
-        .post-info {
-            flex-grow: 1;
+        .forum-card:nth-child(2)::before {
+            background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
         }
 
-        .post-author {
-            font-weight: bold;
-            color: #2c3e50;
+        .forum-card:nth-child(3)::before {
+            background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
         }
 
-        .post-date {
-            color: #666;
-            font-size: 0.9rem;
+        .forum-card:hover::before {
+            opacity: 0.2;
         }
 
-        .post-content {
-            color: #333;
-            line-height: 1.6;
-            margin-bottom: 1rem;
+        .forum-card > * {
+            position: relative;
+            z-index: 1;
         }
 
-        .post-actions {
-            display: flex;
-            gap: 1rem;
-            color: #666;
+        /* Community Events */
+        .events {
+            padding: 4rem 2rem;
+            background: linear-gradient(rgba(255, 245, 248, 0.95), rgba(255, 245, 248, 0.95)),
+                        url('https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        .post-actions button {
-            background: none;
-            border: none;
-            color: #666;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .post-actions button:hover {
-            color: #e91e63;
-        }
-
-        .create-post {
-            background: #e91e63;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease;
-            margin-bottom: 2rem;
-        }
-
-        .create-post:hover {
-            background: #d81557;
-        }
-
-        .community-stats {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .stat-icon {
-            width: 40px;
-            height: 40px;
-            background: #e91e63;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin-right: 1rem;
-        }
-
-        .stat-info {
-            flex-grow: 1;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .stat-value {
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .upcoming-events {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        .event-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
         }
 
         .event-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid #eee;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .event-item:last-child {
-            border-bottom: none;
+        .event-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+            z-index: 0;
         }
 
-        .event-date {
-            color: #e91e63;
-            font-weight: bold;
+        .event-item:nth-child(1)::before {
+            background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80');
         }
 
-        .event-title {
-            color: #2c3e50;
-            margin: 0.5rem 0;
+        .event-item:nth-child(2)::before {
+            background-image: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
         }
 
-        .event-description {
+        .event-item:hover::before {
+            opacity: 0.2;
+        }
+
+        .event-item > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Resource Sharing */
+        .resources {
+            padding: 4rem 2rem;
+            background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)),
+                        url('https://images.unsplash.com/photo-1586473219010-2ffc57b0d282?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .resource-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .resource-card:nth-child(1)::before {
+            background-image: url('https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .resource-card:nth-child(2)::before {
+            background-image: url('https://images.unsplash.com/photo-1593697821252-0c9137d9fc45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .resource-card:nth-child(3)::before {
+            background-image: url('https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .resource-card:hover::before {
+            opacity: 0.2;
+        }
+
+        .resource-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .resource-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Community Guidelines */
+        .guidelines {
+            padding: 4rem 2rem;
+            background: #f0f8ff;
+        }
+
+        .guideline-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guideline-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Buttons and Common Elements */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(45deg, #ff69b4, #c77dff);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #c77dff, #ff69b4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(199, 125, 255, 0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
             color: #666;
-            font-size: 0.9rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .community-grid {
-                grid-template-columns: 1fr;
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
-        }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .groups-grid,
+            .forum-grid,
+            .resource-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-brand">Breast Cancer Awareness</div>
+        <div class="logo">VIT Hope Ribbon</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="community.html" class="active">Community</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="campaign.html">Start Campaign</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+            <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+            <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+            <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+            <li><a href="community.html" class="active hvr-underline-from-center">Community</a></li>
+            <li><a href="DONATION.html" class="hvr-underline-from-center">Donation</a></li>
+            <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+            <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
         </ul>
     </nav>
 
-    <div class="community-hero">
+    <!-- Hero Section -->
+    <section class="community-hero">
         <div class="hero-content">
-            <h1 class="animate__animated animate__fadeInDown">Community Support</h1>
-            <p class="animate__animated animate__fadeInUp">Connect, share, and find strength in our supportive community</p>
+            <h1 class="animate__animated animate__fadeInDown">Join Our Community</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Connect, share, and find strength in our supportive network of survivors, caregivers, and allies.</p>
+            <a href="#support-groups" class="btn hvr-pulse-grow animate__animated animate__fadeInUp animate__delay-2s">Find Your Group</a>
         </div>
-    </div>
+    </section>
 
-    <div class="community-container">
-        <div class="community-grid">
-            <div class="main-content">
-                <button class="create-post">
-                    <i class="fas fa-plus"></i> Create New Post
-                </button>
+    <!-- Support Groups Section -->
+    <section id="support-groups" class="support-groups">
+        <div class="section-title" data-aos="fade-down">
+            <h2>Support Groups</h2>
+            <p>Find your community within our specialized support groups</p>
+        </div>
+        <div class="groups-grid">
+            <div class="group-card" data-aos="fade-up">
+                <i class="fas fa-users fa-3x" style="color: #ff69b4;"></i>
+                <h3>Survivors Circle</h3>
+                <p>Connect with fellow survivors, share your journey, and inspire others.</p>
+                <a href="#" class="btn hvr-forward">Join Group</a>
+            </div>
+            <div class="group-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-heart fa-3x" style="color: #ff69b4;"></i>
+                <h3>Caregivers Support</h3>
+                <p>A space for family and friends to share experiences and find guidance.</p>
+                <a href="#" class="btn hvr-forward">Join Group</a>
+            </div>
+            <div class="group-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-hand-holding-heart fa-3x" style="color: #ff69b4;"></i>
+                <h3>Newly Diagnosed</h3>
+                <p>Get support and information during your initial journey.</p>
+                <a href="#" class="btn hvr-forward">Join Group</a>
+            </div>
+        </div>
+    </section>
 
-                <!-- Sample Posts -->
-                <div class="community-card">
-                    <div class="post-header">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                             alt="User Avatar" class="avatar">
-                        <div class="post-info">
-                            <div class="post-author">Sarah Johnson</div>
-                            <div class="post-date">2 hours ago</div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        Just completed my first round of chemotherapy. Feeling tired but grateful for all the support from this community. Any tips for managing fatigue?
-                    </div>
-                    <div class="post-actions">
-                        <button><i class="far fa-heart"></i> Like</button>
-                        <button><i class="far fa-comment"></i> Comment</button>
-                        <button><i class="far fa-share-square"></i> Share</button>
+    <!-- Success Stories Carousel -->
+    <section class="success-stories">
+        <div class="section-title" data-aos="fade-down">
+            <h2>Success Stories</h2>
+            <p>Inspiring journeys of hope, courage, and triumph</p>
+        </div>
+        <div class="swiper" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="story-slide">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sarah's Story" class="story-image">
+                        <h3>Sarah's Journey</h3>
+                        <p>"Finding this community changed everything. The support I received made all the difference."</p>
                     </div>
                 </div>
-
-                <div class="community-card">
-                    <div class="post-header">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                             alt="User Avatar" class="avatar">
-                        <div class="post-info">
-                            <div class="post-author">Michael Chen</div>
-                            <div class="post-date">5 hours ago</div>
-                        </div>
+                <div class="swiper-slide">
+                    <div class="story-slide">
+                        <img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="Maria's Story" class="story-image">
+                        <h3>Maria's Victory</h3>
+                        <p>"Five years cancer-free and counting. Never give up hope!"</p>
                     </div>
-                    <div class="post-content">
-                        Sharing my experience with radiation therapy. The team at the hospital was amazing, and these tips from the community really helped prepare me for what to expect.
-                    </div>
-                    <div class="post-actions">
-                        <button><i class="far fa-heart"></i> Like</button>
-                        <button><i class="far fa-comment"></i> Comment</button>
-                        <button><i class="far fa-share-square"></i> Share</button>
+                </div>
+                <div class="swiper-slide">
+                    <div class="story-slide">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="Emily's Story" class="story-image">
+                        <h3>Emily's Strength</h3>
+                        <p>"The community here helped me find strength I didn't know I had."</p>
                     </div>
                 </div>
             </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
 
-            <div class="sidebar">
-                <div class="community-stats">
-                    <h2>Community Statistics</h2>
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="stat-info">
-                            <div class="stat-value">1,234</div>
-                            <div class="stat-label">Active Members</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <div class="stat-info">
-                            <div class="stat-value">5,678</div>
-                            <div class="stat-label">Total Posts</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <div class="stat-info">
-                            <div class="stat-value">89</div>
-                            <div class="stat-label">Events This Month</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="upcoming-events">
-                    <h2>Upcoming Events</h2>
-                    <div class="event-item">
-                        <div class="event-date">March 15, 2024</div>
-                        <div class="event-title">Support Group Meeting</div>
-                        <div class="event-description">Join us for our monthly support group meeting. Share experiences and find strength in community.</div>
-                    </div>
-                    <div class="event-item">
-                        <div class="event-date">March 20, 2024</div>
-                        <div class="event-title">Yoga for Recovery</div>
-                        <div class="event-description">Gentle yoga session designed specifically for breast cancer patients and survivors.</div>
-                    </div>
-                    <div class="event-item">
-                        <div class="event-date">March 25, 2024</div>
-                        <div class="event-title">Nutrition Workshop</div>
-                        <div class="event-description">Learn about healthy eating habits and meal planning during treatment.</div>
-                    </div>
-                </div>
+    <!-- Discussion Forums -->
+    <section class="forums">
+        <div class="section-title" data-aos="fade-down">
+            <h2>Discussion Forums</h2>
+            <p>Join the conversation in our topic-specific forums</p>
+        </div>
+        <div class="forum-grid">
+            <div class="forum-card" data-aos="fade-up">
+                <h3>Treatment Options</h3>
+                <p>Discuss various treatment approaches and experiences</p>
+                <span class="badge">125 topics</span>
+                <a href="#" class="btn hvr-forward">View Forum</a>
             </div>
+            <div class="forum-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Wellness & Self-Care</h3>
+                <p>Share tips and advice for maintaining physical and mental health</p>
+                <span class="badge">98 topics</span>
+                <a href="#" class="btn hvr-forward">View Forum</a>
+            </div>
+            <div class="forum-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Research & News</h3>
+                <p>Stay updated with the latest breast cancer research and news</p>
+                <span class="badge">156 topics</span>
+                <a href="#" class="btn hvr-forward">View Forum</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Events -->
+    <section class="events">
+        <div class="section-title" data-aos="fade-down">
+            <h2>Upcoming Events</h2>
+            <p>Join us for these community gatherings and activities</p>
+        </div>
+        <div class="event-timeline">
+            <div class="event-item" data-aos="fade-up">
+                <h3>Virtual Support Group Meeting</h3>
+                <p class="event-date">May 15, 2024 - 7:00 PM</p>
+                <p>Monthly online gathering for sharing and support</p>
+                <a href="#" class="btn hvr-forward">Register</a>
+            </div>
+            <div class="event-item" data-aos="fade-up" data-aos-delay="100">
+                <h3>Wellness Workshop</h3>
+                <p class="event-date">May 22, 2024 - 2:00 PM</p>
+                <p>Learn about nutrition and exercise during treatment</p>
+                <a href="#" class="btn hvr-forward">Register</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resource Sharing -->
+    <section class="resources">
+        <div class="section-title" data-aos="fade-down">
+            <h2>Community Resources</h2>
+            <p>Helpful materials shared by our community members</p>
+        </div>
+        <div class="resource-grid">
+            <div class="resource-card" data-aos="fade-up">
+                <i class="fas fa-book fa-3x" style="color: #ff69b4;"></i>
+                <h3>Treatment Guide</h3>
+                <p>Comprehensive guide to treatment options</p>
+                <a href="#" class="btn hvr-forward">Download</a>
+            </div>
+            <div class="resource-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-video fa-3x" style="color: #ff69b4;"></i>
+                <h3>Wellness Videos</h3>
+                <p>Exercise and meditation tutorials</p>
+                <a href="#" class="btn hvr-forward">Watch</a>
+            </div>
+            <div class="resource-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-file-alt fa-3x" style="color: #ff69b4;"></i>
+                <h3>Survivor Stories</h3>
+                <p>Collection of inspiring testimonials</p>
+                <a href="#" class="btn hvr-forward">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Guidelines -->
+    <section class="guidelines">
+        <div class="section-title" data-aos="fade-down">
+            <h2>Community Guidelines</h2>
+            <p>Help us maintain a safe and supportive environment</p>
+        </div>
+        <div class="guideline-container">
+            <div class="guideline-item" data-aos="fade-up">
+                <h3><i class="fas fa-heart"></i> Be Supportive</h3>
+                <p>Offer encouragement and understanding to fellow community members.</p>
+            </div>
+            <div class="guideline-item" data-aos="fade-up" data-aos-delay="100">
+                <h3><i class="fas fa-user-shield"></i> Respect Privacy</h3>
+                <p>Keep personal information confidential and respect others' privacy.</p>
+            </div>
+            <div class="guideline-item" data-aos="fade-up" data-aos-delay="200">
+                <h3><i class="fas fa-comments"></i> Communicate Respectfully</h3>
+                <p>Use kind and considerate language in all interactions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Chat Button -->
+    <button id="chat-toggle" class="chat-toggle hvr-buzz-out">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Chat Container -->
+    <div id="chat-container" class="chat-container">
+        <div class="chat-header">
+            <h3>Community Chat</h3>
+            <button id="close-chat" class="close-chat">&times;</button>
+        </div>
+        <div id="message-display" class="message-display">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="input-area">
+            <textarea id="message-input" placeholder="Type your message..."></textarea>
+            <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@breastcancerawareness.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 VIT Hope Ribbon. All Rights Reserved.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="js/chat.js"></script>
     <script>
-        // Add animation on scroll
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // Mobile Navigation Toggle
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.community-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const navLinksItems = document.querySelectorAll('.nav-links a');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            navLinksItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
                 });
             });
 
-            cards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'all 0.5s ease-out';
-                observer.observe(card);
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
             });
         });
     </script>
-    <script src="js/main.js"></script>
-    <script src="js/chat.js"></script>
 </body>
 </html> 

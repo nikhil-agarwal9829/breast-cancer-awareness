@@ -3,35 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate - Support Our Cause</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Donate - VIT Hope Ribbon</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/chat.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
     <style>
-        .donation-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        /* Navbar Styles */
+        .navbar {
+            background-color: #f8f0ff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff69b4;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-links li a:hover {
+            color: #ff69b4;
+            transform: translateY(-2px);
+        }
+
+        .nav-links li a.active {
+            color: #ff69b4;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                        url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');
-            background-size: cover;
-            background-position: center;
             height: 60vh;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
-            margin-bottom: 3rem;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin-top: 70px;
         }
 
         .hero-content {
-            animation: fadeInUp 1s ease-out;
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Donation Grid */
+        .donation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
         .donation-grid {
@@ -43,11 +103,27 @@
 
         .donation-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            animation: fadeIn 0.5s ease-out;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)),
+                        url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
         }
 
         .donation-card:hover {
@@ -55,50 +131,61 @@
         }
 
         .donation-amount {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            color: #2c3e50;
+            color: #ff69b4;
             margin: 1rem 0;
+            position: relative;
+            z-index: 1;
         }
 
         .donate-button {
-            background: #2ecc71;
+            background: linear-gradient(45deg, #ff69b4, #c77dff);
             color: white;
-            padding: 1rem 2rem;
             border: none;
-            border-radius: 5px;
+            padding: 1rem 2rem;
+            border-radius: 25px;
             cursor: pointer;
-            transition: background 0.3s ease;
-            width: 100%;
             font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
         }
 
         .donate-button:hover {
-            background: #27ae60;
+            background: linear-gradient(45deg, #c77dff, #ff69b4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(199, 125, 255, 0.5);
         }
 
+        /* Progress Section */
         .progress-section {
-            background: #f8f9fa;
+            background: #f8f0ff;
             padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem 0;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
         }
 
         .progress-bar {
-            width: 100%;
             height: 20px;
             background: #e9ecef;
             border-radius: 10px;
             overflow: hidden;
+            margin: 1rem 0;
         }
 
         .progress {
-            width: 75%;
             height: 100%;
-            background: #2ecc71;
+            background: linear-gradient(45deg, #ff69b4, #c77dff);
+            width: 75%;
             transition: width 1s ease-in-out;
         }
 
+        /* Impact Section */
         .impact-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -109,17 +196,24 @@
         .impact-card {
             text-align: center;
             padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: #f8f0ff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
         }
 
         .impact-number {
-            font-size: 2.5rem;
-            color: #2ecc71;
+            font-size: 3rem;
+            color: #ff69b4;
             font-weight: bold;
+            margin-bottom: 0.5rem;
         }
 
+        /* Testimonials */
         .testimonials {
             margin: 3rem 0;
         }
@@ -127,9 +221,26 @@
         .testimonial-card {
             background: white;
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 15px;
             margin: 1rem 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)),
+                        url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
         }
 
         .testimonial-image {
@@ -137,52 +248,52 @@
             height: 80px;
             border-radius: 50%;
             margin-bottom: 1rem;
+            border: 3px solid #ff69b4;
+            position: relative;
+            z-index: 1;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
+            .donation-card {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-brand">Your Logo</div>
+        <div class="logo">VIT Hope Ribbon</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="donate.html" class="active">Donate</a></li>
-            <li><a href="campaign.html">Start Campaign</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+            <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+            <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+            <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+            <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+            <li><a href="DONATION.html" class="active hvr-underline-from-center">Donation</a></li>
+            <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+            <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
         </ul>
     </nav>
 
     <div class="hero-section">
         <div class="hero-content">
             <h1 class="animate__animated animate__fadeInDown">Make a Difference Today</h1>
-            <p class="animate__animated animate__fadeInUp">Your donation can help us create positive change in the world</p>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Your donation can help us create positive change in the fight against breast cancer</p>
         </div>
     </div>
 
     <div class="donation-container">
-        <div class="progress-section">
+        <div class="progress-section" data-aos="fade-up">
             <h2>Campaign Progress</h2>
             <div class="progress-bar">
                 <div class="progress"></div>
@@ -191,49 +302,49 @@
         </div>
 
         <div class="donation-grid">
-            <div class="donation-card">
+            <div class="donation-card" data-aos="fade-up">
                 <h3>Basic Support</h3>
                 <div class="donation-amount">$25</div>
                 <p>Help us make a small but meaningful impact</p>
-                <button class="donate-button">Donate Now</button>
+                <button class="donate-button hvr-pulse-grow">Donate Now</button>
             </div>
-            <div class="donation-card">
+            <div class="donation-card" data-aos="fade-up" data-aos-delay="100">
                 <h3>Regular Supporter</h3>
                 <div class="donation-amount">$50</div>
                 <p>Join our community of regular supporters</p>
-                <button class="donate-button">Donate Now</button>
+                <button class="donate-button hvr-pulse-grow">Donate Now</button>
             </div>
-            <div class="donation-card">
+            <div class="donation-card" data-aos="fade-up" data-aos-delay="200">
                 <h3>Major Impact</h3>
                 <div class="donation-amount">$100</div>
                 <p>Make a significant difference in our cause</p>
-                <button class="donate-button">Donate Now</button>
+                <button class="donate-button hvr-pulse-grow">Donate Now</button>
             </div>
         </div>
 
         <div class="impact-section">
-            <div class="impact-card">
+            <div class="impact-card" data-aos="fade-up">
                 <div class="impact-number">1,234</div>
                 <p>Lives Impacted</p>
             </div>
-            <div class="impact-card">
+            <div class="impact-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="impact-number">$37,500</div>
                 <p>Raised So Far</p>
             </div>
-            <div class="impact-card">
+            <div class="impact-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="impact-number">150+</div>
                 <p>Supporters</p>
             </div>
         </div>
 
         <div class="testimonials">
-            <h2>What Our Supporters Say</h2>
-            <div class="testimonial-card">
+            <h2 class="text-center" data-aos="fade-down">What Our Supporters Say</h2>
+            <div class="testimonial-card" data-aos="fade-up">
                 <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Testimonial" class="testimonial-image">
                 <p>"I'm proud to support this cause. The impact they're making is incredible!"</p>
                 <p><strong>- Sarah Johnson</strong></p>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
                 <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Testimonial" class="testimonial-image">
                 <p>"The transparency and dedication of this organization is inspiring."</p>
                 <p><strong>- Michael Chen</strong></p>
@@ -241,51 +352,67 @@
         </div>
     </div>
 
+    <!-- Live Chat Button -->
+    <button id="chat-toggle" class="chat-toggle hvr-buzz-out">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Chat Container -->
+    <div id="chat-container" class="chat-container">
+        <div class="chat-header">
+            <h3>Donation Support</h3>
+            <button id="close-chat" class="close-chat">&times;</button>
+        </div>
+        <div id="message-display" class="message-display">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="input-area">
+            <textarea id="message-input" placeholder="Ask about donations..."></textarea>
+            <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@yourorganization.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Your Organization. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 VIT Hope Ribbon. All Rights Reserved.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="js/chat.js"></script>
     <script>
-        // Add animation on scroll
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
+        // Mobile Navigation Toggle
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.donation-card, .impact-card, .testimonial-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const navLinksItems = document.querySelectorAll('.nav-links a');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            navLinksItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
                 });
             });
 
-            cards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'all 0.5s ease-out';
-                observer.observe(card);
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
             });
         });
     </script>
-    <script src="js/main.js"></script>
-    <script src="js/chat.js"></script>
 </body>
 </html> 

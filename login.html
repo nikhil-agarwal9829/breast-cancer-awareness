@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Breast Cancer Awareness</title>
+    <title>Login - VIT Hope Ribbon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         * {
             margin: 0;
@@ -12,13 +14,59 @@
             font-family: Arial, sans-serif;
         }
 
+        /* Animated Gradient Background - REMOVED */
+        /* @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        } */
+
         body {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #ff69b4, #9370db);
+            /* Removed gradient background */
+            /* background: linear-gradient(-45deg, #ff69b4, #e876c8, #be93e4, #9370db);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite; */
             padding: 20px;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        /* Slideshow Container - REMOVED */
+        /* #bg-slideshow { ... } */
+
+        /* Slideshow Overlay - REMOVED */
+        /* #bg-slideshow::before { ... } */
+
+        /* Individual Slides - REMOVED */
+        /* .slide { ... } */
+        /* .slide.active { ... } */
+
+         /* Video Background CSS */
+        #bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2; /* Behind overlay and content */
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover;
+        }
+
+        /* Video Overlay CSS */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay */
+            z-index: -1; /* Between video and content */
         }
 
         .container {
@@ -34,11 +82,15 @@
         .form-section {
             flex: 1;
             padding: 40px;
+            display: flex; /* Center form vertically */
+            flex-direction: column;
+            justify-content: center;
         }
 
         .info-section {
             flex: 1;
-            background: linear-gradient(135deg, #ff69b4, #9370db);
+            /* Use a slightly different gradient for contrast */
+            background: linear-gradient(135deg, #a970db, #ff69b4);
             padding: 40px;
             color: white;
             display: flex;
@@ -48,10 +100,18 @@
             text-align: center;
         }
 
+        /* Ribbon Icon Styling */
+        .ribbon-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
         h2 {
             color: #333;
             margin-bottom: 20px;
             font-size: 24px;
+            text-align: center;
         }
 
         .input-group {
@@ -109,23 +169,36 @@
 
         .info-section h2 {
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Adjusted margin */
+            font-size: 26px; /* Slightly larger */
+            font-weight: bold;
         }
 
         .info-section p {
-            margin-bottom: 30px;
+            margin-bottom: 25px; /* Adjusted margin */
             font-size: 16px;
             line-height: 1.6;
+            max-width: 80%; /* Prevent text from being too wide */
         }
 
         .info-section button {
-            background: transparent;
-            border: 2px solid white;
+            background: white; /* Make button stand out */
+            color: #ff69b4; /* Pink text */
+            border: none; /* Remove border */
             margin-top: 20px;
+            padding: 10px 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .info-section button:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent */
+            color: #e876c8;
+        }
+
+        /* Added for sign-up form specific elements if needed */
+        #signUpForm .input-group {
+            margin-bottom: 15px; /* Adjust spacing for sign up */
         }
 
         @media (max-width: 768px) {
@@ -140,8 +213,19 @@
     </style>
 </head>
 <body>
+    <!-- Background Video -->
+    <video autoplay muted playsinline id="bg-video">
+        <!-- Source will be set by JavaScript -->
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="video-overlay"></div> <!-- Overlay Div -->
+
+    <!-- REMOVED Slideshow Container -->
+    <!-- <div id="bg-slideshow"></div> -->
+
     <div class="container">
         <div class="form-section">
+            <!-- Content will be dynamically switched by JS -->
             <h2>Sign In</h2>
             <form id="loginForm">
                 <div class="input-group">
@@ -163,54 +247,202 @@
                 <button type="submit">Login</button>
             </form>
             <div class="switch-form">
-                <p>Don't have an account? <a href="#" id="showSignUp">Sign Up</a></p>
+                <p>Don\'t have an account? <a href="#" class="toggle-link">Sign Up</a></p>
             </div>
         </div>
         <div class="info-section">
-            <h2>Welcome Back!</h2>
-            <p>Sign in to access your personalized dashboard and continue your journey with us.</p>
-            <button id="toggleForm">Create Account</button>
+            <!-- Animated Ribbon Icon -->
+            <i class="fas fa-ribbon ribbon-icon animate__animated animate__pulse animate__infinite"></i>
+            <!-- Content will be dynamically switched by JS -->
+            <h2 class="animate__animated animate__fadeInDown">Join VIT Hope Ribbon</h2>
+            <p class="animate__animated animate__fadeInUp">Connect with a supportive community, access vital resources, and stand together against breast cancer. Your journey matters.</p>
+            <button class="toggle-button">Create Account</button>
         </div>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        const formSection = document.querySelector('.form-section');
+        const infoSection = document.querySelector('.info-section');
+        const toggleButtons = document.querySelectorAll('.toggle-button');
+        const toggleLinks = document.querySelectorAll('.toggle-link');
+
+        // Initial form state (Sign In)
+        const signInFormHTML = `
+            <h2 class="animate__animated animate__fadeIn">Sign In</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="radio-group">
+                    <label><input type="radio" name="userType" value="user" checked> User</label>
+                    <label><input type="radio" name="userType" value="admin"> Admin</label>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="switch-form">
+                <p>Don't have an account? <a href="#" class="toggle-link">Sign Up</a></p>
+            </div>
+        `;
+
+        // Sign Up form HTML
+        const signUpFormHTML = `
+            <h2 class="animate__animated animate__fadeIn">Create Account</h2>
+            <form id="signUpForm">
+                 <div class="input-group">
+                    <label for="newUsername">Username</label>
+                    <input type="text" id="newUsername" required>
+                </div>
+                <div class="input-group">
+                    <label for="newEmail">Email</label>
+                    <input type="email" id="newEmail" required>
+                </div>
+                <div class="input-group">
+                    <label for="newPassword">Password</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                 <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <div class="switch-form">
+                <p>Already have an account? <a href="#" class="toggle-link">Sign In</a></p>
+            </div>
+        `
+
+        // Function to handle login submission
+        function handleLogin(e) {
             e.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const userType = document.querySelector('input[name="userType"]:checked').value;
 
-            // Simple validation
             if (username && password) {
                 if (userType === 'admin' && username === 'admin' && password === 'admin123') {
                     window.location.href = 'admin-dashboard.html';
-                } else if (userType === 'user' && username === 'user1' && password === 'password1') {
-                    window.location.href = 'index.html';
+                } else if (userType === 'user') { // Simulate successful user login
+                     // Replace with actual user auth logic
+                    if (username === 'user' && password === 'pass') { // Example creds
+                         window.location.href = 'index.html';
+                    } else {
+                         alert('Invalid user credentials.');
+                    }
                 } else {
-                    alert('Invalid credentials. Please try again.');
+                    alert('Invalid credentials.');
                 }
             }
-        });
+        }
 
-        // Toggle between sign in and sign up
-        document.getElementById('toggleForm').addEventListener('click', function() {
-            const formSection = document.querySelector('.form-section');
-            const infoSection = document.querySelector('.info-section');
-            
-            if (formSection.querySelector('h2').textContent === 'Sign In') {
-                formSection.querySelector('h2').textContent = 'Sign Up';
-                infoSection.querySelector('h2').textContent = 'One of Us?';
-                infoSection.querySelector('p').textContent = 'Sign in to access your account and continue your journey.';
-                this.textContent = 'Sign In';
-                document.querySelector('.switch-form p').innerHTML = 'Already have an account? <a href="#" id="showSignIn">Sign In</a>';
-            } else {
-                formSection.querySelector('h2').textContent = 'Sign In';
-                infoSection.querySelector('h2').textContent = 'Welcome Back!';
-                infoSection.querySelector('p').textContent = 'Sign in to access your personalized dashboard and continue your journey with us.';
-                this.textContent = 'Create Account';
-                document.querySelector('.switch-form p').innerHTML = 'Don\'t have an account? <a href="#" id="showSignUp">Sign Up</a>';
+        // Function to handle sign-up submission (basic)
+        function handleSignUp(e) {
+            e.preventDefault();
+            const newUsername = document.getElementById('newUsername').value;
+            const newEmail = document.getElementById('newEmail').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
             }
-        });
+            // Add actual sign-up logic here (e.g., send to backend)
+            alert(`Sign up successful for ${newUsername}! (Simulation)`);
+            // Optionally switch back to login form
+            switchToSignIn();
+        }
+
+        // Function to switch UI to Sign In
+        function switchToSignIn() {
+            formSection.innerHTML = signInFormHTML;
+            infoSection.querySelector('h2').textContent = 'Join VIT Hope Ribbon';
+            infoSection.querySelector('p').textContent = 'Connect with a supportive community, access vital resources, and stand together against breast cancer. Your journey matters.';
+            infoSection.querySelector('.toggle-button').textContent = 'Create Account';
+            // Re-attach event listeners
+            formSection.querySelector('#loginForm').addEventListener('submit', handleLogin);
+            attachToggleListeners(); // Call here to re-attach after switching
+        }
+
+        // Function to switch UI to Sign Up
+        function switchToSignUp() {
+            formSection.innerHTML = signUpFormHTML;
+            infoSection.querySelector('h2').textContent = 'Already With Us?';
+            infoSection.querySelector('p').textContent = 'Sign in to access your personalized dashboard and reconnect with the community.';
+            infoSection.querySelector('.toggle-button').textContent = 'Sign In';
+            // Re-attach event listeners
+            formSection.querySelector('#signUpForm').addEventListener('submit', handleSignUp);
+            attachToggleListeners(); // Call here to re-attach after switching
+        }
+
+        // Function to attach listeners to toggle buttons/links
+        function attachToggleListeners() {
+             document.querySelectorAll('.toggle-button, .toggle-link').forEach(el => {
+                 // Remove existing listener to prevent duplicates by cloning and replacing
+                 const newEl = el.cloneNode(true);
+                 el.parentNode.replaceChild(newEl, el);
+
+                 newEl.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Check the title of the FORM section to decide which way to toggle
+                    if (formSection.querySelector('h2').textContent.includes('Sign In')) {
+                        switchToSignUp();
+                    } else {
+                        switchToSignIn();
+                    }
+                });
+            });
+        }
+
+        // --- Initial Form Setup ---
+        formSection.innerHTML = signInFormHTML; // Start with Sign In form
+        formSection.querySelector('#loginForm').addEventListener('submit', handleLogin); // Add initial submit listener
+        attachToggleListeners(); // Attach initial toggle listeners
+
+        // --- Background Slideshow Logic REMOVED ---
+        /* const slideshowContainer = document.getElementById('bg-slideshow');
+           ... slideshow code ...
+        */
+
+        // --- Sequential Video Background Logic ---
+        const videoPlayer = document.getElementById('bg-video');
+        // IMPORTANT: Assumes videos are in a 'vid' folder and named video1.mp4, video2.mp4, video3.mp4
+        const videoSources = [
+            'vid/video1.mp4',
+            'vid/video2.mp4',
+            'vid/video3.mp4'
+        ];
+        let currentVideoIndex = 0;
+
+        function playNextVideo() {
+            // Move to the next video index, wrapping around
+            currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+            // Set the new source
+            videoPlayer.src = videoSources[currentVideoIndex];
+            // Load and play the new video
+            videoPlayer.load();
+            videoPlayer.play().catch(error => {
+                // Autoplay might be blocked, handle appropriately (e.g., show a play button)
+                console.error("Video autoplay failed:", error);
+            });
+        }
+
+        // Add event listener for when the current video ends
+        videoPlayer.addEventListener('ended', playNextVideo);
+
+        // Set the initial video source and play
+        if (videoSources.length > 0) {
+            videoPlayer.src = videoSources[currentVideoIndex];
+            videoPlayer.play().catch(error => {
+                console.error("Initial video autoplay failed:", error);
+                // Optionally add a user interaction (like a click) to start playback
+            });
+        }
+
     </script>
 </body>
 </html>

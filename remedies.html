@@ -3,48 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Remedies - Breast Cancer Awareness</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Home Remedies - VIT Hope Ribbon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
     <style>
-        .remedies-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .remedies-hero {
+        .hero-section {
+            height: 60vh;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                        url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+                        url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd');
             background-size: cover;
             background-position: center;
-            height: 40vh;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             text-align: center;
-            margin-bottom: 3rem;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .remedies-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,105,180,0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,105,180,0.4);
         }
 
         .remedies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-bottom: 4rem;
         }
 
         .remedy-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
 
         .remedy-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .remedy-image {
@@ -59,263 +91,305 @@
 
         .remedy-title {
             font-size: 1.5rem;
-            color: #2c3e50;
+            color: #333;
             margin-bottom: 1rem;
         }
 
         .remedy-description {
             color: #666;
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
-        .remedy-list {
-            list-style-type: none;
+        .remedy-steps {
+            list-style: none;
             padding: 0;
-            margin: 1rem 0;
         }
 
-        .remedy-list li {
+        .remedy-steps li {
             margin-bottom: 0.5rem;
             padding-left: 1.5rem;
             position: relative;
         }
 
-        .remedy-list li:before {
+        .remedy-steps li:before {
             content: "•";
-            color: #e91e63;
             position: absolute;
             left: 0;
+            color: #ff69b4;
         }
 
-        .precaution-box {
-            background: #ffebee;
+        .tips-section {
+            background: linear-gradient(135deg, #fde4f2, #e1d4fa);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .tips-section h2 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .tip-card i {
+            color: #ff69b4;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .disclaimer {
+            background: #fff3f8;
             padding: 2rem;
             border-radius: 15px;
-            margin: 2rem 0;
+            margin-bottom: 4rem;
+            text-align: center;
+            border: 2px solid #ff69b4;
         }
 
-        .precaution-box h2 {
-            color: #c62828;
+        .disclaimer h3 {
+            color: #ff69b4;
             margin-bottom: 1rem;
         }
 
-        .precaution-box ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .precaution-box li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .precaution-box li:before {
-            content: "⚠";
-            position: absolute;
-            left: 0;
-        }
-
-        .self-care-tips {
-            background: #e3f2fd;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-        }
-
-        .self-care-tips h2 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .self-care-tips ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .self-care-tips li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .self-care-tips li:before {
-            content: "✓";
-            color: #2196f3;
-            position: absolute;
-            left: 0;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .remedies-container {
+                padding: 0 1rem;
+            }
+
+            .remedies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff69b4;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
             }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-brand">Breast Cancer Awareness</div>
+        <div class="logo">VIT Hope Ribbon</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+            <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+            <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+            <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+            <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+            <li><a href="DONATION.html" class="hvr-underline-from-center">Donation</a></li>
+            <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+            <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
         </ul>
     </nav>
 
-    <div class="remedies-hero">
+    <div class="hero-section">
         <div class="hero-content">
-            <h1 class="animate__animated animate__fadeInDown">Home Remedies</h1>
-            <p class="animate__animated animate__fadeInUp">Natural remedies and self-care tips for breast cancer patients</p>
+            <h1 class="animate__animated animate__fadeInDown">Natural Home Remedies</h1>
+            <p class="animate__animated animate__fadeInUp">Discover natural ways to support your health and well-being</p>
         </div>
     </div>
 
     <div class="remedies-container">
-        <div class="precaution-box">
-            <h2>Important Precautions</h2>
-            <ul>
-                <li>Always consult your healthcare provider before trying any home remedies</li>
-                <li>Be aware of potential interactions with medications</li>
-                <li>Stop using any remedy if you experience adverse effects</li>
-                <li>Keep track of any changes in your symptoms</li>
-                <li>Remember that home remedies are complementary, not alternative to medical treatment</li>
-            </ul>
-        </div>
+        <a href="features.html" class="back-button hvr-icon-back">
+            <i class="fas fa-arrow-left hvr-icon"></i> Back to Features
+        </a>
 
         <div class="remedies-grid">
+            <!-- Turmeric Remedy -->
+            <div class="remedy-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f7" 
+                     alt="Turmeric Remedy" class="remedy-image">
+                <div class="remedy-content">
+                    <h3 class="remedy-title">Turmeric Golden Milk</h3>
+                    <p class="remedy-description">A powerful anti-inflammatory drink that can help reduce inflammation and boost immunity.</p>
+                    <ul class="remedy-steps">
+                        <li>Heat 2 cups of milk of choice</li>
+                        <li>Add 1 tsp turmeric powder</li>
+                        <li>Add pinch of black pepper</li>
+                        <li>Optional: honey to taste</li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- Ginger Tea -->
-            <div class="remedy-card">
-                <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+            <div class="remedy-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9" 
                      alt="Ginger Tea" class="remedy-image">
                 <div class="remedy-content">
-                    <h2 class="remedy-title">Ginger Tea</h2>
-                    <p class="remedy-description">May help with nausea and inflammation.</p>
-                    <ul class="remedy-list">
-                        <li>Fresh ginger root</li>
-                        <li>Hot water</li>
-                        <li>Honey (optional)</li>
-                        <li>Lemon (optional)</li>
+                    <h3 class="remedy-title">Ginger Tea</h3>
+                    <p class="remedy-description">Natural remedy for nausea and digestive discomfort during treatment.</p>
+                    <ul class="remedy-steps">
+                        <li>Slice fresh ginger root</li>
+                        <li>Boil in water for 10 minutes</li>
+                        <li>Strain and add lemon</li>
+                        <li>Add honey if desired</li>
                     </ul>
-                    <p><strong>How to prepare:</strong> Steep fresh ginger in hot water for 10-15 minutes.</p>
                 </div>
             </div>
 
-            <!-- Green Tea -->
-            <div class="remedy-card">
-                <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Green Tea" class="remedy-image">
+            <!-- Chamomile Tea -->
+            <div class="remedy-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1594631252642-5c1a7fb37bdf" 
+                     alt="Chamomile Tea" class="remedy-image">
                 <div class="remedy-content">
-                    <h2 class="remedy-title">Green Tea</h2>
-                    <p class="remedy-description">Rich in antioxidants and may support immune function.</p>
-                    <ul class="remedy-list">
-                        <li>High-quality green tea leaves</li>
-                        <li>Hot water (not boiling)</li>
-                        <li>Honey (optional)</li>
+                    <h3 class="remedy-title">Chamomile Tea</h3>
+                    <p class="remedy-description">Helps with sleep and anxiety during treatment.</p>
+                    <ul class="remedy-steps">
+                        <li>Use one tea bag per cup</li>
+                        <li>Steep for 5 minutes</li>
+                        <li>Drink 30 mins before bed</li>
+                        <li>Add honey if desired</li>
                     </ul>
-                    <p><strong>How to prepare:</strong> Steep green tea in water at 175°F for 2-3 minutes.</p>
-                </div>
-            </div>
-
-            <!-- Turmeric Milk -->
-            <div class="remedy-card">
-                <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Turmeric Milk" class="remedy-image">
-                <div class="remedy-content">
-                    <h2 class="remedy-title">Turmeric Milk</h2>
-                    <p class="remedy-description">Traditional remedy with anti-inflammatory properties.</p>
-                    <ul class="remedy-list">
-                        <li>Turmeric powder</li>
-                        <li>Milk (dairy or plant-based)</li>
-                        <li>Honey (optional)</li>
-                        <li>Black pepper (for absorption)</li>
-                    </ul>
-                    <p><strong>How to prepare:</strong> Mix turmeric with warm milk and add honey to taste.</p>
-                </div>
-            </div>
-
-            <!-- Aloe Vera -->
-            <div class="remedy-card">
-                <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Aloe Vera" class="remedy-image">
-                <div class="remedy-content">
-                    <h2 class="remedy-title">Aloe Vera</h2>
-                    <p class="remedy-description">May help with skin irritation and healing.</p>
-                    <ul class="remedy-list">
-                        <li>Fresh aloe vera gel</li>
-                        <li>Clean cloth or gauze</li>
-                        <li>Cool water</li>
-                    </ul>
-                    <p><strong>How to use:</strong> Apply fresh aloe vera gel to affected areas.</p>
                 </div>
             </div>
         </div>
 
-        <div class="self-care-tips">
-            <h2>Self-Care Tips</h2>
-            <ul>
-                <li>Practice gentle massage to improve circulation</li>
-                <li>Use cold or warm compresses as needed</li>
-                <li>Stay hydrated throughout the day</li>
-                <li>Practice deep breathing exercises</li>
-                <li>Get adequate rest and sleep</li>
-                <li>Maintain a positive mindset</li>
-                <li>Stay connected with loved ones</li>
-                <li>Consider meditation or mindfulness practices</li>
-            </ul>
+        <div class="tips-section">
+            <h2>Important Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card" data-aos="fade-up">
+                    <i class="fas fa-clock"></i>
+                    <h3>Timing Matters</h3>
+                    <p>Take remedies at consistent times for best results.</p>
+                </div>
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Quality Ingredients</h3>
+                    <p>Use organic, high-quality ingredients when possible.</p>
+                </div>
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-notes-medical"></i>
+                    <h3>Consult Your Doctor</h3>
+                    <p>Always discuss natural remedies with your healthcare provider.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <h3><i class="fas fa-exclamation-triangle"></i> Important Notice</h3>
+            <p>These remedies are meant to complement, not replace, medical treatment. Always consult with your healthcare provider before starting any new remedy.</p>
         </div>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@breastcancerawareness.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 VIT Hope Ribbon. All Rights Reserved.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Add animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.remedy-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            });
-
-            cards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'all 0.5s ease-out';
-                observer.observe(card);
-            });
+        AOS.init({
+            duration: 1000,
+            once: true
         });
     </script>
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
 </body>
 </html> 

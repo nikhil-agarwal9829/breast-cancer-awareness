@@ -3,48 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine Guide - Breast Cancer Awareness</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Medicine Guide - VIT Hope Ribbon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
     <style>
-        .medicine-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .medicine-hero {
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                        url('https://images.unsplash.com/photo-1585435557343-3b092092a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+                        url('https://images.unsplash.com/photo-1631549916768-4119b2e5f926?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
             background-size: cover;
             background-position: center;
-            height: 40vh;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             text-align: center;
+            position: relative;
+            color: white;
+            padding: 0 2rem;
+            margin-top: 60px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            display: block;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
             margin-bottom: 3rem;
+            line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                padding: 0 1rem;
+            }
+        }
+
+        /* Medicine Content */
+        .medicine-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .search-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #ff69b4;
+            outline: none;
+        }
+
+        .search-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,105,180,0.3);
         }
 
         .medicine-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .medicine-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
 
         .medicine-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .medicine-image {
@@ -59,163 +174,204 @@
 
         .medicine-title {
             font-size: 1.5rem;
-            color: #2c3e50;
+            color: #333;
             margin-bottom: 1rem;
         }
 
         .medicine-description {
             color: #666;
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
-        .medicine-list {
-            list-style-type: none;
+        .medicine-info {
+            list-style: none;
             padding: 0;
-            margin: 1rem 0;
         }
 
-        .medicine-list li {
+        .medicine-info li {
             margin-bottom: 0.5rem;
             padding-left: 1.5rem;
             position: relative;
         }
 
-        .medicine-list li:before {
+        .medicine-info li:before {
             content: "•";
-            color: #e91e63;
             position: absolute;
             left: 0;
+            color: #ff69b4;
         }
 
-        .price-comparison {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-        }
-
-        .price-comparison h2 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .price-table th,
-        .price-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        .price-table th {
-            background: #e91e63;
+        .back-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff69b4, #ff8dc7);
             color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,105,180,0.3);
         }
 
-        .price-table tr:hover {
-            background: #f5f5f5;
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,105,180,0.4);
         }
 
-        .assistance-programs {
-            background: #e3f2fd;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
+        .info-section {
+            background: linear-gradient(135deg, #fde4f2, #e1d4fa);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
         }
 
-        .assistance-programs h2 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .program-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .program-list li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .program-list li:before {
-            content: "✓";
-            color: #2196f3;
-            position: absolute;
-            left: 0;
-        }
-
-        .search-box {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        .info-section h2 {
+            color: #333;
             margin-bottom: 2rem;
         }
 
-        .search-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #eee;
-            border-radius: 25px;
-            font-size: 1.1rem;
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .info-card i {
+            color: #ff69b4;
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .search-button {
-            background: #e91e63;
-            color: white;
-            border: none;
+        /* Navbar Styles */
+        .navbar {
+            background: white;
             padding: 1rem 2rem;
-            border-radius: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff69b4;
+        }
+
+        .hamburger {
+            display: none;
             cursor: pointer;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease;
         }
 
-        .search-button:hover {
-            background: #d81557;
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 5px 0;
+            transition: all 0.3s ease;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
             }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-brand">Breast Cancer Awareness</div>
+        <div class="logo">VIT Hope Ribbon</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="features.html">Features</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+            <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+            <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+            <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+            <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+            <li><a href="DONATION.html" class="hvr-underline-from-center">Donation</a></li>
+            <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+            <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
         </ul>
     </nav>
 
-    <div class="medicine-hero">
+    <div class="hero">
         <div class="hero-content">
             <h1 class="animate__animated animate__fadeInDown">Medicine Guide</h1>
-            <p class="animate__animated animate__fadeInUp">Find affordable medications and financial assistance programs</p>
+            <p class="animate__animated animate__fadeInUp">Find information about medications and affordable alternatives</p>
         </div>
     </div>
 
     <div class="medicine-container">
+        <a href="features.html" class="back-button hvr-icon-back">
+            <i class="fas fa-arrow-left hvr-icon"></i> Back to Features
+        </a>
+
         <div class="search-box">
             <input type="text" class="search-input" placeholder="Search for medications...">
             <button class="search-button">
@@ -223,146 +379,91 @@
             </button>
         </div>
 
-        <div class="price-comparison">
-            <h2>Price Comparison</h2>
-            <table class="price-table">
-                <thead>
-                    <tr>
-                        <th>Medication</th>
-                        <th>Generic Name</th>
-                        <th>Average Price</th>
-                        <th>Available Discounts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Tamoxifen</td>
-                        <td>Nolvadex</td>
-                        <td>$50-100</td>
-                        <td>Patient Assistance Program</td>
-                    </tr>
-                    <tr>
-                        <td>Anastrozole</td>
-                        <td>Arimidex</td>
-                        <td>$100-200</td>
-                        <td>Manufacturer Coupon</td>
-                    </tr>
-                    <tr>
-                        <td>Letrozole</td>
-                        <td>Femara</td>
-                        <td>$150-300</td>
-                        <td>Insurance Coverage</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="assistance-programs">
-            <h2>Financial Assistance Programs</h2>
-            <ul class="program-list">
-                <li>Patient Access Network Foundation</li>
-                <li>CancerCare Co-Payment Assistance Foundation</li>
-                <li>HealthWell Foundation</li>
-                <li>Patient Advocate Foundation</li>
-                <li>NeedyMeds</li>
-                <li>RxAssist</li>
-            </ul>
-        </div>
-
         <div class="medicine-grid">
-            <!-- Generic Medications -->
-            <div class="medicine-card">
-                <img src="https://images.unsplash.com/photo-1585435557343-3b092092a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Generic Medications" class="medicine-image">
+            <!-- Common Medications -->
+            <div class="medicine-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae" 
+                     alt="Chemotherapy Medications" class="medicine-image">
                 <div class="medicine-content">
-                    <h2 class="medicine-title">Generic Medications</h2>
-                    <p class="medicine-description">Cost-effective alternatives to brand-name drugs.</p>
-                    <ul class="medicine-list">
-                        <li>Same active ingredients</li>
-                        <li>FDA approved</li>
-                        <li>Significantly lower cost</li>
-                        <li>Available at most pharmacies</li>
+                    <h3 class="medicine-title">Chemotherapy Medications</h3>
+                    <p class="medicine-description">Common chemotherapy drugs used in breast cancer treatment.</p>
+                    <ul class="medicine-info">
+                        <li>Adriamycin (Doxorubicin)</li>
+                        <li>Cytoxan (Cyclophosphamide)</li>
+                        <li>Taxol (Paclitaxel)</li>
+                        <li>Taxotere (Docetaxel)</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Patient Assistance Programs -->
-            <div class="medicine-card">
-                <img src="https://images.unsplash.com/photo-1585435557343-3b092092a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Patient Assistance Programs" class="medicine-image">
+            <!-- Hormone Therapy -->
+            <div class="medicine-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88" 
+                     alt="Hormone Therapy" class="medicine-image">
                 <div class="medicine-content">
-                    <h2 class="medicine-title">Patient Assistance Programs</h2>
-                    <p class="medicine-description">Financial support from pharmaceutical companies.</p>
-                    <ul class="medicine-list">
-                        <li>Free or low-cost medications</li>
-                        <li>Income-based eligibility</li>
-                        <li>Application assistance available</li>
-                        <li>Multiple program options</li>
+                    <h3 class="medicine-title">Hormone Therapy</h3>
+                    <p class="medicine-description">Medications that block or lower hormone levels.</p>
+                    <ul class="medicine-info">
+                        <li>Tamoxifen</li>
+                        <li>Arimidex (Anastrozole)</li>
+                        <li>Femara (Letrozole)</li>
+                        <li>Aromasin (Exemestane)</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Pharmacy Discount Programs -->
-            <div class="medicine-card">
-                <img src="https://images.unsplash.com/photo-1585435557343-3b092092a831?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Pharmacy Discount Programs" class="medicine-image">
+            <!-- Targeted Therapy -->
+            <div class="medicine-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926" 
+                     alt="Targeted Therapy" class="medicine-image">
                 <div class="medicine-content">
-                    <h2 class="medicine-title">Pharmacy Discount Programs</h2>
-                    <p class="medicine-description">Special pricing from major pharmacy chains.</p>
-                    <ul class="medicine-list">
-                        <li>No membership required</li>
-                        <li>Immediate savings</li>
-                        <li>Wide range of medications</li>
-                        <li>Available at participating locations</li>
+                    <h3 class="medicine-title">Targeted Therapy</h3>
+                    <p class="medicine-description">Medications that target specific proteins on cancer cells.</p>
+                    <ul class="medicine-info">
+                        <li>Herceptin (Trastuzumab)</li>
+                        <li>Perjeta (Pertuzumab)</li>
+                        <li>Kadcyla (T-DM1)</li>
+                        <li>Ibrance (Palbociclib)</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>Important Information</h2>
+            <div class="info-grid">
+                <div class="info-card" data-aos="fade-up">
+                    <i class="fas fa-pills"></i>
+                    <h3>Side Effects</h3>
+                    <p>Learn about potential side effects and how to manage them effectively.</p>
+                </div>
+                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-hand-holding-medical"></i>
+                    <h3>Financial Assistance</h3>
+                    <p>Find programs that help cover medication costs.</p>
+                </div>
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Medication Schedule</h3>
+                    <p>Track your medication schedule and set reminders.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@breastcancerawareness.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Breast Cancer Awareness. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 VIT Hope Ribbon. All Rights Reserved.</p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Add animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.medicine-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            });
-
-            cards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'all 0.5s ease-out';
-                observer.observe(card);
-            });
+        AOS.init({
+            duration: 1000,
+            once: true
         });
     </script>
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
 </body>
 </html> 

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Help - VIT Hope Ribbon</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Navigation Styles */
+    .navbar {
+      background: white;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff69b4;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ff69b4;
+    }
+
+    .nav-links a.active {
+      color: #ff69b4;
+    }
+
+    /* Hero Section with Animation */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      color: white;
+      padding: 0 2rem;
+      margin-top: 60px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      padding: 2rem;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      display: block;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+      line-height: 1.6;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    .hero-button {
+      display: inline-block;
+      padding: 1.2rem 3rem;
+      font-size: 1.2rem;
+      color: white;
+      background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out forwards;
+      animation-delay: 1s;
+    }
+
+    .hero-button:hover {
+      background: linear-gradient(45deg, #ff8dc7, #ff69b4);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+      }
+
+      .hero-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Main Content Sections */
+    .section-padding {
+      padding: 4rem 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    /* Appointment Form */
+    .appointment-form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .btn {
+      background: #ff69b4;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #ff4da6;
+    }
+
+    /* Medical Resources Section */
+    .medical-resources {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #fde4f2, #e1d4fa);
+    }
+
+    .resource-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .resource-card h3 {
+      color: #ff69b4;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .resource-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .resource-card ul li {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .resource-card ul li:before {
+      content: "\f054";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: #ff69b4;
+    }
+
+    /* External Links Styling */
+    .resource-card ul li a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .resource-card ul li a:hover {
+      color: #ff69b4;
+    }
+
+    .resource-card .btn {
+      margin-top: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .medical-resources {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Doctor Profiles Section */
+    .doctors-section {
+      padding: 4rem 2rem;
+      background: #fff;
+    }
+
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .doctor-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .doctor-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .doctor-info {
+      padding: 1.5rem;
+    }
+
+    .doctor-info h3 {
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .doctor-info .specialty {
+      color: #ff69b4;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .doctor-info p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .doctor-info .credentials {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+
+    .book-btn {
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">VIT Hope Ribbon</div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+        <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+        <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+        <li><a href="medical.html" class="active hvr-underline-from-center">Medical Help</a></li>
+        <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+        <li><a href="donate.html" class="hvr-underline-from-center">Donate</a></li>
+        <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+        <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="animate__animated animate__fadeInDown">
+        <span>Medical Support</span>
+        <span>& Healthcare</span>
+      </h1>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">
+        Access professional medical guidance, resources, and support services for breast cancer patients and survivors.
+      </p>
+      <a href="#medical-resources" class="hero-button animate__animated animate__fadeInUp animate__delay-2s">
+        Explore Resources
+      </a>
+    </div>
+  </section>
+
+  <!-- After the hero section and before the appointment section -->
+  <section class="doctors-section">
+    <h2>Our Medical Specialists</h2>
+    <div class="doctors-grid">
+      <div class="doctor-card">
+        <img src="https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg" alt="Dr. Sarah Johnson" class="doctor-image">
+        <div class="doctor-info">
+          <h3>Dr. Sarah Johnson</h3>
+          <div class="specialty">Breast Cancer Specialist</div>
+          <p>20+ years experience in breast cancer treatment and surgery</p>
+          <div class="credentials">MD, FACS - Harvard Medical School</div>
+          <button class="btn book-btn" onclick="showAppointmentForm('Dr. Sarah Johnson')">Book Appointment</button>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="https://img.freepik.com/free-photo/doctor-standing-with-folder-stethoscope_1303-17818.jpg" alt="Dr. Michael Chen" class="doctor-image">
+        <div class="doctor-info">
+          <h3>Dr. Michael Chen</h3>
+          <div class="specialty">Oncology Surgeon</div>
+          <p>Specialized in minimally invasive surgical procedures</p>
+          <div class="credentials">MD, PhD - Johns Hopkins University</div>
+          <button class="btn book-btn" onclick="showAppointmentForm('Dr. Michael Chen')">Book Appointment</button>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg" alt="Dr. Emily Rodriguez" class="doctor-image">
+        <div class="doctor-info">
+          <h3>Dr. Emily Rodriguez</h3>
+          <div class="specialty">Radiation Oncologist</div>
+          <p>Expert in precision radiation therapy treatments</p>
+          <div class="credentials">MD - Stanford Medical Center</div>
+          <button class="btn book-btn" onclick="showAppointmentForm('Dr. Emily Rodriguez')">Book Appointment</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment Booking Section -->
+  <section id="appointment" class="section-padding">
+    <h2>Book an Appointment</h2>
+    <div class="appointment-form">
+      <form id="appointmentForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="appointmentType">Appointment Type</label>
+          <select id="appointmentType" name="appointmentType" required>
+            <option value="">Select Type</option>
+            <option value="consultation">Initial Consultation</option>
+            <option value="followup">Follow-up Visit</option>
+            <option value="screening">Screening/Mammogram</option>
+            <option value="treatment">Treatment Session</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="preferredDate">Preferred Date</label>
+          <input type="date" id="preferredDate" name="preferredDate" required>
+        </div>
+        <div class="form-group">
+          <label for="notes">Additional Notes</label>
+          <textarea id="notes" name="notes"></textarea>
+        </div>
+        <button type="submit" class="btn">Schedule Appointment</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Medical Resources Section -->
+  <section id="resources" class="section-padding">
+    <h2>Medical Resources</h2>
+    <div class="medical-resources">
+      <div class="resource-card">
+        <h3><i class="fas fa-stethoscope"></i> Diagnosis Guide</h3>
+        <ul>
+          <li><a href="https://www.cancer.gov/types/breast/patient/breast-screening-pdq" target="_blank">Understanding Diagnostic Tests</a></li>
+          <li><a href="https://www.breastcancer.org/screening-testing/biopsy" target="_blank">Biopsy Types and Procedures</a></li>
+          <li><a href="https://www.cancer.org/cancer/breast-cancer/understanding-a-breast-cancer-diagnosis/stages-of-breast-cancer.html" target="_blank">Staging Information</a></li>
+          <li><a href="https://www.cancer.net/navigating-cancer-care/diagnosing-cancer/questions-ask-doctor" target="_blank">Questions to Ask Your Doctor</a></li>
+          <li><a href="https://www.cancer.gov/types/breast" class="btn" target="_blank">Learn More</a></li>
+        </ul>
+      </div>
+      <div class="resource-card">
+        <h3><i class="fas fa-pills"></i> Treatment Options</h3>
+        <ul>
+          <li><a href="https://www.breastcancer.org/treatment/surgery" target="_blank">Surgery Types and Recovery</a></li>
+          <li><a href="https://www.cancer.org/cancer/breast-cancer/treatment/chemotherapy-for-breast-cancer.html" target="_blank">Chemotherapy Information</a></li>
+          <li><a href="https://www.mayoclinic.org/tests-procedures/radiation-therapy/about/pac-20384546" target="_blank">Radiation Therapy Guide</a></li>
+          <li><a href="https://www.cancer.gov/about-cancer/treatment/cam" target="_blank">Alternative Treatments</a></li>
+          <li><a href="https://www.cancer.gov/types/breast/patient/breast-treatment-pdq" class="btn" target="_blank">Explore Treatments</a></li>
+        </ul>
+      </div>
+      <div class="resource-card">
+        <h3><i class="fas fa-heart"></i> Survivorship</h3>
+        <ul>
+          <li><a href="https://www.cancer.net/survivorship/follow-care-after-cancer-treatment" target="_blank">Post-Treatment Care</a></li>
+          <li><a href="https://www.cancer.org/cancer/breast-cancer/living-as-a-breast-cancer-survivor/follow-up-care-after-breast-cancer-treatment.html" target="_blank">Follow-up Schedule</a></li>
+          <li><a href="https://www.breastcancer.org/managing-life" target="_blank">Lifestyle Recommendations</a></li>
+          <li><a href="https://www.cancer.org/support-programs-and-services.html" target="_blank">Support Group Resources</a></li>
+          <li><a href="https://www.cancer.net/survivorship" class="btn" target="_blank">View Guide</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Chat Button -->
+  <button id="chat-toggle" class="chat-toggle hvr-buzz-out">
+    <i class="fas fa-comments"></i>
+  </button>
+
+  <!-- Chat Container -->
+  <div id="chat-container" class="chat-container">
+    <div class="chat-header">
+      <h3>Medical Support Chat</h3>
+      <button id="close-chat" class="close-chat">&times;</button>
+    </div>
+    <div id="message-display" class="message-display">
+      <!-- Messages will appear here -->
+    </div>
+    <div class="input-area">
+      <textarea id="message-input" placeholder="Ask medical questions..."></textarea>
+      <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 VIT Hope Ribbon - Medical Support. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="js/chat.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    function showAppointmentForm(doctorName) {
+      document.getElementById('appointmentType').value = 'consultation';
+      document.getElementById('notes').value = `Requesting appointment with ${doctorName}`;
+      document.getElementById('appointment').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Form submission handler
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const appointmentDetails = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        type: formData.get('appointmentType'),
+        date: formData.get('preferredDate'),
+        notes: formData.get('notes')
+      };
+      
+      // Show confirmation with details
+      const confirmationMessage = `
+        Appointment Request Received!
+        
+        Details:
+        Name: ${appointmentDetails.name}
+        Email: ${appointmentDetails.email}
+        Phone: ${appointmentDetails.phone}
+        Type: ${appointmentDetails.type}
+        Date: ${appointmentDetails.date}
+        Notes: ${appointmentDetails.notes}
+
+        We will contact you shortly to confirm your appointment.
+      `;
+      
+      alert(confirmationMessage);
+      this.reset();
+    });
+  </script>
+</body>
+</html> 

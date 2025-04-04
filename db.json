@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "17437130770816594d6f969d02",
+      "username": "user1",
+      "email": "user1@example.com",
+      "password": "pass1",
+      "isAdmin": false
+    },
+    {
+      "id": "1743713077082a8ffef49b8fe",
+      "username": "user2",
+      "email": "user2@example.com",
+      "password": "$2b$10$vqiafgD83dWGOxVkozFCEOfzOUghTqWT2Tc2Bj0wNcYFsOiCsMv0a",
+      "isAdmin": false
+    },
+    {
+      "id": "1743713077083ce0a3e06c2c25",
+      "username": "admin1",
+      "email": "admin1@example.com",
+      "password": "$2b$10$8lcr8QVgiwq6ndp5r0uk5.2fHBEmmmdO4RjCSl.xvBgil2bG.Xl26",
+      "isAdmin": true
+    }
+  ]
+}
