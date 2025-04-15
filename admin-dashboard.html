@@ -289,8 +289,238 @@
                     </table>
                 </div>
             </div>
+
+            <!-- Add Appointments Section -->
+            <div class="admin-section">
+                <h2>Appointment Management</h2>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                    <button class="filter-btn" data-filter="confirmed">Confirmed</button>
+                    <button class="filter-btn" data-filter="cancelled">Cancelled</button>
+                </div>
+                <div class="appointments-grid" id="appointmentsGrid">
+                    <!-- Appointments will be loaded here -->
+                </div>
+            </div>
         </main>
     </div>
+
+    <style>
+        /* Appointment Management Styles */
+        .appointments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .appointment-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .appointment-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ff69b4;
+            padding-bottom: 5px;
+        }
+
+        .appointment-info {
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .appointment-info strong {
+            color: #333;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status.confirmed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.cancelled {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .controls {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            background: white;
+            color: #666;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .filter-btn.active {
+            background: #ff69b4;
+            color: white;
+            border-color: #ff69b4;
+        }
+
+        .btn-confirm {
+            background: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .appointments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+
+    <script>
+        // Function to format date
+        function formatDate(dateString) {
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Function to create appointment card
+        function createAppointmentCard(appointment) {
+            return `
+                <div class="appointment-card" data-status="${appointment.status}">
+                    <h3>${appointment.name}</h3>
+                    <div class="appointment-info"><strong>Doctor:</strong> ${appointment.doctor}</div>
+                    <div class="appointment-info"><strong>Date:</strong> ${formatDate(appointment.date)}</div>
+                    <div class="appointment-info"><strong>Time:</strong> ${appointment.time}</div>
+                    <div class="appointment-info"><strong>Phone:</strong> ${appointment.phone}</div>
+                    <div class="appointment-info"><strong>Email:</strong> ${appointment.email}</div>
+                    <div class="appointment-info"><strong>Notes:</strong> ${appointment.message || 'No additional notes'}</div>
+                    <div class="status ${appointment.status}">${appointment.status.toUpperCase()}</div>
+                    <div class="controls">
+                        ${appointment.status === 'pending' ? `
+                            <button class="btn btn-confirm" onclick="updateStatus('${appointment.appointmentId}', 'confirmed')">
+                                Confirm
+                            </button>
+                            <button class="btn btn-cancel" onclick="updateStatus('${appointment.appointmentId}', 'cancelled')">
+                                Cancel
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to load appointments
+        async function loadAppointments() {
+            try {
+                const response = await fetch('/api/appointments');
+                const appointments = await response.json();
+                
+                const grid = document.getElementById('appointmentsGrid');
+                grid.innerHTML = appointments
+                    .sort((a, b) => new Date(b.bookingDate) - new Date(a.bookingDate))
+                    .map(createAppointmentCard)
+                    .join('');
+            } catch (error) {
+                console.error('Error loading appointments:', error);
+            }
+        }
+
+        // Function to update appointment status
+        async function updateStatus(appointmentId, newStatus) {
+            try {
+                const response = await fetch(`/api/appointments/${appointmentId}/status`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ status: newStatus })
+                });
+
+                if (response.ok) {
+                    loadAppointments();
+                }
+            } catch (error) {
+                console.error('Error updating appointment:', error);
+            }
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter appointments
+                const filter = button.dataset.filter;
+                document.querySelectorAll('.appointment-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.status === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Load appointments when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAppointments();
+        });
+    </script>
 
     <script src="js/admin.js"></script>
 </body>

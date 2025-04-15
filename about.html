@@ -243,29 +243,58 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
     }
 
     .ngo-item:hover {
       transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
     }
 
     .ngo-item img {
       width: 100%;
+      height: 180px;
+      object-fit: contain;
       border-radius: 10px;
       margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .ngo-item:hover img {
+      transform: scale(1.05);
     }
 
     .ngo-item h4 {
       color: #ff69b4;
       margin: 15px 0 10px;
       font-size: 1.3rem;
+      transition: color 0.3s ease;
+    }
+
+    .ngo-item:hover h4 {
+      color: #ff8dc7;
     }
 
     .ngo-item p {
       color: #666;
       font-size: 1rem;
       line-height: 1.6;
+    }
+
+    .ngo-item .learn-more {
+      display: inline-block;
+      margin-top: 15px;
+      color: #ff69b4;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .ngo-item:hover .learn-more {
+      color: #ff8dc7;
     }
 
     .video-section {
@@ -334,6 +363,52 @@
         height: 350px;
       }
     }
+
+    /* Foundation Links Section */
+    .foundation-section {
+      padding: 60px 20px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .foundation-section h3 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .foundation-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .foundation-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 15px 30px;
+      background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+    }
+
+    .foundation-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+      background: linear-gradient(45deg, #ff8dc7, #ff69b4);
+    }
+
+    .foundation-btn i {
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
   </style>
 </head>
 <body>
@@ -400,26 +475,30 @@
   <section class="ngo-section">
     <h3 data-aos="fade-down">Our Partner NGOs</h3>
     <div class="ngo-list">
-      <div class="ngo-item" data-aos="fade-up">
+      <a href="https://www.onewelfarefoundation.in/" target="_blank" class="ngo-item" data-aos="fade-up">
         <img src="images/one.png" alt="NGO One">
         <h4>NGO One</h4>
         <p>Committed to providing support and resources to breast cancer patients.</p>
-      </div>
-      <div class="ngo-item" data-aos="fade-up" data-aos-delay="100">
+        <span class="learn-more">Learn More →</span>
+      </a>
+      <a href="https://www.hopefoundation.org.in/" target="_blank" class="ngo-item" data-aos="fade-up" data-aos-delay="100">
         <img src="images/hope.jpeg" alt="Hope Foundation">
         <h4>Hope Foundation</h4>
         <p>Dedicated to raising awareness and funding research in breast cancer.</p>
-      </div>
-      <div class="ngo-item" data-aos="fade-up" data-aos-delay="200">
+        <span class="learn-more">Learn More →</span>
+      </a>
+      <a href="https://lifecare.ngo/" target="_blank" class="ngo-item" data-aos="fade-up" data-aos-delay="200">
         <img src="images/life.jpeg" alt="LifeCare Initiative">
         <h4>LifeCare Initiative</h4>
         <p>Works on community outreach programs for early detection and support.</p>
-      </div>
-      <div class="ngo-item" data-aos="fade-up" data-aos-delay="300">
+        <span class="learn-more">Learn More →</span>
+      </a>
+      <a href="https://www.womenshealthtrust.org.in/" target="_blank" class="ngo-item" data-aos="fade-up" data-aos-delay="300">
         <img src="images/woman.png" alt="Women's Health Trust">
         <h4>Women's Health Trust</h4>
         <p>Advocates for women's health and provides critical services and education.</p>
-      </div>
+        <span class="learn-more">Learn More →</span>
+      </a>
     </div>
   </section>
 
@@ -431,6 +510,33 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowfullscreen>
       </iframe>
+    </div>
+  </section>
+
+  <!-- Foundation Links Section -->
+  <section class="foundation-section">
+    <h3>Support Breast Cancer Foundations</h3>
+    <div class="foundation-buttons">
+      <a href="https://www.breastcancer.org/" target="_blank" class="foundation-btn">
+        <i class="fas fa-ribbon"></i>
+        Breast Cancer.org
+      </a>
+      <a href="https://www.komen.org/" target="_blank" class="foundation-btn">
+        <i class="fas fa-heart"></i>
+        Susan G. Komen
+      </a>
+      <a href="https://www.bcrf.org/" target="_blank" class="foundation-btn">
+        <i class="fas fa-flask"></i>
+        Breast Cancer Research Foundation
+      </a>
+      <a href="https://www.nationalbreastcancer.org/" target="_blank" class="foundation-btn">
+        <i class="fas fa-hands-helping"></i>
+        National Breast Cancer Foundation
+      </a>
+      <a href="https://www.breastcancerindia.net/" target="_blank" class="foundation-btn">
+        <i class="fas fa-globe-asia"></i>
+        Breast Cancer India
+      </a>
     </div>
   </section>
 

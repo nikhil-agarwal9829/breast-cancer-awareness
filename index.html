@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VIT Hope Ribbon - Breast Cancer Awareness</title>
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/chat.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <!-- Animation Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -545,47 +544,28 @@
     </div>
   </section>
 
-  <!-- Live Chat Button -->
-  <button id="chat-toggle" class="chat-toggle hvr-buzz-out">
-    <i class="fas fa-comments"></i>
-  </button>
-
-  <!-- Chat Container -->
-  <div id="chat-container" class="chat-container">
-    <div class="chat-header">
-      <h3>Chat Support</h3>
-      <button id="close-chat" class="close-chat">&times;</button>
-    </div>
-    <div id="message-display" class="message-display">
-      <!-- Messages will appear here -->
-    </div>
-    <div class="input-area">
-      <textarea id="message-input" placeholder="Ask about breast cancer..."></textarea>
-      <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
-    </div>
-  </div>
-
   <footer>
     <p>&copy; 2024 Breast Cancer Awareness & Support. All Rights Reserved.</p>
     <!-- Add social media links or other footer content here -->
   </footer>
 
-  <!-- Added AOS Initialization -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-  <script src="js/chat.js"></script>
-  <script src="js/main.js"></script> <!-- New main JS file -->
+  <script src="js/main.js"></script>
+
+  <!-- Chat Widget -->
+  <iframe src="chat.html" frameborder="0" style="border: none; position: fixed; bottom: 0; right: 0; width: 400px; height: 600px; z-index: 9999;"></iframe>
 
   <!-- Initialize AOS -->
   <script>
     AOS.init({
-        duration: 1000, // values from 0 to 3000, with step 50ms
-        once: true, // whether animation should happen only once - while scrolling down
+        duration: 1000,
+        once: true,
     });
 
-    // --- Sequential Video Background Logic ---
+    // Video background logic
     const videoPlayer = document.getElementById('bg-video');
-    // IMPORTANT: Assumes videos are in a 'vid' folder and named video1.mp4, video2.mp4, video3.mp4
     const videoSources = [
         'vid/video1.mp4',
         'vid/video2.mp4',
@@ -610,9 +590,6 @@
             console.error("Initial video autoplay failed:", error);
         });
     }
-
-    // --- Chat Toggle Logic ---
-    const chatToggle = document.getElementById('chat-toggle');
   </script>
 </body>
 </html>
