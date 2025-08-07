@@ -17,6 +17,7 @@ A comprehensive website dedicated to breast cancer awareness, education, and sup
 - User-friendly navigation
 - Mobile-responsive design
 - Accessibility features
+- **Powered by Google Gemini API for advanced medical Q&A**
 
 ## Technologies Used
 
@@ -29,6 +30,7 @@ A comprehensive website dedicated to breast cancer awareness, education, and sup
 - Real-time Chat System
 - Responsive Design Framework
 - Modern UI/UX Principles
+- **Gemini API (Google Generative Language) for AI Chatbot**
 
 ## Project Structure
 
@@ -40,6 +42,7 @@ breast-cancer-awareness/
 │   └── chat.css       # Chat system styles
 ├── js/
 │   ├── chat.js        # Chat functionality
+│   ├── gemini-api.js  # Gemini API integration for AI chatbot
 │   └── gemini-api.js  # API integration
 ├── images/            # Website images
 ├── README.md          # Project documentation
@@ -80,6 +83,7 @@ Visit the live website at: https://nikhil-agarwal9829.github.io/breast-cancer-aw
 - Personalized information delivery
 - Multi-language support
 - Context-aware responses
+- **Powered by Google Gemini API for advanced medical Q&A**
 
 ### 3. Notification System
 - Diet reminders
@@ -126,3 +130,21 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - All contributors and supporters
 - Healthcare professionals for medical accuracy
 - Community members for feedback and suggestions 
+
+## Team
+- Nikhil Agarwal
+- Archit Mishra
+
+## Who Can Use This Project?
+- General public seeking breast cancer information and support
+- Patients and caregivers looking for resources and reminders
+- Healthcare professionals and organizations wanting to provide accessible information
+- Community groups and NGOs focused on cancer awareness
+
+## Learning Outcomes
+Through this project, we learned:
+- How to build responsive, accessible web applications
+- Integration of AI chatbots using the Gemini API
+- Managing user data and privacy in healthcare contexts
+- Collaborative development and version control
+- Creating user-friendly interfaces for sensitive topics 
