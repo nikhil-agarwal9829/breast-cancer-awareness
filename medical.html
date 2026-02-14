@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
     * {
@@ -390,6 +393,428 @@
       width: 100%;
       text-align: center;
     }
+
+    /* Risk Assessment Section */
+    .risk-assessment-section {
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #fde4f2, #e1d4fa);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .risk-assessment-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,105,180,0.1)"/></svg>');
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .risk-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .risk-form-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.15);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .question-group {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: #f8f0ff;
+      border-radius: 10px;
+      border-left: 4px solid #ff69b4;
+      transition: transform 0.3s ease;
+    }
+
+    .question-group:hover {
+      transform: translateX(5px);
+    }
+
+    .question-group label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .question-group input[type="text"],
+    .question-group input[type="number"],
+    .question-group input[type="date"],
+    .question-group select,
+    .question-group textarea {
+      width: 100%;
+      padding: 0.9rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .question-group input:focus,
+    .question-group select:focus,
+    .question-group textarea:focus {
+      outline: none;
+      border-color: #ff69b4;
+      box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
+    }
+
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem;
+      background: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .checkbox-item:hover {
+      border-color: #ff69b4;
+      background: #fff0f8;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: #ff69b4;
+    }
+
+    .step-navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+      gap: 1rem;
+    }
+
+    .step-btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .step-btn.prev {
+      background: #e0e0e0;
+      color: #666;
+    }
+
+    .step-btn.prev:hover {
+      background: #d0d0d0;
+    }
+
+    .step-btn.next,
+    .step-btn.submit {
+      background: linear-gradient(45deg, #ff69b4, #ff8dc7);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+    }
+
+    .step-btn.next:hover,
+    .step-btn.submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+    }
+
+    .step-indicator {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .step-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e0e0e0;
+      transition: all 0.3s;
+    }
+
+    .step-dot.active {
+      background: #ff69b4;
+      transform: scale(1.3);
+    }
+
+    .step-dot.completed {
+      background: #4CAF50;
+    }
+
+    /* Results Section */
+    .results-section {
+      display: none;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.15);
+      margin-top: 2rem;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .results-section.show {
+      display: block;
+    }
+
+    .risk-display {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+    }
+
+    .risk-display.high {
+      background: linear-gradient(135deg, #ffebee, #ffcdd2);
+      border: 3px solid #f44336;
+    }
+
+    .risk-display.medium {
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      border: 3px solid #ff9800;
+    }
+
+    .risk-display.low {
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      border: 3px solid #4CAF50;
+    }
+
+    .risk-percentage {
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 1rem 0;
+    }
+
+    .risk-display.high .risk-percentage {
+      color: #f44336;
+    }
+
+    .risk-display.medium .risk-percentage {
+      color: #ff9800;
+    }
+
+    .risk-display.low .risk-percentage {
+      color: #4CAF50;
+    }
+
+    .chart-container {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: #f8f0ff;
+      border-radius: 10px;
+    }
+
+    .recommendations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .recommendation-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-left: 4px solid #ff69b4;
+      transition: transform 0.3s;
+    }
+
+    .recommendation-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .recommendation-card h3 {
+      color: #ff69b4;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .recommendation-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .recommendation-card ul li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .recommendation-card ul li:before {
+      content: "\f058";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: #ff69b4;
+    }
+
+    /* Prevention Section */
+    .prevention-section {
+      padding: 4rem 2rem;
+      background: white;
+    }
+
+    .prevention-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .prevention-card {
+      background: linear-gradient(135deg, #fff, #f8f0ff);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+      border-top: 4px solid #ff69b4;
+    }
+
+    .prevention-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
+    }
+
+    .prevention-card h3 {
+      color: #ff69b4;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .prevention-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .prevention-card ul li {
+      padding: 0.8rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #555;
+    }
+
+    .prevention-card ul li:before {
+      content: "\f0c8";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: #ff69b4;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .upload-area {
+      border: 2px dashed #ff69b4;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      background: #fff0f8;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .upload-area:hover {
+      background: #ffe0f0;
+      border-color: #ff4da6;
+    }
+
+    .upload-area.dragover {
+      background: #ffd0e8;
+      border-color: #ff4da6;
+    }
+
+    .image-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .image-preview {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .image-preview img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .image-preview .remove-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(255, 0, 0, 0.8);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -424,9 +849,14 @@
       <p class="animate__animated animate__fadeInUp animate__delay-1s">
         Access professional medical guidance, resources, and support services for breast cancer patients and survivors.
       </p>
-      <a href="#medical-resources" class="hero-button animate__animated animate__fadeInUp animate__delay-2s">
-        Explore Resources
-      </a>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="#risk-assessment" class="hero-button animate__animated animate__fadeInUp animate__delay-2s">
+          Assess Your Risk
+        </a>
+        <a href="#appointment" class="hero-button animate__animated animate__fadeInUp animate__delay-2s" style="background: linear-gradient(45deg, #ff8dc7, #ff69b4);">
+          Book Appointment
+        </a>
+      </div>
     </div>
   </section>
 
@@ -475,8 +905,9 @@
     <div class="appointment-form">
       <form id="appointmentForm">
         <div class="form-group">
-          <label for="name">Full Name</label>
+          <label for="name">Full Name *</label>
           <input type="text" id="name" name="name" required>
+          <small style="color: #666;">Required for report generation</small>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
@@ -501,11 +932,377 @@
           <input type="date" id="preferredDate" name="preferredDate" required>
         </div>
         <div class="form-group">
+          <label for="preferredTime">Preferred Time</label>
+          <input type="time" id="preferredTime" name="preferredTime" required>
+        </div>
+        <div class="form-group">
           <label for="notes">Additional Notes</label>
           <textarea id="notes" name="notes"></textarea>
         </div>
         <button type="submit" class="btn">Schedule Appointment</button>
       </form>
+    </div>
+  </section>
+
+  <!-- Risk Assessment Section -->
+  <section id="risk-assessment" class="risk-assessment-section">
+    <div class="risk-container">
+      <h2 data-aos="fade-down" style="color: #ff69b4; margin-bottom: 1rem;">Breast Cancer Risk Assessment</h2>
+      <p style="text-align: center; color: #666; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        Complete this comprehensive assessment to understand your risk level and receive personalized recommendations.
+      </p>
+
+      <div class="risk-form-card">
+        <div class="step-indicator">
+          <div class="step-dot active" data-step="1"></div>
+          <div class="step-dot" data-step="2"></div>
+          <div class="step-dot" data-step="3"></div>
+          <div class="step-dot" data-step="4"></div>
+        </div>
+
+        <!-- Step 1: Personal Information -->
+        <div class="form-step active" id="step1">
+          <h3 style="color: #ff69b4; margin-bottom: 1.5rem;"><i class="fas fa-user"></i> Personal Information</h3>
+          
+          <div class="question-group">
+            <label>Full Name * <span style="color: #666; font-weight: normal;">(For report generation)</span></label>
+            <input type="text" id="patient-name" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="question-group">
+            <label>Age *</label>
+            <input type="number" id="age" min="0" max="120" placeholder="Enter your age" required>
+          </div>
+
+          <div class="question-group">
+            <label>Gender *</label>
+            <select id="gender" required>
+              <option value="">Select</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="question-group">
+            <label>Height (cm)</label>
+            <input type="number" id="height" min="0" placeholder="Enter height">
+          </div>
+
+          <div class="question-group">
+            <label>Weight (kg)</label>
+            <input type="number" id="weight" min="0" step="0.1" placeholder="Enter weight">
+          </div>
+
+          <div class="question-group">
+            <label>Menstrual History</label>
+            <select id="menstrual-history">
+              <option value="">Select</option>
+              <option value="pre-menopause">Pre-menopause</option>
+              <option value="menopause">Menopause</option>
+              <option value="post-menopause">Post-menopause</option>
+            </select>
+          </div>
+
+          <div class="step-navigation">
+            <button type="button" class="step-btn prev" style="visibility: hidden;">Previous</button>
+            <button type="button" class="step-btn next" onclick="nextStep(1)">Next Step</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Family History & Genetics -->
+        <div class="form-step" id="step2">
+          <h3 style="color: #ff69b4; margin-bottom: 1.5rem;"><i class="fas fa-dna"></i> Family History & Genetics</h3>
+          
+          <div class="question-group">
+            <label>Family History of Breast Cancer *</label>
+            <select id="family-history" required>
+              <option value="no">No family history</option>
+              <option value="first-degree">First-degree relative (mother, sister, daughter)</option>
+              <option value="second-degree">Second-degree relative (grandmother, aunt)</option>
+              <option value="multiple">Multiple relatives</option>
+            </select>
+          </div>
+
+          <div class="question-group">
+            <label>Age of Relative(s) at Diagnosis</label>
+            <input type="text" id="relative-age" placeholder="e.g., Mother at 45, Sister at 50">
+          </div>
+
+          <div class="question-group">
+            <label>Genetic Testing</label>
+            <select id="genetic-testing">
+              <option value="not-tested">Not tested</option>
+              <option value="negative">Tested - Negative</option>
+              <option value="positive-brca1">BRCA1 Positive</option>
+              <option value="positive-brca2">BRCA2 Positive</option>
+              <option value="other-mutation">Other genetic mutation</option>
+            </select>
+          </div>
+
+          <div class="question-group">
+            <label>Personal History of Breast Cancer</label>
+            <select id="personal-history">
+              <option value="no">No</option>
+              <option value="yes-current">Yes, currently</option>
+              <option value="yes-past">Yes, in the past</option>
+            </select>
+          </div>
+
+          <div class="step-navigation">
+            <button type="button" class="step-btn prev" onclick="prevStep(2)">Previous</button>
+            <button type="button" class="step-btn next" onclick="nextStep(2)">Next Step</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Symptoms & Medical Reports -->
+        <div class="form-step" id="step3">
+          <h3 style="color: #ff69b4; margin-bottom: 1.5rem;"><i class="fas fa-stethoscope"></i> Symptoms & Medical Reports</h3>
+          
+          <div class="question-group">
+            <label>Current Symptoms (Select all that apply) *</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="symptom-lump" value="lump" class="symptom-checkbox">
+                <label for="symptom-lump">Breast Lump</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="symptom-pain" value="pain" class="symptom-checkbox">
+                <label for="symptom-pain">Breast Pain</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="symptom-discharge" value="discharge" class="symptom-checkbox">
+                <label for="symptom-discharge">Nipple Discharge</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="symptom-skin" value="skin-change" class="symptom-checkbox">
+                <label for="symptom-skin">Skin Changes</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="symptom-swelling" value="swelling" class="symptom-checkbox">
+                <label for="symptom-swelling">Swelling</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="symptom-inversion" value="nipple-inversion" class="symptom-checkbox">
+                <label for="symptom-inversion">Nipple Inversion</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="symptom-lymph" value="lymph-nodes" class="symptom-checkbox">
+                <label for="symptom-lymph">Swollen Lymph Nodes</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="symptom-fatigue" value="fatigue" class="symptom-checkbox">
+                <label for="symptom-fatigue">Unexplained Fatigue</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <label>BI-RADS Score (if available)</label>
+            <select id="birads-score">
+              <option value="">Not available</option>
+              <option value="0">0 - Incomplete</option>
+              <option value="1">1 - Negative</option>
+              <option value="2">2 - Benign</option>
+              <option value="3">3 - Probably Benign</option>
+              <option value="4">4 - Suspicious</option>
+              <option value="5">5 - Highly Suggestive of Malignancy</option>
+              <option value="6">6 - Known Biopsy-Proven Malignancy</option>
+            </select>
+          </div>
+
+          <div class="question-group">
+            <label>Mass Size (cm) - if detected</label>
+            <input type="number" id="mass-size" step="0.1" min="0" placeholder="Enter size in cm">
+          </div>
+
+          <div class="question-group">
+            <label>Upload Medical Reports (Mammogram, Ultrasound, MRI, etc.) <span style="color: #666; font-weight: normal;">(Optional)</span></label>
+            <div class="upload-area" id="upload-area" onclick="document.getElementById('report-images').click()">
+              <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: #ff69b4; margin-bottom: 1rem;"></i>
+              <p>Click to upload or drag and drop</p>
+              <p style="font-size: 0.9rem; color: #666;">Supports: JPG, PNG, PDF (Max 10MB each) - Optional</p>
+            </div>
+            <input type="file" id="report-images" accept="image/*" multiple style="display: none;">
+            <div class="image-preview-grid" id="image-preview"></div>
+          </div>
+
+          <div class="question-group">
+            <label>Last Mammogram Date</label>
+            <input type="date" id="last-mammogram">
+          </div>
+
+          <div class="step-navigation">
+            <button type="button" class="step-btn prev" onclick="prevStep(3)">Previous</button>
+            <button type="button" class="step-btn next" onclick="nextStep(3)">Next Step</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Lifestyle Factors -->
+        <div class="form-step" id="step4">
+          <h3 style="color: #ff69b4; margin-bottom: 1.5rem;"><i class="fas fa-heartbeat"></i> Lifestyle Factors</h3>
+          
+          <div class="question-group">
+            <label>Smoking Status</label>
+            <select id="smoking">
+              <option value="never">Never smoked</option>
+              <option value="former">Former smoker</option>
+              <option value="current">Current smoker</option>
+            </select>
+          </div>
+
+          <div class="question-group">
+            <label>Alcohol Consumption</label>
+            <select id="alcohol">
+              <option value="none">None</option>
+              <option value="occasional">Occasional (1-2 drinks/week)</option>
+              <option value="moderate">Moderate (3-7 drinks/week)</option>
+              <option value="heavy">Heavy (8+ drinks/week)</option>
+            </select>
+          </div>
+
+          <div class="question-group">
+            <label>Physical Activity Level</label>
+            <select id="activity">
+              <option value="sedentary">Sedentary (little/no exercise)</option>
+              <option value="light">Light (1-3 days/week)</option>
+              <option value="moderate">Moderate (3-5 days/week)</option>
+              <option value="active">Active (6-7 days/week)</option>
+            </select>
+          </div>
+
+          <div class="question-group">
+            <label>Hormone Replacement Therapy (HRT)</label>
+            <select id="hrt">
+              <option value="never">Never used</option>
+              <option value="current">Currently using</option>
+              <option value="past">Used in the past</option>
+            </select>
+          </div>
+
+          <div class="question-group">
+            <label>Birth Control Pills</label>
+            <select id="birth-control">
+              <option value="never">Never used</option>
+              <option value="current">Currently using</option>
+              <option value="past">Used in the past</option>
+            </select>
+          </div>
+
+          <div class="question-group">
+            <label>Additional Information</label>
+            <textarea id="additional-info" rows="4" placeholder="Any other relevant medical information or concerns..."></textarea>
+          </div>
+
+          <div class="step-navigation">
+            <button type="button" class="step-btn prev" onclick="prevStep(4)">Previous</button>
+            <button type="button" class="step-btn submit" onclick="analyzeRisk()">
+              <i class="fas fa-brain"></i> Analyze Risk
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div class="results-section" id="results-section">
+        <div id="risk-display" class="risk-display">
+          <h2 id="risk-level-text" style="margin-bottom: 1rem;"></h2>
+          <div class="risk-percentage" id="risk-percentage">0%</div>
+          <p id="risk-message" style="font-size: 1.1rem; color: #666;"></p>
+          <p id="cancer-type" style="margin-top: 1rem; font-weight: 600;"></p>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="riskChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="factorsChart"></canvas>
+        </div>
+
+        <div class="recommendations-grid" id="recommendations"></div>
+
+        <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <button class="btn" onclick="generatePDFReport()" style="padding: 1rem 3rem; font-size: 1.1rem; background: linear-gradient(45deg, #4CAF50, #45a049);">
+            <i class="fas fa-file-pdf"></i> Download Report (PDF)
+          </button>
+          <button class="btn" onclick="bookAppointmentFromRisk()" style="padding: 1rem 3rem; font-size: 1.1rem;">
+            <i class="fas fa-calendar-check"></i> Book Appointment with Specialist
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prevention Section -->
+  <section id="prevention" class="prevention-section">
+    <h2 data-aos="fade-down" style="color: #ff69b4; margin-bottom: 3rem;">Prevention & Early Detection</h2>
+    <div class="prevention-grid">
+      <div class="prevention-card" data-aos="fade-up">
+        <h3><i class="fas fa-search"></i> Regular Screening</h3>
+        <ul>
+          <li>Annual mammograms starting at age 40 (or earlier if high risk)</li>
+          <li>Clinical breast exams every 1-3 years (ages 20-39)</li>
+          <li>Monthly self-breast examinations</li>
+          <li>MRI screening for high-risk individuals</li>
+          <li>Genetic counseling if family history exists</li>
+        </ul>
+      </div>
+
+      <div class="prevention-card" data-aos="fade-up" data-aos-delay="100">
+        <h3><i class="fas fa-apple-alt"></i> Healthy Lifestyle</h3>
+        <ul>
+          <li>Maintain a healthy weight (BMI 18.5-24.9)</li>
+          <li>Eat a balanced diet rich in fruits and vegetables</li>
+          <li>Limit alcohol consumption (max 1 drink/day)</li>
+          <li>Exercise regularly (150 minutes/week moderate activity)</li>
+          <li>Avoid smoking and secondhand smoke</li>
+        </ul>
+      </div>
+
+      <div class="prevention-card" data-aos="fade-up" data-aos-delay="200">
+        <h3><i class="fas fa-shield-alt"></i> Risk Reduction</h3>
+        <ul>
+          <li>Breastfeed if possible (reduces risk)</li>
+          <li>Limit hormone replacement therapy duration</li>
+          <li>Consider preventive medications if high risk</li>
+          <li>Manage stress and get adequate sleep</li>
+          <li>Stay informed about your family history</li>
+        </ul>
+      </div>
+
+      <div class="prevention-card" data-aos="fade-up" data-aos-delay="300">
+        <h3><i class="fas fa-heart"></i> Early Detection Signs</h3>
+        <ul>
+          <li>New lump or mass in breast or underarm</li>
+          <li>Changes in breast size or shape</li>
+          <li>Skin dimpling or puckering</li>
+          <li>Nipple discharge (especially bloody)</li>
+          <li>Persistent breast or nipple pain</li>
+        </ul>
+      </div>
+
+      <div class="prevention-card" data-aos="fade-up" data-aos-delay="400">
+        <h3><i class="fas fa-users"></i> Support & Education</h3>
+        <ul>
+          <li>Join support groups for emotional support</li>
+          <li>Educate yourself about breast health</li>
+          <li>Talk to your doctor about your risk factors</li>
+          <li>Share family medical history with healthcare providers</li>
+          <li>Stay up-to-date with latest research and guidelines</li>
+        </ul>
+      </div>
+
+      <div class="prevention-card" data-aos="fade-up" data-aos-delay="500">
+        <h3><i class="fas fa-calendar-check"></i> Screening Schedule</h3>
+        <ul>
+          <li><strong>20-39:</strong> Clinical exam every 1-3 years</li>
+          <li><strong>40-49:</strong> Annual mammogram + clinical exam</li>
+          <li><strong>50+:</strong> Annual mammogram + clinical exam</li>
+          <li><strong>High Risk:</strong> May need earlier/more frequent screening</li>
+          <li>Monthly self-exams recommended for all ages</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -567,17 +1364,580 @@
   </div>
 
   <footer>
-    <p>&copy; 2024 VIT Hope Ribbon - Medical Support. All Rights Reserved.</p>
+    <p>&copy; 2026 VIT Hope Ribbon - Medical Support. All Rights Reserved.</p>
   </footer>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="js/gemini-api.js"></script>
   <script src="js/chat.js"></script>
   <script>
     AOS.init({
       duration: 1000,
       once: true
     });
+
+    // Multi-step form navigation
+    let currentStep = 1;
+    const totalSteps = 4;
+    let uploadedImages = [];
+
+    function nextStep(step) {
+      if (step < totalSteps) {
+        document.getElementById(`step${step}`).classList.remove('active');
+        document.getElementById(`step${step + 1}`).classList.add('active');
+        updateStepIndicator(step + 1);
+        currentStep = step + 1;
+        document.getElementById(`step${step + 1}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function prevStep(step) {
+      if (step > 1) {
+        document.getElementById(`step${step}`).classList.remove('active');
+        document.getElementById(`step${step - 1}`).classList.add('active');
+        updateStepIndicator(step - 1);
+        currentStep = step - 1;
+        document.getElementById(`step${step - 1}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function updateStepIndicator(step) {
+      document.querySelectorAll('.step-dot').forEach((dot, index) => {
+        if (index + 1 < step) {
+          dot.classList.add('completed');
+          dot.classList.remove('active');
+        } else if (index + 1 === step) {
+          dot.classList.add('active');
+          dot.classList.remove('completed');
+        } else {
+          dot.classList.remove('active', 'completed');
+        }
+      });
+    }
+
+    // Image upload handling
+    document.getElementById('report-images').addEventListener('change', function(e) {
+      handleImageUpload(e.target.files);
+    });
+
+    const uploadArea = document.getElementById('upload-area');
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      handleImageUpload(e.dataTransfer.files);
+    });
+
+    function handleImageUpload(files) {
+      Array.from(files).forEach(file => {
+        if (file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            uploadedImages.push({ file: file, preview: e.target.result });
+            displayImagePreview();
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    function displayImagePreview() {
+      const preview = document.getElementById('image-preview');
+      preview.innerHTML = '';
+      uploadedImages.forEach((img, index) => {
+        const div = document.createElement('div');
+        div.className = 'image-preview';
+        div.innerHTML = `
+          <img src="${img.preview}" alt="Preview">
+          <button class="remove-btn" onclick="removeImage(${index})">&times;</button>
+        `;
+        preview.appendChild(div);
+      });
+    }
+
+    function removeImage(index) {
+      uploadedImages.splice(index, 1);
+      displayImagePreview();
+    }
+
+    // Risk Analysis Function
+    async function analyzeRisk() {
+      const btn = document.querySelector('.step-btn.submit');
+      const resultsSection = document.getElementById('results-section');
+      
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+
+      // Collect all form data
+      const formData = {
+        name: document.getElementById('patient-name')?.value || document.getElementById('name')?.value || 'Patient',
+        age: document.getElementById('age').value,
+        gender: document.getElementById('gender').value,
+        height: document.getElementById('height').value,
+        weight: document.getElementById('weight').value,
+        menstrualHistory: document.getElementById('menstrual-history').value,
+        familyHistory: document.getElementById('family-history').value,
+        relativeAge: document.getElementById('relative-age').value,
+        geneticTesting: document.getElementById('genetic-testing').value,
+        personalHistory: document.getElementById('personal-history').value,
+        symptoms: Array.from(document.querySelectorAll('.symptom-checkbox:checked')).map(cb => cb.value),
+        biradsScore: document.getElementById('birads-score').value,
+        massSize: document.getElementById('mass-size').value,
+        lastMammogram: document.getElementById('last-mammogram').value,
+        smoking: document.getElementById('smoking').value,
+        alcohol: document.getElementById('alcohol').value,
+        activity: document.getElementById('activity').value,
+        hrt: document.getElementById('hrt').value,
+        birthControl: document.getElementById('birth-control').value,
+        additionalInfo: document.getElementById('additional-info').value
+      };
+
+      // Prepare FormData for file upload
+      const uploadFormData = new FormData();
+      uploadedImages.forEach((img, index) => {
+        uploadFormData.append('images', img.file);
+      });
+      uploadFormData.append('symptoms', JSON.stringify(formData.symptoms));
+      uploadFormData.append('manualData', JSON.stringify({
+        biradsScore: formData.biradsScore,
+        massSize: formData.massSize,
+        age: formData.age,
+        familyHistory: formData.familyHistory
+      }));
+
+      try {
+        const res = await fetch('http://localhost:3001/api/analyze-risk', {
+          method: 'POST',
+          body: uploadFormData
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          displayResults(data, formData);
+          resultsSection.classList.add('show');
+          resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          alert('Analysis failed: ' + (data.error || 'Unknown error'));
+        }
+      } catch (err) {
+        console.error('Error:', err);
+        alert('Error connecting to server. Please make sure the server is running.');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-brain"></i> Analyze Risk';
+      }
+    }
+
+
+    function createRiskChart(percentage, level) {
+      const ctx = document.getElementById('riskChart').getContext('2d');
+      const colors = {
+        low: '#4CAF50',
+        medium: '#FF9800',
+        high: '#F44336'
+      };
+
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Your Risk', 'Remaining'],
+          datasets: [{
+            data: [percentage, 100 - percentage],
+            backgroundColor: [colors[level], '#e0e0e0'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              position: 'bottom'
+            },
+            title: {
+              display: true,
+              text: 'Overall Risk Assessment',
+              font: { size: 18, weight: 'bold' },
+              color: '#ff69b4'
+            }
+          }
+        }
+      });
+    }
+
+    function createFactorsChart(factors, formData) {
+      const ctx = document.getElementById('factorsChart').getContext('2d');
+      
+      // Calculate factor contributions
+      const factorData = {
+        'Symptoms': formData.symptoms.length * 10,
+        'Family History': formData.familyHistory === 'multiple' ? 25 : formData.familyHistory === 'first-degree' ? 15 : 0,
+        'Age': formData.age >= 50 ? 10 : formData.age >= 40 ? 5 : 0,
+        'Lifestyle': calculateLifestyleRisk(formData),
+        'Medical History': formData.personalHistory !== 'no' ? 20 : 0
+      };
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(factorData),
+          datasets: [{
+            label: 'Risk Contribution (%)',
+            data: Object.values(factorData),
+            backgroundColor: '#ff69b4',
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: 'Risk Factor Breakdown',
+              font: { size: 18, weight: 'bold' },
+              color: '#ff69b4'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 30
+            }
+          }
+        }
+      });
+    }
+
+    function calculateLifestyleRisk(formData) {
+      let risk = 0;
+      if (formData.smoking === 'current') risk += 5;
+      if (formData.alcohol === 'heavy') risk += 5;
+      if (formData.activity === 'sedentary') risk += 3;
+      if (formData.hrt === 'current') risk += 5;
+      return risk;
+    }
+
+    function displayRecommendations(recommendations) {
+      const container = document.getElementById('recommendations');
+      container.innerHTML = `
+        <div class="recommendation-card">
+          <h3><i class="fas fa-lightbulb"></i> Health Tips</h3>
+          <ul>
+            ${recommendations.tips.map(tip => `<li>${tip}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="recommendation-card">
+          <h3><i class="fas fa-apple-alt"></i> Recommended Foods</h3>
+          <ul>
+            ${recommendations.foods.map(food => `<li>${food}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="recommendation-card">
+          <h3><i class="fas fa-pills"></i> Medications & Supplements</h3>
+          <ul>
+            ${recommendations.medications.map(med => `<li>${med}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    // Store current assessment data for PDF generation
+    let currentAssessmentData = null;
+    let currentFormData = null;
+
+    function displayResults(data, formData) {
+      const riskLevel = data.riskLevel;
+      const riskPercentage = data.riskPercentage;
+      const cancerType = data.cancerType || 'Not Determined';
+
+      // Store data for PDF generation
+      currentAssessmentData = data;
+      currentFormData = formData;
+
+      // Update risk display
+      const riskDisplay = document.getElementById('risk-display');
+      riskDisplay.className = `risk-display ${riskLevel}`;
+      document.getElementById('risk-level-text').textContent = `Risk Level: ${riskLevel.toUpperCase()}`;
+      document.getElementById('risk-percentage').textContent = `${riskPercentage}%`;
+      document.getElementById('risk-message').textContent = data.message || '';
+      document.getElementById('cancer-type').textContent = `Predicted Type: ${cancerType}`;
+
+      // Create charts
+      createRiskChart(riskPercentage, riskLevel);
+      createFactorsChart(data.factors || [], formData);
+
+      // Display recommendations
+      displayRecommendations(data.recommendations);
+    }
+
+    async function generatePDFReport() {
+      if (!currentAssessmentData || !currentFormData) {
+        alert('Please complete the risk assessment first.');
+        return;
+      }
+
+      const btn = event.target.closest('button');
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+
+      try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF('p', 'mm', 'a4');
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        let yPos = 20;
+
+        // Header
+        doc.setFillColor(255, 105, 180);
+        doc.rect(0, 0, pageWidth, 40, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(24);
+        doc.setFont('helvetica', 'bold');
+        doc.text('VIT HOPE RIBBON', pageWidth / 2, 15, { align: 'center' });
+        doc.setFontSize(14);
+        doc.text('Breast Cancer Risk Assessment Report', pageWidth / 2, 25, { align: 'center' });
+        doc.text('Medical Assessment Portal', pageWidth / 2, 32, { align: 'center' });
+
+        yPos = 50;
+
+        // Patient Information Section
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.setDrawColor(255, 105, 180);
+        doc.setLineWidth(0.5);
+        doc.line(10, yPos, pageWidth - 10, yPos);
+        yPos += 10;
+        doc.text('PATIENT INFORMATION', 10, yPos);
+        yPos += 8;
+
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'normal');
+        const patientInfo = [
+          `Name: ${currentFormData.name || 'Not Provided'}`,
+          `Age: ${currentFormData.age || 'N/A'} years`,
+          `Gender: ${currentFormData.gender || 'N/A'}`,
+          `Date of Assessment: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+          `Time: ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`
+        ];
+
+        patientInfo.forEach(info => {
+          doc.text(info, 15, yPos);
+          yPos += 6;
+        });
+
+        yPos += 5;
+
+        // Risk Assessment Results
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.line(10, yPos, pageWidth - 10, yPos);
+        yPos += 10;
+        doc.text('RISK ASSESSMENT RESULTS', 10, yPos);
+        yPos += 8;
+
+        doc.setFontSize(12);
+        const riskColor = currentAssessmentData.riskLevel === 'high' ? [244, 67, 54] : 
+                         currentAssessmentData.riskLevel === 'medium' ? [255, 152, 0] : [76, 175, 80];
+        doc.setFillColor(riskColor[0], riskColor[1], riskColor[2]);
+        doc.rect(15, yPos - 5, pageWidth - 30, 15, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFont('helvetica', 'bold');
+        doc.text(`RISK LEVEL: ${currentAssessmentData.riskLevel.toUpperCase()}`, pageWidth / 2, yPos + 3, { align: 'center' });
+        doc.setFontSize(20);
+        doc.text(`${currentAssessmentData.riskPercentage}%`, pageWidth / 2, yPos + 10, { align: 'center' });
+        yPos += 20;
+
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'normal');
+        doc.text(`Predicted Cancer Type: ${currentAssessmentData.cancerType}`, 15, yPos);
+        yPos += 6;
+        doc.text(`Assessment Message: ${currentAssessmentData.message}`, 15, yPos);
+        yPos += 10;
+
+        // Risk Factors
+        if (currentAssessmentData.factors && currentAssessmentData.factors.length > 0) {
+          doc.setFontSize(14);
+          doc.setFont('helvetica', 'bold');
+          doc.text('RISK FACTORS CONTRIBUTION', 10, yPos);
+          yPos += 8;
+          doc.setFontSize(10);
+          doc.setFont('helvetica', 'normal');
+          currentAssessmentData.factors.slice(0, 8).forEach(factor => {
+            if (yPos > pageHeight - 20) {
+              doc.addPage();
+              yPos = 20;
+            }
+            doc.text(`• ${factor}`, 15, yPos);
+            yPos += 5;
+          });
+          yPos += 5;
+        }
+
+        // Check if new page needed
+        if (yPos > pageHeight - 60) {
+          doc.addPage();
+          yPos = 20;
+        }
+
+        // Recommendations Section
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.line(10, yPos, pageWidth - 10, yPos);
+        yPos += 10;
+        doc.text('RECOMMENDATIONS', 10, yPos);
+        yPos += 8;
+
+        // Health Tips
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(255, 105, 180);
+        doc.text('Health Tips & Lifestyle Modifications', 15, yPos);
+        yPos += 6;
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(0, 0, 0);
+        currentAssessmentData.recommendations.tips.forEach((tip, index) => {
+          if (yPos > pageHeight - 15) {
+            doc.addPage();
+            yPos = 20;
+          }
+          doc.text(`${index + 1}. ${tip}`, 20, yPos);
+          yPos += 5;
+        });
+        yPos += 5;
+
+        // Recommended Foods
+        if (yPos > pageHeight - 40) {
+          doc.addPage();
+          yPos = 20;
+        }
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(255, 105, 180);
+        doc.text('Recommended Foods & Nutrition', 15, yPos);
+        yPos += 6;
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(0, 0, 0);
+        currentAssessmentData.recommendations.foods.forEach((food, index) => {
+          if (yPos > pageHeight - 15) {
+            doc.addPage();
+            yPos = 20;
+          }
+          doc.text(`${index + 1}. ${food}`, 20, yPos);
+          yPos += 5;
+        });
+        yPos += 5;
+
+        // Medications
+        if (yPos > pageHeight - 40) {
+          doc.addPage();
+          yPos = 20;
+        }
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(255, 105, 180);
+        doc.text('Medications & Supplements', 15, yPos);
+        yPos += 6;
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(0, 0, 0);
+        currentAssessmentData.recommendations.medications.forEach((med, index) => {
+          if (yPos > pageHeight - 15) {
+            doc.addPage();
+            yPos = 20;
+          }
+          doc.text(`${index + 1}. ${med}`, 20, yPos);
+          yPos += 5;
+        });
+        yPos += 10;
+
+        // Prevention Guidelines
+        if (yPos > pageHeight - 80) {
+          doc.addPage();
+          yPos = 20;
+        }
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.line(10, yPos, pageWidth - 10, yPos);
+        yPos += 10;
+        doc.text('PREVENTION GUIDELINES', 10, yPos);
+        yPos += 8;
+
+        const preventionGuidelines = [
+          'Regular Screening: Annual mammograms starting at age 40 (or earlier if high risk)',
+          'Self-Examination: Monthly breast self-exams to detect changes early',
+          'Clinical Exams: Regular clinical breast exams every 1-3 years',
+          'Healthy Weight: Maintain BMI between 18.5-24.9',
+          'Physical Activity: At least 150 minutes of moderate exercise per week',
+          'Diet: Eat a balanced diet rich in fruits, vegetables, and whole grains',
+          'Alcohol: Limit to 1 drink per day or less',
+          'Smoking: Avoid all forms of tobacco',
+          'Hormone Therapy: Discuss risks and benefits with your doctor',
+          'Genetic Counseling: Consider if you have strong family history'
+        ];
+
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        preventionGuidelines.forEach((guideline, index) => {
+          if (yPos > pageHeight - 15) {
+            doc.addPage();
+            yPos = 20;
+          }
+          doc.text(`${index + 1}. ${guideline}`, 15, yPos);
+          yPos += 5;
+        });
+        yPos += 10;
+
+        // Footer
+        if (yPos > pageHeight - 30) {
+          doc.addPage();
+          yPos = 20;
+        }
+        doc.setFontSize(9);
+        doc.setTextColor(128, 128, 128);
+        doc.text('This is a screening tool and should not replace professional medical diagnosis.', pageWidth / 2, pageHeight - 15, { align: 'center' });
+        doc.text('Please consult with a healthcare professional for proper medical evaluation.', pageWidth / 2, pageHeight - 10, { align: 'center' });
+        doc.text(`Report Generated: ${new Date().toLocaleString()}`, pageWidth / 2, pageHeight - 5, { align: 'center' });
+
+        // Save PDF
+        const fileName = `Breast_Cancer_Risk_Assessment_${currentFormData.name || 'Patient'}_${Date.now()}.pdf`;
+        doc.save(fileName);
+        
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        alert('PDF report generated successfully!');
+      } catch (error) {
+        console.error('Error generating PDF:', error);
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        alert('Error generating PDF. Please try again.');
+      }
+    }
+
+    function bookAppointmentFromRisk() {
+      document.getElementById('appointment').scrollIntoView({ behavior: 'smooth' });
+      const riskLevel = document.getElementById('risk-level-text').textContent;
+      document.getElementById('notes').value = `Risk Assessment completed. ${riskLevel}. Requesting consultation.`;
+      document.getElementById('appointmentType').value = 'consultation';
+    }
 
     function showAppointmentForm(doctorName) {
       document.getElementById('appointmentType').value = 'consultation';
@@ -593,28 +1953,51 @@
         name: formData.get('name'),
         email: formData.get('email'),
         phone: formData.get('phone'),
-        type: formData.get('appointmentType'),
+        hospital: 'VIT Hope Ribbon Medical Center',
         date: formData.get('preferredDate'),
-        notes: formData.get('notes')
+        time: formData.get('preferredTime'),
+        message: formData.get('notes') || 'New appointment request',
+        appointmentType: formData.get('appointmentType')
       };
       
-      // Show confirmation with details
-      const confirmationMessage = `
-        Appointment Request Received!
-        
-        Details:
-        Name: ${appointmentDetails.name}
-        Email: ${appointmentDetails.email}
-        Phone: ${appointmentDetails.phone}
-        Type: ${appointmentDetails.type}
-        Date: ${appointmentDetails.date}
-        Notes: ${appointmentDetails.notes}
+      // Send data to server
+      fetch('http://localhost:3001/api/appointments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(appointmentDetails)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // Show confirmation with details
+          const confirmationMessage = `
+            Appointment Request Received!
+            
+            Details:
+            Name: ${appointmentDetails.name}
+            Email: ${appointmentDetails.email}
+            Phone: ${appointmentDetails.phone}
+            Hospital: ${appointmentDetails.hospital}
+            Date: ${appointmentDetails.date}
+            Time: ${appointmentDetails.time}
+            Type: ${appointmentDetails.appointmentType}
+            Notes: ${appointmentDetails.message}
 
-        We will contact you shortly to confirm your appointment.
-      `;
-      
-      alert(confirmationMessage);
-      this.reset();
+            We will contact you shortly to confirm your appointment.
+          `;
+          
+          alert(confirmationMessage);
+          this.reset();
+        } else {
+          alert('Error booking appointment. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Error booking appointment. Please try again.');
+      });
     });
   </script>
 </body>

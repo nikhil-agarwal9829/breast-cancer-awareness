@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Forms</title>
+</head>
+<body>
+    <h1>Test Appointment Booking</h1>
+    <form id="appointmentForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+        </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" required>
+        </div>
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+        </div>
+        <div>
+            <label for="appointmentType">Appointment Type:</label>
+            <select id="appointmentType">
+                <option value="consultation">Consultation</option>
+                <option value="followup">Follow-up</option>
+                <option value="screening">Screening</option>
+            </select>
+        </div>
+        <div>
+            <label for="notes">Notes:</label>
+            <textarea id="notes"></textarea>
+        </div>
+        <button type="submit">Book Appointment</button>
+    </form>
+
+    <h1>Test Contact Form</h1>
+    <form id="contactForm">
+        <div>
+            <label for="contactName">Name:</label>
+            <input type="text" id="contactName" required>
+        </div>
+        <div>
+            <label for="contactEmail">Email:</label>
+            <input type="email" id="contactEmail" required>
+        </div>
+        <div>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" required>
+        </div>
+        <div>
+            <label for="contactMessage">Message:</label>
+            <textarea id="contactMessage" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        // Test appointment form
+        document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const appointmentData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                hospital: 'VIT Hope Ribbon Medical Center',
+                date: document.getElementById('date').value,
+                time: '09:00',
+                message: document.getElementById('notes').value,
+                appointmentType: document.getElementById('appointmentType').value
+            };
+            
+            try {
+                const response = await fetch('http://localhost:3001/api/appointments', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(appointmentData)
+                });
+                
+                const result = await response.json();
+                console.log('Appointment result:', result);
+                
+                if (result.success) {
+                    alert('Appointment booked successfully!');
+                } else {
+                    alert('Error booking appointment: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error booking appointment. Please make sure the server is running.');
+            }
+        });
+
+        // Test contact form
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const contactData = {
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('contactMessage').value
+            };
+            
+            try {
+                const response = await fetch('http://localhost:3001/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(contactData)
+                });
+                
+                const result = await response.json();
+                console.log('Contact result:', result);
+                
+                if (result.success) {
+                    alert('Message sent successfully!');
+                    document.getElementById('contactForm').reset();
+                } else {
+                    alert('Error sending message: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error sending message. Please make sure the server is running.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediHelp - Patient Hospital Connect</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+  <style>
+    body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background-color: #f9f9f9; }
+    .hospital-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 2rem; margin: 1.5rem 0; display: flex; align-items: center; gap: 2rem; }
+    .hospital-logo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #ff69b4; }
+    .hospital-info { flex: 1; }
+    .hospital-info h3 { color: #ff69b4; margin-bottom: 0.5rem; }
+    .hospital-info p { color: #555; margin-bottom: 0.5rem; }
+    .hospital-actions { display: flex; gap: 1rem; }
+    .hospital-actions .btn { font-size: 0.95rem; }
+    .medihelp-hero {
+      min-height: 70vh;
+      padding-top: 80px;
+      padding-bottom: 40px;
+      background: linear-gradient(135deg, #fde4f2 60%, #e1d4fa 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    .medihelp-hero-content {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(199,125,255,0.08);
+      padding: 3rem 2rem 2.5rem 2rem;
+      z-index: 1;
+    }
+    .medihelp-hero-content h1 {
+      font-size: 2.7rem;
+      color: #AB4459;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .medihelp-hero-content p {
+      font-size: 1.18rem;
+      color: #333;
+      margin-bottom: 2.2rem;
+    }
+    .medihelp-section { padding: 60px 20px; background: #fff; }
+    .medihelp-section h2 { text-align: center; color: #AB4459; font-size: 2.2rem; margin-bottom: 2rem; }
+    .chat-appointment-container { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem; }
+    .chat-box, .appointment-box { background: #f8f0ff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 2rem; flex: 1 1 320px; max-width: 400px; }
+    .chat-box h3, .appointment-box h3 { color: #c77dff; margin-bottom: 1rem; }
+    .chat-box textarea { width: 100%; min-height: 80px; border-radius: 8px; border: 1px solid #ddd; padding: 0.7rem; margin-bottom: 1rem; font-size: 1rem; }
+    .chat-box button { background: linear-gradient(45deg, #ff69b4, #c77dff); color: #fff; border: none; border-radius: 20px; padding: 0.6rem 1.5rem; font-weight: 600; cursor: pointer; transition: background 0.3s; }
+    .chat-box button:hover { background: linear-gradient(45deg, #c77dff, #ff69b4); }
+    .appointment-box input, .appointment-box select { width: 100%; padding: 0.7rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ddd; font-size: 1rem; }
+    .appointment-box button { background: linear-gradient(45deg, #ff69b4, #c77dff); color: #fff; border: none; border-radius: 20px; padding: 0.6rem 1.5rem; font-weight: 600; cursor: pointer; transition: background 0.3s; }
+    .appointment-box button:hover { background: linear-gradient(45deg, #c77dff, #ff69b4); }
+    @media (max-width: 900px) { .hospital-card { flex-direction: column; text-align: center; } .chat-appointment-container { flex-direction: column; align-items: center; } }
+    @media (max-width: 600px) {
+      .medihelp-hero {
+        min-height: 55vh;
+        padding-top: 90px;
+        padding-bottom: 30px;
+      }
+      .medihelp-hero-content {
+        padding: 1.5rem 0.7rem 1.5rem 0.7rem;
+      }
+      .medihelp-hero-content h1 {
+        font-size: 1.5rem;
+      }
+      .medihelp-hero-content p {
+        font-size: 1rem;
+      }
+    }
+    /* Navbar styles for horizontal layout */
+    .navbar {
+      background-color: #f8f0ff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ff69b4;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #ff69b4;
+      font-weight: 700;
+      transform: translateY(-2px);
+    }
+    .hamburger { display: none; }
+    /* Responsive nav */
+    @media (max-width: 900px) {
+      .nav-links { gap: 1rem; }
+    }
+    @media (max-width: 700px) {
+      .navbar { flex-direction: column; align-items: flex-start; }
+      .nav-links { flex-direction: column; gap: 0.5rem; width: 100%; }
+    }
+    /* Hero section fix */
+    .medihelp-hero {
+      min-height: 70vh;
+      padding-top: 80px;
+      padding-bottom: 40px;
+      background: linear-gradient(135deg, #fde4f2 60%, #e1d4fa 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">VIT Hope Ribbon</div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="hvr-underline-from-center">Home</a></li>
+        <li><a href="about.html" class="hvr-underline-from-center">About</a></li>
+        <li><a href="features.html" class="hvr-underline-from-center">Features</a></li>
+        <li><a href="medical.html" class="hvr-underline-from-center">Medical Help</a></li>
+        <li><a href="community.html" class="hvr-underline-from-center">Community</a></li>
+        <li><a href="DONATION.html" class="hvr-underline-from-center">Donation</a></li>
+        <li><a href="contact.html" class="hvr-underline-from-center">Contact</a></li>
+        <li><a href="login.html" class="hvr-underline-from-center">Login/Register</a></li>
+        <li><a href="medihelp.html" class="active hvr-underline-from-center">MediHelp</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="medihelp-hero">
+    <div class="medihelp-hero-content animate__animated animate__fadeInDown">
+      <h1>MediHelp: Connect with Hospitals & Doctors</h1>
+      <p>Your one-stop portal to contact hospitals, chat with doctors or management, and book appointments easily. Get the care you need, when you need it.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="#hospitals" class="btn hvr-pulse-grow">Find Hospitals</a>
+        <a href="#symptom-checker" class="btn hvr-pulse-grow" style="background: linear-gradient(45deg, #c77dff, #ff69b4);">Check Your Risk</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="hospitals" class="medihelp-section">
+    <h2 data-aos="fade-down">Featured Hospitals</h2>
+    <div class="hospital-card" data-aos="fade-up">
+      <img src="images/breast_cancer_social_card_1.png.webp" alt="Hospital Logo" class="hospital-logo">
+      <div class="hospital-info">
+        <h3>CityCare Hospital</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Cityville</p>
+        <p><i class="fas fa-phone"></i> +1 234 567 8901</p>
+        <p><i class="fas fa-envelope"></i> contact@citycare.com</p>
+      </div>
+      <div class="hospital-actions">
+        <a href="#chat" class="btn hvr-float-shadow"><i class="fas fa-comments"></i> Chat</a>
+        <a href="#appointment" class="btn hvr-float-shadow"><i class="fas fa-calendar-check"></i> Book</a>
+      </div>
+    </div>
+    <div class="hospital-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="images/breast_cancer_social_card_2.png.webp" alt="Hospital Logo" class="hospital-logo">
+      <div class="hospital-info">
+        <h3>Hope Medical Center</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 456 Hope Avenue, Townsville</p>
+        <p><i class="fas fa-phone"></i> +1 987 654 3210</p>
+        <p><i class="fas fa-envelope"></i> info@hopemedical.com</p>
+      </div>
+      <div class="hospital-actions">
+        <a href="#chat" class="btn hvr-float-shadow"><i class="fas fa-comments"></i> Chat</a>
+        <a href="#appointment" class="btn hvr-float-shadow"><i class="fas fa-calendar-check"></i> Book</a>
+      </div>
+    </div>
+    <!-- Add more hospital cards as needed -->
+  </section>
+
+  <section id="connect" class="medihelp-section" style="background: #f8f0ff;">
+    <h2 data-aos="fade-down">Book an Appointment</h2>
+    <div class="chat-appointment-container" style="justify-content: center;">
+      <div class="appointment-box" id="appointment">
+        <h3><i class="fas fa-calendar-check"></i> Book an Appointment</h3>
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <input type="tel" placeholder="Phone Number" required>
+          <select id="hospital-select" required>
+            <option value="">Select Hospital</option>
+            <option>CityCare Hospital</option>
+            <option>Hope Medical Center</option>
+          </select>
+          <select id="appointment-type" required>
+            <option value="">Select Appointment Type</option>
+            <option value="consultation">General Consultation</option>
+            <option value="follow-up">Follow-up</option>
+            <option value="screening">Screening/Mammogram</option>
+            <option value="urgent">Urgent Care</option>
+          </select>
+          <input type="date" required>
+          <input type="time" required>
+          <button type="submit">Book Appointment</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="medihelp-section" style="background: #fff;">
+    <h2 data-aos="fade-down">Check Appointment Status</h2>
+    <div style="max-width: 400px; margin: 0 auto;">
+      <form id="status-form">
+        <input type="email" id="status-email" placeholder="Enter your email" required style="width:100%;padding:0.7rem;margin-bottom:1rem;border-radius:8px;border:1px solid #ddd;font-size:1rem;">
+        <button type="submit" class="btn" style="width:100%;">Check Status</button>
+      </form>
+      <div id="status-result" style="margin-top:1.5rem;"></div>
+    </div>
+  </section>
+
+  <!-- Symptom Checker & Risk Assessment Section -->
+  <section id="symptom-checker" class="medihelp-section" style="background: linear-gradient(135deg, #fde4f2, #e1d4fa);">
+    <h2 data-aos="fade-down" style="color: #AB4459; margin-bottom: 2rem;">Breast Cancer Risk Assessment</h2>
+    <p style="text-align: center; color: #555; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+      Check your symptoms and assess your risk of breast cancer. Upload your medical reports or enter data manually, 
+      and our AI model will analyze your risk level and provide personalized recommendations.
+    </p>
+    
+    <div style="max-width: 900px; margin: 0 auto; background: #fff; border-radius: 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); padding: 2.5rem;">
+      <!-- Tabs for Upload vs Manual Entry -->
+      <div style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid #f0f0f0;">
+        <button class="tab-btn active" onclick="switchTab('upload')" style="flex: 1; padding: 1rem; background: none; border: none; border-bottom: 3px solid #ff69b4; color: #ff69b4; font-weight: 600; cursor: pointer; font-size: 1rem;">
+          <i class="fas fa-upload"></i> Upload Reports
+        </button>
+        <button class="tab-btn" onclick="switchTab('manual')" style="flex: 1; padding: 1rem; background: none; border: none; border-bottom: 3px solid transparent; color: #666; font-weight: 600; cursor: pointer; font-size: 1rem;">
+          <i class="fas fa-edit"></i> Manual Entry
+        </button>
+      </div>
+
+      <!-- Upload Tab -->
+      <div id="upload-tab" class="tab-content">
+        <h3 style="color: #AB4459; margin-bottom: 1.5rem;"><i class="fas fa-file-medical"></i> Upload Medical Reports</h3>
+        <div style="margin-bottom: 2rem;">
+          <label style="display: block; margin-bottom: 0.5rem; color: #555; font-weight: 500;">Upload Report Images (Mammogram, Ultrasound, MRI, etc.)</label>
+          <input type="file" id="report-images" accept="image/*" multiple style="width: 100%; padding: 0.7rem; border: 2px dashed #c77dff; border-radius: 8px; background: #f8f0ff; cursor: pointer;">
+          <small style="color: #888; display: block; margin-top: 0.5rem;">You can upload multiple images (JPG, PNG, etc.)</small>
+        </div>
+        <div id="image-preview" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;"></div>
+      </div>
+
+      <!-- Manual Entry Tab -->
+      <div id="manual-tab" class="tab-content" style="display: none;">
+        <h3 style="color: #AB4459; margin-bottom: 1.5rem;"><i class="fas fa-clipboard-list"></i> Enter Report Data Manually</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: #555; font-weight: 500;">BI-RADS Score</label>
+            <select id="birads-score" style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid #ddd;">
+              <option value="">Select BI-RADS Score</option>
+              <option value="0">0 - Incomplete</option>
+              <option value="1">1 - Negative</option>
+              <option value="2">2 - Benign</option>
+              <option value="3">3 - Probably Benign</option>
+              <option value="4">4 - Suspicious</option>
+              <option value="5">5 - Highly Suggestive of Malignancy</option>
+              <option value="6">6 - Known Biopsy-Proven Malignancy</option>
+            </select>
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: #555; font-weight: 500;">Mass Size (cm)</label>
+            <input type="number" id="mass-size" step="0.1" min="0" placeholder="Enter size" style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid #ddd;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: #555; font-weight: 500;">Age</label>
+            <input type="number" id="patient-age" min="0" max="120" placeholder="Your age" style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid #ddd;">
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; color: #555; font-weight: 500;">Family History</label>
+            <select id="family-history" style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid #ddd;">
+              <option value="no">No family history</option>
+              <option value="first-degree">First-degree relative</option>
+              <option value="multiple">Multiple relatives</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Symptoms Selection -->
+      <div style="margin-top: 2rem; margin-bottom: 2rem;">
+        <h3 style="color: #AB4459; margin-bottom: 1.5rem;"><i class="fas fa-stethoscope"></i> Select Your Symptoms</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem; background: #f8f0ff; border-radius: 8px; cursor: pointer;">
+            <input type="checkbox" class="symptom-checkbox" value="lump" style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Breast Lump</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem; background: #f8f0ff; border-radius: 8px; cursor: pointer;">
+            <input type="checkbox" class="symptom-checkbox" value="pain" style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Breast Pain</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem; background: #f8f0ff; border-radius: 8px; cursor: pointer;">
+            <input type="checkbox" class="symptom-checkbox" value="discharge" style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Nipple Discharge</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem; background: #f8f0ff; border-radius: 8px; cursor: pointer;">
+            <input type="checkbox" class="symptom-checkbox" value="skin-change" style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Skin Changes</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem; background: #f8f0ff; border-radius: 8px; cursor: pointer;">
+            <input type="checkbox" class="symptom-checkbox" value="swelling" style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Swelling</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem; background: #f8f0ff; border-radius: 8px; cursor: pointer;">
+            <input type="checkbox" class="symptom-checkbox" value="nipple-inversion" style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Nipple Inversion</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem; background: #f8f0ff; border-radius: 8px; cursor: pointer;">
+            <input type="checkbox" class="symptom-checkbox" value="lymph-nodes" style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Swollen Lymph Nodes</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem; background: #f8f0ff; border-radius: 8px; cursor: pointer;">
+            <input type="checkbox" class="symptom-checkbox" value="fatigue" style="width: 18px; height: 18px; cursor: pointer;">
+            <span>Unexplained Fatigue</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Additional Info -->
+      <div style="margin-bottom: 2rem;">
+        <label style="display: block; margin-bottom: 0.5rem; color: #555; font-weight: 500;">Additional Information (Optional)</label>
+        <textarea id="additional-info" placeholder="Any other symptoms or concerns you'd like to mention..." style="width: 100%; min-height: 100px; padding: 0.7rem; border-radius: 8px; border: 1px solid #ddd; font-family: inherit; resize: vertical;"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button onclick="analyzeRisk()" id="analyze-btn" style="width: 100%; background: linear-gradient(45deg, #ff69b4, #c77dff); color: #fff; border: none; border-radius: 20px; padding: 1rem 2rem; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.3s;">
+        <i class="fas fa-brain"></i> Analyze Risk & Get Recommendations
+      </button>
+
+      <!-- Results Section -->
+      <div id="risk-results" style="display: none; margin-top: 2.5rem; padding-top: 2rem; border-top: 2px solid #f0f0f0;">
+        <div id="risk-display" style="text-align: center; margin-bottom: 2rem;"></div>
+        <div id="recommendations" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" style="background: linear-gradient(135deg, #fde4f2, #e1d4fa); text-align: center;">
+    <h2 data-aos="zoom-in">Need Immediate Help?</h2>
+    <p data-aos="zoom-in" data-aos-delay="200" style="font-size: 1.1rem; margin-bottom: 30px;">Call the hospital directly or use our chat for quick assistance. Your health and peace of mind are our priority.</p>
+    <a href="#hospitals" class="btn hvr-icon-forward">Contact Hospitals <i class="fas fa-arrow-right hvr-icon"></i></a>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Breast Cancer Awareness & Support. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+    
+    // Tab switching
+    function switchTab(tab) {
+      const uploadTab = document.getElementById('upload-tab');
+      const manualTab = document.getElementById('manual-tab');
+      const tabs = document.querySelectorAll('.tab-btn');
+      
+      tabs.forEach(t => {
+        t.style.borderBottomColor = 'transparent';
+        t.style.color = '#666';
+      });
+      
+      if (tab === 'upload') {
+        uploadTab.style.display = 'block';
+        manualTab.style.display = 'none';
+        tabs[0].style.borderBottomColor = '#ff69b4';
+        tabs[0].style.color = '#ff69b4';
+      } else {
+        uploadTab.style.display = 'none';
+        manualTab.style.display = 'block';
+        tabs[1].style.borderBottomColor = '#ff69b4';
+        tabs[1].style.color = '#ff69b4';
+      }
+    }
+
+    // Image preview
+    document.getElementById('report-images').addEventListener('change', function(e) {
+      const preview = document.getElementById('image-preview');
+      preview.innerHTML = '';
+      Array.from(e.target.files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.width = '100%';
+          img.style.height = '150px';
+          img.style.objectFit = 'cover';
+          img.style.borderRadius = '8px';
+          img.style.border = '2px solid #c77dff';
+          preview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    // Risk Analysis Function
+    async function analyzeRisk() {
+      const btn = document.getElementById('analyze-btn');
+      const resultsDiv = document.getElementById('risk-results');
+      const riskDisplay = document.getElementById('risk-display');
+      const recommendationsDiv = document.getElementById('recommendations');
+      
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+      resultsDiv.style.display = 'none';
+      
+      // Collect symptoms
+      const symptoms = Array.from(document.querySelectorAll('.symptom-checkbox:checked')).map(cb => cb.value);
+      
+      // Collect manual data
+      const manualData = {
+        biradsScore: document.getElementById('birads-score').value,
+        massSize: document.getElementById('mass-size').value,
+        age: document.getElementById('patient-age').value,
+        familyHistory: document.getElementById('family-history').value,
+        additionalInfo: document.getElementById('additional-info').value
+      };
+      
+      // Collect images
+      const imageFiles = document.getElementById('report-images').files;
+      const formData = new FormData();
+      
+      Array.from(imageFiles).forEach(file => {
+        formData.append('images', file);
+      });
+      
+      formData.append('symptoms', JSON.stringify(symptoms));
+      formData.append('manualData', JSON.stringify(manualData));
+      
+      try {
+        const res = await fetch('http://localhost:3001/api/analyze-risk', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const data = await res.json();
+        
+        if (data.success) {
+          // Display risk results
+          const riskLevel = data.riskLevel;
+          const riskPercentage = data.riskPercentage;
+          const cancerType = data.cancerType || 'Not Determined';
+          const color = riskLevel === 'high' ? '#F44336' : riskLevel === 'medium' ? '#FF9800' : '#4CAF50';
+          const bgColor = riskLevel === 'high' ? '#ffebee' : riskLevel === 'medium' ? '#fff3e0' : '#e8f5e9';
+          
+          riskDisplay.innerHTML = `
+            <div style="background: ${bgColor}; padding: 2rem; border-radius: 12px; border: 3px solid ${color};">
+              <h2 style="color: ${color}; margin-bottom: 1rem;">
+                <i class="fas fa-exclamation-triangle"></i> Risk Level: ${riskLevel.toUpperCase()}
+              </h2>
+              <div style="font-size: 3rem; font-weight: 700; color: ${color}; margin: 1rem 0;">
+                ${riskPercentage}%
+              </div>
+              <p style="color: #555; font-size: 1.1rem; margin-bottom: 0.5rem;">
+                <strong>Predicted Cancer Type:</strong> ${cancerType}
+              </p>
+              <p style="color: #666; font-size: 0.95rem;">
+                ${data.message || 'Please consult with a healthcare professional for proper diagnosis.'}
+              </p>
+            </div>
+          `;
+          
+          // Display recommendations
+          recommendationsDiv.innerHTML = `
+            <div style="background: #f8f0ff; padding: 1.5rem; border-radius: 12px;">
+              <h3 style="color: #AB4459; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Health Tips</h3>
+              <ul style="list-style: none; padding: 0;">
+                ${data.recommendations.tips.map(tip => `<li style="padding: 0.5rem 0; color: #555;"><i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 0.5rem;"></i>${tip}</li>`).join('')}
+              </ul>
+            </div>
+            <div style="background: #f8f0ff; padding: 1.5rem; border-radius: 12px;">
+              <h3 style="color: #AB4459; margin-bottom: 1rem;"><i class="fas fa-apple-alt"></i> Recommended Foods</h3>
+              <ul style="list-style: none; padding: 0;">
+                ${data.recommendations.foods.map(food => `<li style="padding: 0.5rem 0; color: #555;"><i class="fas fa-leaf" style="color: #4CAF50; margin-right: 0.5rem;"></i>${food}</li>`).join('')}
+              </ul>
+            </div>
+            <div style="background: #f8f0ff; padding: 1.5rem; border-radius: 12px;">
+              <h3 style="color: #AB4459; margin-bottom: 1rem;"><i class="fas fa-pills"></i> Medications & Supplements</h3>
+              <ul style="list-style: none; padding: 0;">
+                ${data.recommendations.medications.map(med => `<li style="padding: 0.5rem 0; color: #555;"><i class="fas fa-capsules" style="color: #c77dff; margin-right: 0.5rem;"></i>${med}</li>`).join('')}
+              </ul>
+            </div>
+          `;
+          
+          resultsDiv.style.display = 'block';
+          resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          alert('Analysis failed: ' + (data.error || 'Unknown error'));
+        }
+      } catch (err) {
+        alert('Error connecting to server: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-brain"></i> Analyze Risk & Get Recommendations';
+      }
+    }
+
+    // Appointment form handler - send to backend
+    document.querySelector('.appointment-box form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = this;
+      const name = form.querySelector('input[placeholder="Your Name"]').value;
+      const email = form.querySelector('input[placeholder="Your Email"]').value;
+      const phone = form.querySelector('input[placeholder="Phone Number"]').value;
+      const hospital = document.getElementById('hospital-select').value;
+      const appointmentType = document.getElementById('appointment-type').value;
+      const date = form.querySelector('input[type="date"]').value;
+      const time = form.querySelector('input[type="time"]').value;
+      const message = 'Web appointment';
+      try {
+        const res = await fetch('http://localhost:3001/api/appointments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, phone, hospital, date, time, message, appointmentType })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert('Your appointment request has been submitted!');
+          form.reset();
+        } else {
+          alert('Failed to submit appointment: ' + (data.error || 'Unknown error'));
+        }
+      } catch (err) {
+        alert('Error connecting to server: ' + err.message);
+      }
+    });
+    
+    // Appointment status check
+    document.getElementById('status-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('status-email').value;
+      const resultDiv = document.getElementById('status-result');
+      resultDiv.innerHTML = 'Loading...';
+      try {
+        const res = await fetch(`http://localhost:3001/api/appointments?email=${encodeURIComponent(email)}`);
+        const data = await res.json();
+        if (data.success && data.appointments.length > 0) {
+          resultDiv.innerHTML = data.appointments.map(a => `
+            <div style='background:#f8f0ff;padding:1rem;border-radius:10px;margin-bottom:1rem;'>
+              <b>Hospital:</b> ${a.hospital}<br>
+              <b>Date:</b> ${a.date} <b>Time:</b> ${a.time}<br>
+              <b>Status:</b> <span style='color:${a.status === 'approved' ? '#4CAF50' : a.status === 'rejected' ? '#F44336' : '#888'};'>${a.status ? a.status.charAt(0).toUpperCase() + a.status.slice(1) : 'Pending'}</span>
+            </div>
+          `).join('');
+        } else {
+          resultDiv.innerHTML = '<span style="color:#AB4459;">No appointments found for this email.</span>';
+        }
+      } catch (err) {
+        resultDiv.innerHTML = '<span style="color:#AB4459;">Error connecting to server.</span>';
+      }
+    });
+  </script>
+</body>
+</html>

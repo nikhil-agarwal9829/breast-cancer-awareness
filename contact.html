@@ -309,7 +309,7 @@
 
       <div class="contact-form" data-aos="fade-left">
         <h3>Send us a Message</h3>
-        <form>
+        <form id="contactForm">
       <div class="form-group">
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" required placeholder="Enter your full name">
@@ -358,7 +358,7 @@
       </div>
 
   <footer>
-    <p>&copy; 2024 VIT Hope Ribbon. All Rights Reserved.</p>
+    <p>&copy; 2026 VIT Hope Ribbon. All Rights Reserved.</p>
   </footer>
 
   <!-- Scripts -->
@@ -397,6 +397,54 @@
           navLinks.classList.remove('active');
         }
       });
+
+      // Handle contact form submission
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const formData = new FormData(contactForm);
+          const contactData = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            subject: formData.get('subject'),
+            message: formData.get('message')
+          };
+          
+          try {
+            const response = await fetch('http://localhost:3001/api/contact', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(contactData)
+            });
+            
+            // Check if response is OK
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            
+            if (result.success) {
+              alert('Message sent successfully!');
+              contactForm.reset();
+            } else {
+              alert('Error sending message: ' + result.error);
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            // Check if it's a CORS error
+            if (error.message.includes('Failed to fetch') || error.message.includes('CORS')) {
+              alert('Unable to send message due to CORS policy. Please make sure the server is running and accessible.');
+            } else {
+              alert('Error sending message. Please try again.');
+            }
+          }
+        });
+      }
     });
   </script>
 </body>

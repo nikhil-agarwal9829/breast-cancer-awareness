@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Appointment Booking</title>
+</head>
+<body>
+    <h1>Test Appointment Booking</h1>
+    <form id="appointmentForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+        </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" required>
+        </div>
+        <div>
+            <label for="hospital">Hospital:</label>
+            <input type="text" id="hospital" value="VIT Hope Ribbon Medical Center" required>
+        </div>
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+        </div>
+        <div>
+            <label for="time">Time:</label>
+            <input type="time" id="time" required>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message"></textarea>
+        </div>
+        <div>
+            <label for="appointmentType">Appointment Type:</label>
+            <select id="appointmentType">
+                <option value="consultation">Consultation</option>
+                <option value="followup">Follow-up</option>
+                <option value="screening">Screening</option>
+            </select>
+        </div>
+        <button type="submit">Book Appointment</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const appointmentData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                hospital: document.getElementById('hospital').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                message: document.getElementById('message').value,
+                appointmentType: document.getElementById('appointmentType').value
+            };
+            
+            try {
+                const response = await fetch('http://localhost:3001/api/appointments', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(appointmentData)
+                });
+                
+                const result = await response.json();
+                document.getElementById('result').innerHTML = '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+                
+                if (result.success) {
+                    alert('Appointment booked successfully!');
+                } else {
+                    alert('Error booking appointment: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = '<p>Error: ' + error.message + '</p>';
+            }
+        });
+    </script>
+</body>
+</html>

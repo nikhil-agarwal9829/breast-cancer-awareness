@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Admin - MediHelp</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+  <style>
+    .admin-container { max-width: 420px; margin: 120px auto 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 2.5rem 2rem; }
+    .admin-container h2 { color: #AB4459; text-align: center; margin-bottom: 2rem; }
+    .admin-form input { width: 100%; padding: 0.8rem; margin-bottom: 1.2rem; border-radius: 8px; border: 1px solid #ddd; font-size: 1rem; }
+    .admin-form button { width: 100%; background: linear-gradient(45deg, #ff69b4, #c77dff); color: #fff; border: none; border-radius: 20px; padding: 0.7rem 0; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: background 0.3s; }
+    .admin-form button:hover { background: linear-gradient(45deg, #c77dff, #ff69b4); }
+    .hospital-list { max-width: 500px; margin: 60px auto 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 2rem; }
+    .hospital-list h3 { color: #AB4459; margin-bottom: 1.5rem; text-align: center; }
+    .hospital-item { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid #eee; }
+    .hospital-item:last-child { border-bottom: none; }
+    .hospital-item span { font-weight: 600; color: #c77dff; }
+    .hospital-item button { background: #ff69b4; color: #fff; border: none; border-radius: 16px; padding: 0.4rem 1.2rem; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+    .hospital-item button:hover { background: #c77dff; }
+    .appointments-section { max-width: 600px; margin: 60px auto 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 2rem; }
+    .appointments-section h3 { color: #AB4459; margin-bottom: 1.5rem; text-align: center; }
+    .appointment-card { background: #f8f0ff; border-radius: 10px; padding: 1rem 1.5rem; margin-bottom: 1.2rem; box-shadow: 0 2px 8px rgba(199,125,255,0.06); }
+    .appointment-card strong { color: #ff69b4; }
+    .logout-btn { display: block; margin: 30px auto 0 auto; background: #AB4459; color: #fff; border: none; border-radius: 16px; padding: 0.5rem 1.5rem; font-size: 1rem; cursor: pointer; transition: background 0.3s; }
+    .logout-btn:hover { background: #c77dff; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">MediHelp Admin</div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Login Form -->
+    <div class="admin-container" id="login-section">
+      <h2>Hospital Admin Login</h2>
+      <form class="admin-form">
+        <input type="text" id="admin-username" placeholder="Username" required>
+        <input type="password" id="admin-password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <div id="login-error" style="color:#AB4459;text-align:center;display:none;">Invalid credentials. Try again.</div>
+    </div>
+
+    <!-- Hospital List -->
+    <div class="hospital-list" id="hospital-list-section" style="display:none;">
+      <h3>Select Hospital to Manage</h3>
+      <div class="hospital-item">
+        <span>CityCare Hospital</span>
+        <button onclick="selectHospital(0)">Manage</button>
+      </div>
+      <div class="hospital-item">
+        <span>Hope Medical Center</span>
+        <button onclick="selectHospital(1)">Manage</button>
+      </div>
+      <button class="logout-btn" onclick="logoutAdmin()">Logout</button>
+    </div>
+
+    <!-- Appointments Section -->
+    <div class="appointments-section" id="appointments-section" style="display:none;">
+      <h3 id="hospital-name-title">Appointments</h3>
+      <div id="appointments-list"></div>
+      <button class="logout-btn" onclick="logoutAdmin()">Logout</button>
+    </div>
+  </main>
+
+  <script>
+    // Mock admin credentials
+    const ADMIN_CREDENTIALS = { username: 'admin', password: 'admin123' };
+    const hospitalNames = [
+      'CityCare Hospital',
+      'Hope Medical Center'
+    ];
+    let loggedIn = false;
+    let selectedHospitalIdx = null;
+
+    document.querySelector('.admin-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('admin-username').value;
+      const password = document.getElementById('admin-password').value;
+      if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+        loggedIn = true;
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('hospital-list-section').style.display = 'block';
+        document.getElementById('login-error').style.display = 'none';
+      } else {
+        document.getElementById('login-error').style.display = 'block';
+      }
+    });
+
+    window.selectHospital = async function(idx) {
+      selectedHospitalIdx = idx;
+      document.getElementById('hospital-list-section').style.display = 'none';
+      document.getElementById('appointments-section').style.display = 'block';
+      document.getElementById('hospital-name-title').textContent = hospitalNames[idx] + ' - Appointments';
+      await renderAppointments(idx);
+    }
+
+    async function renderAppointments(idx) {
+      const list = document.getElementById('appointments-list');
+      list.innerHTML = '<p style="text-align:center;color:#888;">Loading...</p>';
+      try {
+        const res = await fetch(`http://localhost:3001/api/appointments?hospital=${encodeURIComponent(hospitalNames[idx])}`);
+        const data = await res.json();
+        if (data.success) {
+          const appts = data.appointments;
+          if (appts.length === 0) {
+            list.innerHTML = '<p style="text-align:center;color:#888;">No appointments yet.</p>';
+            return;
+          }
+          list.innerHTML = appts.map(a => `
+            <div class="appointment-card">
+              <strong>${a.name}</strong> (${a.email}, ${a.phone})<br>
+              <b>Date:</b> ${a.date} <b>Time:</b> ${a.time}<br>
+              <b>Message:</b> ${a.message}<br>
+              <b>Status:</b> <span style='color:${a.status === 'approved' ? '#4CAF50' : a.status === 'rejected' ? '#F44336' : '#888'};'>${a.status ? a.status.charAt(0).toUpperCase() + a.status.slice(1) : 'Pending'}</span><br>
+              <div style='margin-top:0.7rem;'>
+                <button onclick="updateStatus('${a._id}','approved')" style="background:#4CAF50;margin-right:8px;">Approve</button>
+                <button onclick="updateStatus('${a._id}','rejected')" style="background:#F44336;">Reject</button>
+              </div>
+            </div>
+          `).join('');
+        } else {
+          list.innerHTML = '<p style="text-align:center;color:#AB4459;">Failed to load appointments.</p>';
+        }
+      } catch (err) {
+        list.innerHTML = '<p style="text-align:center;color:#AB4459;">Error connecting to server.</p>';
+      }
+    }
+    window.updateStatus = async function(id, status) {
+      try {
+        await fetch(`http://localhost:3001/api/appointments/${id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status })
+        });
+        if (selectedHospitalIdx !== null) {
+          await renderAppointments(selectedHospitalIdx);
+        }
+      } catch (err) {
+        alert('Failed to update status.');
+      }
+    }
+
+    window.logoutAdmin = function() {
+      loggedIn = false;
+      selectedHospitalIdx = null;
+      document.getElementById('login-section').style.display = 'block';
+      document.getElementById('hospital-list-section').style.display = 'none';
+      document.getElementById('appointments-section').style.display = 'none';
+      document.getElementById('admin-username').value = '';
+      document.getElementById('admin-password').value = '';
+      document.getElementById('login-error').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+[
+  {
+    "id": "1769027028076",
+    "symptoms": [
+      "lump",
+      "pain",
+      "swelling"
+    ],
+    "manualData": {
+      "biradsScore": "4",
+      "massSize": "0.5",
+      "age": "38",
+      "familyHistory": "no"
+    },
+    "images": [],
+    "riskLevel": "high",
+    "riskPercentage": 92,
+    "cancerType": "Possible Invasive Breast Cancer",
+    "recommendations": {
+      "tips": [
+        "Schedule an immediate consultation with an oncologist",
+        "Consider a biopsy for definitive diagnosis",
+        "Get a second opinion from a breast cancer specialist",
+        "Discuss genetic testing with your doctor",
+        "Maintain regular follow-up appointments",
+        "Avoid smoking and limit alcohol consumption",
+        "Practice stress management techniques"
+      ],
+      "foods": [
+        "Cruciferous vegetables (broccoli, cauliflower, cabbage)",
+        "Berries (blueberries, strawberries) - high in antioxidants",
+        "Fatty fish (salmon, mackerel) - Omega-3 fatty acids",
+        "Green tea - contains polyphenols",
+        "Turmeric - anti-inflammatory properties",
+        "Whole grains and fiber-rich foods",
+        "Lean proteins (chicken, beans, lentils)"
+      ],
+      "medications": [
+        "Consult doctor about Tamoxifen or Raloxifene (if appropriate)",
+        "Vitamin D3 supplements (2000-4000 IU daily)",
+        "Omega-3 supplements",
+        "Curcumin supplements (after doctor consultation)",
+        "Probiotics for immune support"
+      ]
+    },
+    "factors": [
+      "Symptom: lump (+25%)",
+      "Symptom: pain (+8%)",
+      "Symptom: swelling (+12%)",
+      "BI-RADS 4 (+45%)",
+      "Mass size 0.5cm (+1.5%)"
+    ],
+    "createdAt": "2026-01-21T20:23:48.076Z"
+  },
+  {
+    "id": "1769068632255",
+    "symptoms": [
+      "lump",
+      "pain",
+      "swelling"
+    ],
+    "manualData": {
+      "biradsScore": "3",
+      "massSize": "0",
+      "age": "20",
+      "familyHistory": "no"
+    },
+    "images": [],
+    "riskLevel": "high",
+    "riskPercentage": 60,
+    "cancerType": "Possible Invasive Breast Cancer",
+    "recommendations": {
+      "tips": [
+        "Schedule an immediate consultation with an oncologist",
+        "Consider a biopsy for definitive diagnosis",
+        "Get a second opinion from a breast cancer specialist",
+        "Discuss genetic testing with your doctor",
+        "Maintain regular follow-up appointments",
+        "Avoid smoking and limit alcohol consumption",
+        "Practice stress management techniques"
+      ],
+      "foods": [
+        "Cruciferous vegetables (broccoli, cauliflower, cabbage)",
+        "Berries (blueberries, strawberries) - high in antioxidants",
+        "Fatty fish (salmon, mackerel) - Omega-3 fatty acids",
+        "Green tea - contains polyphenols",
+        "Turmeric - anti-inflammatory properties",
+        "Whole grains and fiber-rich foods",
+        "Lean proteins (chicken, beans, lentils)"
+      ],
+      "medications": [
+        "Consult doctor about Tamoxifen or Raloxifene (if appropriate)",
+        "Vitamin D3 supplements (2000-4000 IU daily)",
+        "Omega-3 supplements",
+        "Curcumin supplements (after doctor consultation)",
+        "Probiotics for immune support"
+      ]
+    },
+    "factors": [
+      "Symptom: lump (+25%)",
+      "Symptom: pain (+8%)",
+      "Symptom: swelling (+12%)",
+      "BI-RADS 3 (+15%)"
+    ],
+    "createdAt": "2026-01-22T07:57:12.256Z"
+  },
+  {
+    "id": "1769069468859",
+    "symptoms": [
+      "lump",
+      "pain",
+      "swelling",
+      "fatigue"
+    ],
+    "manualData": {
+      "biradsScore": "3",
+      "massSize": "0.5",
+      "age": "20",
+      "familyHistory": "no"
+    },
+    "images": [
+      "report-1769069468836-398812611.jpg"
+    ],
+    "riskLevel": "high",
+    "riskPercentage": 72,
+    "cancerType": "Possible Invasive Breast Cancer",
+    "recommendations": {
+      "tips": [
+        "Schedule an immediate consultation with an oncologist",
+        "Consider a biopsy for definitive diagnosis",
+        "Get a second opinion from a breast cancer specialist",
+        "Discuss genetic testing with your doctor",
+        "Maintain regular follow-up appointments",
+        "Avoid smoking and limit alcohol consumption",
+        "Practice stress management techniques"
+      ],
+      "foods": [
+        "Cruciferous vegetables (broccoli, cauliflower, cabbage)",
+        "Berries (blueberries, strawberries) - high in antioxidants",
+        "Fatty fish (salmon, mackerel) - Omega-3 fatty acids",
+        "Green tea - contains polyphenols",
+        "Turmeric - anti-inflammatory properties",
+        "Whole grains and fiber-rich foods",
+        "Lean proteins (chicken, beans, lentils)"
+      ],
+      "medications": [
+        "Consult doctor about Tamoxifen or Raloxifene (if appropriate)",
+        "Vitamin D3 supplements (2000-4000 IU daily)",
+        "Omega-3 supplements",
+        "Curcumin supplements (after doctor consultation)",
+        "Probiotics for immune support"
+      ]
+    },
+    "factors": [
+      "Symptom: lump (+25%)",
+      "Symptom: pain (+8%)",
+      "Symptom: swelling (+12%)",
+      "Symptom: fatigue (+5%)",
+      "BI-RADS 3 (+15%)",
+      "Mass size 0.5cm (+1.5%)",
+      "Medical images provided (+5%)"
+    ],
+    "createdAt": "2026-01-22T08:11:08.859Z"
+  },
+  {
+    "id": "1769075048748",
+    "symptoms": [
+      "lump",
+      "skin-change",
+      "swelling"
+    ],
+    "manualData": {
+      "biradsScore": "",
+      "massSize": "0.8",
+      "age": "20",
+      "familyHistory": "no"
+    },
+    "images": [],
+    "riskLevel": "medium",
+    "riskPercentage": 57,
+    "cancerType": "Inflammatory Breast Cancer (IBC)",
+    "recommendations": {
+      "tips": [
+        "Schedule a mammogram within 1-2 months",
+        "Consider ultrasound or MRI for better imaging",
+        "Regular self-examinations monthly",
+        "Maintain healthy weight and exercise regularly",
+        "Limit processed foods and sugar",
+        "Get adequate sleep (7-9 hours)",
+        "Stay hydrated and maintain balanced diet"
+      ],
+      "foods": [
+        "Leafy greens (spinach, kale)",
+        "Citrus fruits (oranges, lemons)",
+        "Nuts and seeds (walnuts, flaxseeds)",
+        "Legumes (beans, chickpeas)",
+        "Olive oil for cooking",
+        "Garlic and onions",
+        "Yogurt and fermented foods"
+      ],
+      "medications": [
+        "Multivitamin with folic acid",
+        "Vitamin D3 (1000-2000 IU daily)",
+        "Calcium supplements (if needed)",
+        "Antioxidant supplements (after consultation)"
+      ]
+    },
+    "factors": [
+      "Symptom: lump (+25%)",
+      "Symptom: skin-change (+18%)",
+      "Symptom: swelling (+12%)",
+      "Mass size 0.8cm (+2.4%)"
+    ],
+    "createdAt": "2026-01-22T09:44:08.748Z"
+  }
+]
