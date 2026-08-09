@@ -1,35 +1,37 @@
-async function testGeminiAPI() {
-    const API_KEY = 'AIzaSyD1fC-BtfOfO1AnBAnJp8lxUqbAP8HU7YE';
-    const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent';
+/**
+ * Dev-only smoke test for the AI chat placeholder endpoint.
+ * Run via: node won't work — open a page that includes this script with the server/Edge Function running.
+ */
+async function testAIChatEndpoint() {
+    const endpoint = (typeof AIEndpoints !== 'undefined' && AIEndpoints.chat)
+        ? AIEndpoints.chat
+        : '/api/ai-chat';
 
     try {
-        const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+        const response = await fetch(endpoint, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                contents: [{
-                    parts: [{
-                        text: "What are the early signs of breast cancer?"
-                    }]
-                }]
-            })
+                message: 'What are the early signs of breast cancer?',
+                sessionId: typeof getSessionId === 'function' ? getSessionId() : 'test-session',
+            }),
         });
 
         const data = await response.json();
         console.log('API Response:', data);
-        
+
         if (response.ok) {
+            const reply = typeof parseAIChatReply === 'function'
+                ? parseAIChatReply(data)
+                : (data.reply || data.text || '');
             console.log('API Test Successful!');
-            console.log('Response:', data.candidates[0].content.parts[0].text);
+            console.log('Reply:', reply);
         } else {
-            console.error('API Error:', data.error);
+            console.error('API Error:', data.error || data);
         }
     } catch (error) {
         console.error('Test Failed:', error);
     }
 }
 
-// Run the test
-testGeminiAPI(); 
+testAIChatEndpoint();

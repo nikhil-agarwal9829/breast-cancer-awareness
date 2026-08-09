@@ -334,6 +334,138 @@
         height: 350px;
       }
     }
+
+    /* NGO Contact Button */
+    .ngo-contact-btn {
+      background: linear-gradient(45deg, #ff69b4, #c77dff);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+    }
+
+    .ngo-contact-btn:hover {
+      background: linear-gradient(45deg, #c77dff, #ff69b4);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(199, 125, 255, 0.4);
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content h3 {
+      color: #ff69b4;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #999;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover {
+      color: #ff69b4;
+    }
+
+    .modal-form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .modal-form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    .modal-form-group input,
+    .modal-form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+
+    .modal-form-group input:focus,
+    .modal-form-group textarea:focus {
+      outline: none;
+      border-color: #ff69b4;
+    }
+
+    .modal-submit-btn {
+      background: linear-gradient(45deg, #ff69b4, #c77dff);
+      color: white;
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      width: 100%;
+      margin-top: 0.5rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .modal-submit-btn:hover {
+      background: linear-gradient(45deg, #c77dff, #ff69b4);
+      transform: translateY(-2px);
+    }
+
+    .modal-submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
   </style>
 </head>
 <body>
@@ -404,24 +536,53 @@
         <img src="images/one.png" alt="NGO One">
         <h4>NGO One</h4>
         <p>Committed to providing support and resources to breast cancer patients.</p>
+        <button class="ngo-contact-btn" onclick="openNgoModal('NGO One')"><i class="fas fa-envelope"></i> Contact NGO</button>
       </div>
       <div class="ngo-item" data-aos="fade-up" data-aos-delay="100">
         <img src="images/hope.jpeg" alt="Hope Foundation">
         <h4>Hope Foundation</h4>
         <p>Dedicated to raising awareness and funding research in breast cancer.</p>
+        <button class="ngo-contact-btn" onclick="openNgoModal('Hope Foundation')"><i class="fas fa-envelope"></i> Contact NGO</button>
       </div>
       <div class="ngo-item" data-aos="fade-up" data-aos-delay="200">
         <img src="images/life.jpeg" alt="LifeCare Initiative">
         <h4>LifeCare Initiative</h4>
         <p>Works on community outreach programs for early detection and support.</p>
+        <button class="ngo-contact-btn" onclick="openNgoModal('LifeCare Initiative')"><i class="fas fa-envelope"></i> Contact NGO</button>
       </div>
       <div class="ngo-item" data-aos="fade-up" data-aos-delay="300">
         <img src="images/woman.png" alt="Women's Health Trust">
         <h4>Women's Health Trust</h4>
         <p>Advocates for women's health and provides critical services and education.</p>
+        <button class="ngo-contact-btn" onclick="openNgoModal(`Women's Health Trust`)"><i class="fas fa-envelope"></i> Contact NGO</button>
       </div>
     </div>
   </section>
+
+  <!-- NGO Contact Modal -->
+  <div id="ngo-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeNgoModal()">&times;</button>
+      <h3 id="ngo-modal-title">Contact NGO</h3>
+      <form id="ngo-contact-form">
+        <div class="modal-form-group">
+          <label for="ngo-name">Your Name</label>
+          <input type="text" id="ngo-name" required placeholder="Enter your full name">
+        </div>
+        <div class="modal-form-group">
+          <label for="ngo-email">Your Email</label>
+          <input type="email" id="ngo-email" required placeholder="Enter your email">
+        </div>
+        <div class="modal-form-group">
+          <label for="ngo-message">Message</label>
+          <textarea id="ngo-message" required placeholder="How can this NGO help you?" rows="4"></textarea>
+        </div>
+        <button type="submit" class="modal-submit-btn" id="ngo-submit-btn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </div>
+  </div>
 
   <!-- Video Section -->
   <section class="video-section">
@@ -441,13 +602,62 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase-client.js"></script>
   <script>
     AOS.init({
       duration: 1000,
       once: true
     });
+
+    // NGO Contact Modal
+    let currentNgo = '';
+
+    function openNgoModal(ngoName) {
+      currentNgo = ngoName;
+      document.getElementById('ngo-modal-title').textContent = 'Contact ' + ngoName;
+      document.getElementById('ngo-modal').style.display = 'flex';
+      document.getElementById('ngo-contact-form').reset();
+    }
+
+    function closeNgoModal() {
+      document.getElementById('ngo-modal').style.display = 'none';
+    }
+
+    // Close modal on overlay click
+    document.getElementById('ngo-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeNgoModal();
+    });
+
+    document.getElementById('ngo-contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('ngo-submit-btn');
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+      const result = await SupabaseDB.insertContactMessage({
+        name: document.getElementById('ngo-name').value,
+        email: document.getElementById('ngo-email').value,
+        subject: currentNgo,
+        message: document.getElementById('ngo-message').value,
+        type: 'ngo'
+      });
+
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+
+      if (result.success) {
+        closeNgoModal();
+        alert('Your message has been sent to ' + currentNgo + '. They will get back to you soon!');
+      } else {
+        alert('Error sending message: ' + result.error);
+      }
+    });
   </script>
   <script src="js/main.js"></script>
+  <script src="js/api-config.js"></script>
   <script src="js/chat.js"></script>
 </body>
 </html>

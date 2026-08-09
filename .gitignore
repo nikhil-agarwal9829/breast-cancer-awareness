@@ -1,8 +1,10 @@
 # Node modules
 node_modules/
 
-# Environment variables
+# Environment variables and secrets
 .env
+supabase/functions/.env
+keys.md
 
 # IDE files
 .vscode/

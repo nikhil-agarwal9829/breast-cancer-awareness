@@ -363,6 +363,10 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/api-config.js"></script>
   <script src="js/chat.js"></script>
   <script>
     // Initialize AOS
@@ -409,38 +413,38 @@
             name: formData.get('name'),
             email: formData.get('email'),
             subject: formData.get('subject'),
-            message: formData.get('message')
+            message: formData.get('message'),
+            type: 'general',
           };
-          
+
+          if (!window.SupabaseDB?.isConfigured()) {
+            alert('Contact form is not configured yet. Copy js/supabase-config.example.js to js/supabase-config.js and add your Supabase anon key.');
+            return;
+          }
+
+          const submitBtn = contactForm.querySelector('button[type="submit"]');
+          const originalText = submitBtn ? submitBtn.textContent : '';
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+          }
+
           try {
-            const response = await fetch('http://localhost:3001/api/contact', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(contactData)
-            });
-            
-            // Check if response is OK
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const result = await response.json();
-            
+            const result = await SupabaseDB.insertContactMessage(contactData);
+
             if (result.success) {
-              alert('Message sent successfully!');
+              alert('Message sent successfully! We will get back to you soon.');
               contactForm.reset();
             } else {
               alert('Error sending message: ' + result.error);
             }
           } catch (error) {
             console.error('Error:', error);
-            // Check if it's a CORS error
-            if (error.message.includes('Failed to fetch') || error.message.includes('CORS')) {
-              alert('Unable to send message due to CORS policy. Please make sure the server is running and accessible.');
-            } else {
-              alert('Error sending message. Please try again.');
+            alert('Error sending message. Please try again.');
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
             }
           }
         });

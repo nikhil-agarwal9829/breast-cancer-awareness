@@ -168,10 +168,8 @@
         </div>
     </div>
 
+    <script src="js/api-config.js"></script>
     <script>
-        const API_KEY = 'AIzaSyDP3-YxRQi30G7kC1uxvSpmtAlFJiyxhHE';
-        const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
-
         const chatButton = document.getElementById('chat-button');
         const chatContainer = document.getElementById('chat-container');
         const closeButton = document.querySelector('.close-chat');
@@ -205,20 +203,19 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // Generate response using Gemini API
+        // Generate response via server-side AI proxy (Supabase Edge Function in production)
         async function generateResponse(userInput) {
             try {
-                const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+                const endpoint = (typeof AIEndpoints !== 'undefined' && AIEndpoints.chat)
+                    ? AIEndpoints.chat
+                    : '/api/ai-chat';
+
+                const response = await fetch(endpoint, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: [{
-                            parts: [{
-                                text: userInput
-                            }]
-                        }]
+                        message: userInput,
+                        sessionId: typeof getSessionId === 'function' ? getSessionId() : 'anonymous',
                     })
                 });
 
@@ -227,7 +224,8 @@
                 }
 
                 const data = await response.json();
-                return data.candidates[0].content.parts[0].text;
+                return (typeof parseAIChatReply === 'function' ? parseAIChatReply(data) : (data.reply || data.text))
+                    || 'I apologize, but I could not generate a response. Please try again later.';
             } catch (error) {
                 console.error('Error:', error);
                 return 'I apologize, but I encountered an error. Please try again later.';

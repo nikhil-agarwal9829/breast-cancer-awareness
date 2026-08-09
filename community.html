@@ -211,6 +211,71 @@
             transform: translateY(-5px);
         }
 
+        .join-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .join-modal-overlay.is-open {
+            display: flex;
+        }
+
+        .join-modal {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.25);
+        }
+
+        .join-modal h3 {
+            color: #ff69b4;
+            margin-bottom: 0.5rem;
+        }
+
+        .join-modal p {
+            color: #666;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .join-modal label {
+            display: block;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 0.35rem;
+            font-size: 0.9rem;
+        }
+
+        .join-modal input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .join-modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+            margin-top: 0.5rem;
+        }
+
+        .join-modal .btn-cancel {
+            background: #eee;
+            color: #555;
+        }
+
         /* Success Stories Carousel */
         .success-stories {
             padding: 4rem 2rem;
@@ -532,19 +597,19 @@
                 <i class="fas fa-users fa-3x" style="color: #ff69b4;"></i>
                 <h3>Survivors Circle</h3>
                 <p>Connect with fellow survivors, share your journey, and inspire others.</p>
-                <a href="#" class="btn hvr-forward">Join Group</a>
+                <button type="button" class="btn hvr-forward join-group-btn">Join Group</button>
             </div>
             <div class="group-card" data-aos="fade-up" data-aos-delay="100">
                 <i class="fas fa-heart fa-3x" style="color: #ff69b4;"></i>
                 <h3>Caregivers Support</h3>
                 <p>A space for family and friends to share experiences and find guidance.</p>
-                <a href="#" class="btn hvr-forward">Join Group</a>
+                <button type="button" class="btn hvr-forward join-group-btn">Join Group</button>
             </div>
             <div class="group-card" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-hand-holding-heart fa-3x" style="color: #ff69b4;"></i>
                 <h3>Newly Diagnosed</h3>
                 <p>Get support and information during your initial journey.</p>
-                <a href="#" class="btn hvr-forward">Join Group</a>
+                <button type="button" class="btn hvr-forward join-group-btn">Join Group</button>
             </div>
         </div>
     </section>
@@ -705,6 +770,24 @@
         </div>
     </div>
 
+    <div id="join-group-overlay" class="join-modal-overlay" aria-hidden="true">
+        <div class="join-modal" role="dialog" aria-labelledby="join-modal-title">
+            <h3 id="join-modal-title">Join support group</h3>
+            <p id="join-modal-group-label">Enter your details to request access.</p>
+            <form id="joinGroupForm">
+                <input type="hidden" id="join-group-name" name="groupName" value="">
+                <label for="join-member-name">Full name</label>
+                <input type="text" id="join-member-name" name="name" required placeholder="Your name">
+                <label for="join-member-email">Email</label>
+                <input type="email" id="join-member-email" name="email" required placeholder="you@example.com">
+                <div class="join-modal-actions">
+                    <button type="button" class="btn btn-cancel" id="join-group-cancel">Cancel</button>
+                    <button type="submit" class="btn hvr-forward">Join Group</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 VIT Hope Ribbon. All Rights Reserved.</p>
     </footer>
@@ -712,6 +795,10 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/api-config.js"></script>
     <script src="js/chat.js"></script>
     <script>
         // Initialize AOS
@@ -767,6 +854,76 @@
                 if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
                     hamburger.classList.remove('active');
                     navLinks.classList.remove('active');
+                }
+            });
+
+            const joinOverlay = document.getElementById('join-group-overlay');
+            const joinForm = document.getElementById('joinGroupForm');
+            const joinGroupNameInput = document.getElementById('join-group-name');
+            const joinModalTitle = document.getElementById('join-modal-title');
+            const joinModalGroupLabel = document.getElementById('join-modal-group-label');
+
+            function openJoinModal(groupName) {
+                joinGroupNameInput.value = groupName;
+                joinModalTitle.textContent = `Join ${groupName}`;
+                joinModalGroupLabel.textContent = `Request to join "${groupName}". We will email you next steps.`;
+                joinOverlay.classList.add('is-open');
+                joinOverlay.setAttribute('aria-hidden', 'false');
+                document.getElementById('join-member-name').focus();
+            }
+
+            function closeJoinModal() {
+                joinOverlay.classList.remove('is-open');
+                joinOverlay.setAttribute('aria-hidden', 'true');
+                joinForm.reset();
+            }
+
+            document.querySelectorAll('.join-group-btn').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const card = btn.closest('.group-card');
+                    const groupName = card?.querySelector('h3')?.textContent?.trim() || 'Support Group';
+                    openJoinModal(groupName);
+                });
+            });
+
+            document.getElementById('join-group-cancel').addEventListener('click', closeJoinModal);
+            joinOverlay.addEventListener('click', (e) => {
+                if (e.target === joinOverlay) closeJoinModal();
+            });
+
+            joinForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (!window.SupabaseDB?.isConfigured()) {
+                    alert('Community signup is not configured yet. Copy js/supabase-config.example.js to js/supabase-config.js and add your Supabase anon key.');
+                    return;
+                }
+
+                const formData = new FormData(joinForm);
+                const payload = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    groupName: formData.get('groupName') || joinGroupNameInput.value,
+                };
+
+                const submitBtn = joinForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Joining...';
+
+                try {
+                    const result = await SupabaseDB.insertCommunityMember(payload);
+                    if (result.success) {
+                        alert(`Welcome! You have been registered for ${payload.groupName}. Check your email for updates.`);
+                        closeJoinModal();
+                    } else {
+                        alert('Could not join group: ' + result.error);
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert('Error joining group. Please try again.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
                 }
             });
         });

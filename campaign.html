@@ -457,6 +457,10 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/api-config.js"></script>
     <script src="js/chat.js"></script>
     <script>
         // Initialize AOS
@@ -525,6 +529,55 @@
             previewContainer.addEventListener('click', function(e) {
                 if (e.target.classList.contains('remove-preview')) {
                     e.target.parentElement.remove();
+                }
+            });
+
+            // Campaign form submission
+            const campaignForm = document.getElementById('campaignForm');
+            campaignForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const submitBtn = campaignForm.querySelector('.submit-button');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Launching...';
+
+                const campaignName = document.getElementById('campaignName').value;
+                const campaignReason = document.getElementById('campaignReason').value;
+                const targetAmount = document.getElementById('targetAmount').value;
+                const campaignDuration = document.getElementById('campaignDuration').value;
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+
+                // Format campaign details as the message body
+                const campaignMessage = [
+                    `Campaign: ${campaignName}`,
+                    `Target: $${targetAmount}`,
+                    `Duration: ${campaignDuration} days`,
+                    `Phone: ${phone}`,
+                    ``,
+                    `Story:`,
+                    campaignReason
+                ].join('\n');
+
+                const result = await SupabaseDB.insertContactMessage({
+                    name: fullName,
+                    email: email,
+                    subject: 'Campaign: ' + campaignName,
+                    message: campaignMessage,
+                    type: 'campaign'
+                });
+
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+
+                if (result.success) {
+                    alert('🎉 Your campaign "' + campaignName + '" has been submitted!\n\nOur team will review it and get back to you at ' + email + ' within 24-48 hours.');
+                    campaignForm.reset();
+                    previewContainer.innerHTML = '';
+                } else {
+                    alert('Error submitting campaign: ' + result.error);
                 }
             });
         });

@@ -378,6 +378,9 @@
     <p>&copy; 2026 Breast Cancer Awareness & Support. All Rights Reserved.</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase-config.js"></script>
+  <script src="../js/supabase-client.js"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
@@ -528,10 +531,17 @@
       }
     }
 
-    // Appointment form handler - send to backend
+    // Appointment form handler — insert into Supabase
     document.querySelector('.appointment-box form').addEventListener('submit', async function(e) {
       e.preventDefault();
+      if (!window.SupabaseDB?.isConfigured()) {
+        alert('Booking is not configured yet. Please set your Supabase anon key in js/supabase-config.js');
+        return;
+      }
+
       const form = this;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
       const name = form.querySelector('input[placeholder="Your Name"]').value;
       const email = form.querySelector('input[placeholder="Your Email"]').value;
       const phone = form.querySelector('input[placeholder="Phone Number"]').value;
@@ -540,47 +550,33 @@
       const date = form.querySelector('input[type="date"]').value;
       const time = form.querySelector('input[type="time"]').value;
       const message = 'Web appointment';
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
       try {
-        const res = await fetch('http://localhost:3001/api/appointments', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, phone, hospital, date, time, message, appointmentType })
+        const result = await SupabaseDB.insertAppointment({
+          name, email, phone, hospital, date, time, message, appointmentType
         });
-        const data = await res.json();
-        if (data.success) {
+        if (result.success) {
           alert('Your appointment request has been submitted!');
           form.reset();
         } else {
-          alert('Failed to submit appointment: ' + (data.error || 'Unknown error'));
+          alert('Failed to submit appointment: ' + result.error);
         }
       } catch (err) {
-        alert('Error connecting to server: ' + err.message);
+        alert('Error submitting appointment: ' + err.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
       }
     });
-    
-    // Appointment status check
-    document.getElementById('status-form').addEventListener('submit', async function(e) {
+
+    // Appointment status — anon users cannot read (RLS); admin auth comes in Part 6
+    document.getElementById('status-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      const email = document.getElementById('status-email').value;
       const resultDiv = document.getElementById('status-result');
-      resultDiv.innerHTML = 'Loading...';
-      try {
-        const res = await fetch(`http://localhost:3001/api/appointments?email=${encodeURIComponent(email)}`);
-        const data = await res.json();
-        if (data.success && data.appointments.length > 0) {
-          resultDiv.innerHTML = data.appointments.map(a => `
-            <div style='background:#f8f0ff;padding:1rem;border-radius:10px;margin-bottom:1rem;'>
-              <b>Hospital:</b> ${a.hospital}<br>
-              <b>Date:</b> ${a.date} <b>Time:</b> ${a.time}<br>
-              <b>Status:</b> <span style='color:${a.status === 'approved' ? '#4CAF50' : a.status === 'rejected' ? '#F44336' : '#888'};'>${a.status ? a.status.charAt(0).toUpperCase() + a.status.slice(1) : 'Pending'}</span>
-            </div>
-          `).join('');
-        } else {
-          resultDiv.innerHTML = '<span style="color:#AB4459;">No appointments found for this email.</span>';
-        }
-      } catch (err) {
-        resultDiv.innerHTML = '<span style="color:#AB4459;">Error connecting to server.</span>';
-      }
+      resultDiv.innerHTML = '<span style="color:#666;">Status lookup will be available after you sign in. Your booking was saved — our team will email you updates.</span>';
     });
   </script>
 </body>

@@ -7,9 +7,144 @@
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Login Overlay */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 420px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .login-card h2 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .login-card .login-subtitle {
+            color: #999;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .login-card .login-icon {
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-bottom: 1rem;
+        }
+
+        .login-form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        .login-form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .login-form-group input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .login-form-group input:focus {
+            outline: none;
+            border-color: #ff69b4;
+        }
+
+        .login-btn {
+            background: linear-gradient(45deg, #ff69b4, #c77dff);
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(45deg, #c77dff, #ff69b4);
+            transform: translateY(-2px);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .login-error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            min-height: 1.2rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-    <div class="admin-container">
+    <!-- Login Overlay -->
+    <div id="login-overlay" class="login-overlay" style="display:none;">
+        <div class="login-card">
+            <div class="login-icon"><i class="fas fa-ribbon"></i></div>
+            <h2>Admin Login</h2>
+            <p class="login-subtitle">Sign in to access the dashboard</p>
+            <form id="admin-login-form">
+                <div class="login-form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required placeholder="admin@example.com">
+                </div>
+                <div class="login-form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="login-btn" id="login-btn">Sign In</button>
+                <div class="login-error" id="login-error"></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="admin-container" style="display:none;">
         <!-- Sidebar -->
         <nav class="sidebar">
             <div class="logo">
@@ -28,18 +163,6 @@
                 <li data-tab="contacts">
                     <i class="fas fa-address-book"></i>
                     <span>Contact Requests</span>
-                </li>
-                <li data-tab="hospitals">
-                    <i class="fas fa-hospital"></i>
-                    <span>Hospital Data</span>
-                </li>
-                <li data-tab="medicines">
-                    <i class="fas fa-pills"></i>
-                    <span>Medicine Orders</span>
-                </li>
-                <li data-tab="users">
-                    <i class="fas fa-users"></i>
-                    <span>User Management</span>
                 </li>
                 <li id="logout">
                     <i class="fas fa-sign-out-alt"></i>
@@ -60,9 +183,9 @@
                     <div class="admin-profile">
                         <div class="notifications">
                             <i class="fas fa-bell"></i>
-                            <span class="badge">3</span>
+                            <span class="badge">0</span>
                         </div>
-                        <img src="images/admin-avatar.png" alt="Admin" class="avatar">
+                        <i class="fas fa-user-circle" style="font-size:2rem;color:#ff69b4;"></i>
                         <span class="admin-name">Admin</span>
                     </div>
                 </div>
@@ -77,7 +200,7 @@
                         </div>
                         <div class="card-info">
                             <h3>Total Appointments</h3>
-                            <p>248</p>
+                            <p>0</p>
                         </div>
                     </div>
                     <div class="card">
@@ -86,25 +209,16 @@
                         </div>
                         <div class="card-info">
                             <h3>Contact Requests</h3>
-                            <p>156</p>
+                            <p>0</p>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-icon hospitals">
-                            <i class="fas fa-hospital"></i>
+                            <i class="fas fa-users"></i>
                         </div>
                         <div class="card-info">
-                            <h3>Registered Hospitals</h3>
-                            <p>32</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon medicines">
-                            <i class="fas fa-pills"></i>
-                        </div>
-                        <div class="card-info">
-                            <h3>Medicine Orders</h3>
-                            <p>89</p>
+                            <h3>Community Members</h3>
+                            <p>0</p>
                         </div>
                     </div>
                 </div>
@@ -112,36 +226,7 @@
                 <div class="recent-activity">
                     <h2>Recent Activity</h2>
                     <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-calendar-check"></i>
-                            </div>
-                            <div class="activity-details">
-                                <h4>New Appointment</h4>
-                                <p>Sarah Johnson scheduled an appointment</p>
-                                <span class="time">2 minutes ago</span>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-user-plus"></i>
-                            </div>
-                            <div class="activity-details">
-                                <h4>New Registration</h4>
-                                <p>New user registered: John Smith</p>
-                                <span class="time">15 minutes ago</span>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-pills"></i>
-                            </div>
-                            <div class="activity-details">
-                                <h4>Medicine Order</h4>
-                                <p>New medicine order received</p>
-                                <span class="time">1 hour ago</span>
-                            </div>
-                        </div>
+                        <p style="color:#999;padding:1rem;">Loading...</p>
                     </div>
                 </div>
             </div>
@@ -163,20 +248,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Sample data -->
-                            <tr>
-                                <td>#AP001</td>
-                                <td>Sarah Johnson</td>
-                                <td>2024-03-15</td>
-                                <td>10:00 AM</td>
-                                <td>City Hospital</td>
-                                <td><span class="status pending">Pending</span></td>
-                                <td>
-                                    <button class="btn-action approve"><i class="fas fa-check"></i></button>
-                                    <button class="btn-action reject"><i class="fas fa-times"></i></button>
-                                </td>
-                            </tr>
-                            <!-- Add more rows as needed -->
+                            <tr><td colspan="7" style="text-align:center;color:#999;">Loading...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -194,97 +266,12 @@
                                 <th>Email</th>
                                 <th>Subject</th>
                                 <th>Date</th>
-                                <th>Status</th>
+                                <th>Type</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Sample data -->
-                            <tr>
-                                <td>#CR001</td>
-                                <td>John Smith</td>
-                                <td>john@example.com</td>
-                                <td>General Inquiry</td>
-                                <td>2024-03-14</td>
-                                <td><span class="status new">New</span></td>
-                                <td>
-                                    <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                    <button class="btn-action reply"><i class="fas fa-reply"></i></button>
-                                </td>
-                            </tr>
-                            <!-- Add more rows as needed -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Hospitals Section -->
-            <div class="content-section" id="hospitals-content">
-                <h2>Hospital Data</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Hospital Name</th>
-                                <th>Location</th>
-                                <th>Contact</th>
-                                <th>Services</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Sample data -->
-                            <tr>
-                                <td>#H001</td>
-                                <td>City Hospital</td>
-                                <td>123 Main St, City</td>
-                                <td>555-0123</td>
-                                <td>Screening, Treatment</td>
-                                <td><span class="status active">Active</span></td>
-                                <td>
-                                    <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                    <button class="btn-action delete"><i class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <!-- Add more rows as needed -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Medicines Section -->
-            <div class="content-section" id="medicines-content">
-                <h2>Medicine Orders</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Patient Name</th>
-                                <th>Medicine</th>
-                                <th>Quantity</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Sample data -->
-                            <tr>
-                                <td>#M001</td>
-                                <td>Emily Brown</td>
-                                <td>Medicine A</td>
-                                <td>2</td>
-                                <td>2024-03-14</td>
-                                <td><span class="status processing">Processing</span></td>
-                                <td>
-                                    <button class="btn-action approve"><i class="fas fa-check"></i></button>
-                                    <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                </td>
-                            </tr>
-                            <!-- Add more rows as needed -->
+                            <tr><td colspan="7" style="text-align:center;color:#999;">Loading...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -292,6 +279,8 @@
         </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
     <script src="js/admin.js"></script>
 </body>
-</html> 
+</html>
