@@ -561,11 +561,18 @@
                     throw new Error('Supabase is not configured');
                 }
 
+                let userId = null;
+                if (typeof SupabaseDB.getCurrentUser === 'function') {
+                    const user = await SupabaseDB.getCurrentUser();
+                    if (user) userId = user.id;
+                }
+
                 const { error } = await sb.from('donations').insert([{
                     name: document.getElementById('donate-name').value,
                     email: document.getElementById('donate-email').value,
                     amount: donationAmount,
-                    status: 'pending'
+                    status: 'pending',
+                    user_id: userId
                 }]);
 
                 if (error) throw error;

@@ -3339,10 +3339,18 @@ Choose the best next specialist type for the patient based on the available risk
         : (window.API_BASE || '') + '/ai-risk';
 
       try {
+        let userId = null;
+        if (typeof SupabaseDB !== 'undefined' && SupabaseDB.getCurrentUser) {
+            const user = await SupabaseDB.getCurrentUser();
+            if (user) userId = user.id;
+        }
+
         const res = await fetch(riskEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            sessionId: typeof getSessionId === 'function' ? getSessionId() : 'anon-session',
+            userId: userId,
             symptoms: formData.symptoms,
             manualData: {
               biradsScore: formData.biradsScore,

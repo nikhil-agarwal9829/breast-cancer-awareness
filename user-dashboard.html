@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - VIT Hope Ribbon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            display: flex;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #34495e;
+        }
+
+        .sidebar-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #ff69b4;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+        }
+
+        .sidebar-nav li a {
+            display: block;
+            padding: 15px 20px;
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: background 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-nav li a:hover, .sidebar-nav li a.active {
+            background-color: #34495e;
+            border-left-color: #ff69b4;
+        }
+
+        .sidebar-nav li a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+            flex: 1;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .dashboard-header h1 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Data Tables */
+        .data-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .data-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-active { background-color: #e3fbed; color: #27ae60; }
+        .status-pending { background-color: #fef0d9; color: #f39c12; }
+        .status-inactive { background-color: #ffe6e6; color: #c0392b; }
+
+        /* Buttons */
+        .btn-sm {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            background-color: #e0e0e0;
+            color: #333;
+            transition: all 0.2s;
+        }
+
+        .btn-sm:hover {
+            background-color: #d0d0d0;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-ribbon"></i> Patient Portal</h2>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#" class="active" data-tab="tab-overview"><i class="fas fa-chart-pie"></i> Overview</a></li>
+            <li><a href="#" data-tab="tab-assessments"><i class="fas fa-stethoscope"></i> Risk Assessments</a></li>
+            <li><a href="#" data-tab="tab-donations"><i class="fas fa-heart"></i> My Donations</a></li>
+            <li><a href="#" data-tab="tab-groups"><i class="fas fa-users"></i> Community Groups</a></li>
+            <li style="margin-top: auto;"><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            <li><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Site</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="dashboard-header">
+            <h1>Welcome back, <span id="welcome-name">User</span>!</h1>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="tab-overview" class="tab-content active">
+            <div class="data-card">
+                <h3>Welcome to your patient portal</h3>
+                <p>Use the sidebar to view your risk assessments, donation history, and community group memberships.</p>
+            </div>
+        </div>
+
+        <!-- Risk Assessments Tab -->
+        <div id="tab-assessments" class="tab-content">
+            <div class="data-card">
+                <h3>My Risk Assessments</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Age</th>
+                            <th>Family History</th>
+                            <th>AI Risk Level</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="risk-table-body">
+                        <tr><td colspan="5" class="text-center">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Donations Tab -->
+        <div id="tab-donations" class="tab-content">
+            <div class="data-card">
+                <h3>My Donations</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody id="donation-table-body">
+                        <tr><td colspan="4" class="text-center">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Groups Tab -->
+        <div id="tab-groups" class="tab-content">
+            <div class="data-card">
+                <h3>My Community Groups</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Group Name</th>
+                            <th>Category</th>
+                            <th>Joined On</th>
+                        </tr>
+                    </thead>
+                    <tbody id="groups-table-body">
+                        <tr><td colspan="3" class="text-center">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/user-dashboard.js"></script>
+</body>
+</html>

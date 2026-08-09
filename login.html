@@ -317,44 +317,76 @@
         `
 
         // Function to handle login submission
-        function handleLogin(e) {
+        async function handleLogin(e) {
             e.preventDefault();
-            const username = document.getElementById('username').value;
+            const username = document.getElementById('username').value; // Treated as email for users, or 'admin'
             const password = document.getElementById('password').value;
             const userType = document.querySelector('input[name="userType"]:checked').value;
+            const submitBtn = e.target.querySelector('button[type="submit"]');
 
             if (username && password) {
-                if (userType === 'admin' && username === 'admin' && password === 'admin123') {
-                    window.location.href = 'admin-dashboard.html';
-                } else if (userType === 'user') { // Simulate successful user login
-                     // Replace with actual user auth logic
-                    if (username === 'user' && password === 'pass') { // Example creds
-                         window.location.href = 'index.html';
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+
+                if (userType === 'admin') {
+                    if (username === 'admin' && password === 'admin123') {
+                        window.location.href = 'admin-dashboard.html';
                     } else {
-                         alert('Invalid user credentials.');
+                        alert('Invalid admin credentials.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Login';
                     }
                 } else {
-                    alert('Invalid credentials.');
+                    // Normal user login via Supabase
+                    try {
+                        const result = await SupabaseDB.signIn(username, password);
+                        if (result.success) {
+                            window.location.href = 'user-dashboard.html';
+                        } else {
+                            alert('Login failed: ' + result.error);
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Login';
+                        }
+                    } catch (error) {
+                        alert('An unexpected error occurred.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Login';
+                    }
                 }
             }
         }
 
-        // Function to handle sign-up submission (basic)
-        function handleSignUp(e) {
+        // Function to handle sign-up submission
+        async function handleSignUp(e) {
             e.preventDefault();
             const newUsername = document.getElementById('newUsername').value;
             const newEmail = document.getElementById('newEmail').value;
             const newPassword = document.getElementById('newPassword').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
+            const submitBtn = e.target.querySelector('button[type="submit"]');
 
             if (newPassword !== confirmPassword) {
                 alert('Passwords do not match!');
                 return;
             }
-            // Add actual sign-up logic here (e.g., send to backend)
-            alert(`Sign up successful for ${newUsername}! (Simulation)`);
-            // Optionally switch back to login form
-            switchToSignIn();
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+
+            try {
+                const result = await SupabaseDB.signUp(newEmail, newPassword, newUsername);
+                if (result.success) {
+                    alert(`Sign up successful! Please sign in.`);
+                    switchToSignIn();
+                } else {
+                    alert('Sign up failed: ' + result.error);
+                }
+            } catch (error) {
+                alert('An unexpected error occurred.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Sign Up';
+            }
         }
 
         // Function to switch UI to Sign In

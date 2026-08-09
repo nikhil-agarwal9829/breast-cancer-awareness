@@ -591,6 +591,7 @@
         <div class="section-title" data-aos="fade-down">
             <h2>Support Groups</h2>
             <p>Find your community within our specialized support groups</p>
+            <button type="button" class="btn hvr-forward" id="open-create-group-btn" style="margin-top: 15px;"><i class="fas fa-plus"></i> Create Your Own Group</button>
         </div>
         <div class="groups-grid">
             <div class="group-card" data-aos="fade-up">
@@ -661,19 +662,19 @@
                 <h3>Treatment Options</h3>
                 <p>Discuss various treatment approaches and experiences</p>
                 <span class="badge">125 topics</span>
-                <a href="#" class="btn hvr-forward">View Forum</a>
+                <button class="btn hvr-forward" onclick="alert('Forum functionality coming soon!')">View Forum</button>
             </div>
             <div class="forum-card" data-aos="fade-up" data-aos-delay="100">
                 <h3>Wellness & Self-Care</h3>
                 <p>Share tips and advice for maintaining physical and mental health</p>
                 <span class="badge">98 topics</span>
-                <a href="#" class="btn hvr-forward">View Forum</a>
+                <button class="btn hvr-forward" onclick="alert('Forum functionality coming soon!')">View Forum</button>
             </div>
             <div class="forum-card" data-aos="fade-up" data-aos-delay="200">
                 <h3>Research & News</h3>
                 <p>Stay updated with the latest breast cancer research and news</p>
                 <span class="badge">156 topics</span>
-                <a href="#" class="btn hvr-forward">View Forum</a>
+                <button class="btn hvr-forward" onclick="alert('Forum functionality coming soon!')">View Forum</button>
             </div>
         </div>
     </section>
@@ -689,13 +690,13 @@
                 <h3>Virtual Support Group Meeting</h3>
                 <p class="event-date">May 15, 2024 - 7:00 PM</p>
                 <p>Monthly online gathering for sharing and support</p>
-                <a href="#" class="btn hvr-forward">Register</a>
+                <button class="btn hvr-forward" onclick="alert('Event registration coming soon!')">Register</button>
             </div>
             <div class="event-item" data-aos="fade-up" data-aos-delay="100">
                 <h3>Wellness Workshop</h3>
                 <p class="event-date">May 22, 2024 - 2:00 PM</p>
                 <p>Learn about nutrition and exercise during treatment</p>
-                <a href="#" class="btn hvr-forward">Register</a>
+                <button class="btn hvr-forward" onclick="alert('Event registration coming soon!')">Register</button>
             </div>
         </div>
     </section>
@@ -711,19 +712,19 @@
                 <i class="fas fa-book fa-3x" style="color: #ff69b4;"></i>
                 <h3>Treatment Guide</h3>
                 <p>Comprehensive guide to treatment options</p>
-                <a href="#" class="btn hvr-forward">Download</a>
+                <button class="btn hvr-forward" onclick="alert('Download started...')">Download</button>
             </div>
             <div class="resource-card" data-aos="fade-up" data-aos-delay="100">
                 <i class="fas fa-video fa-3x" style="color: #ff69b4;"></i>
                 <h3>Wellness Videos</h3>
                 <p>Exercise and meditation tutorials</p>
-                <a href="#" class="btn hvr-forward">Watch</a>
+                <button class="btn hvr-forward" onclick="alert('Opening video player...')">Watch</button>
             </div>
             <div class="resource-card" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-file-alt fa-3x" style="color: #ff69b4;"></i>
                 <h3>Survivor Stories</h3>
                 <p>Collection of inspiring testimonials</p>
-                <a href="#" class="btn hvr-forward">Read More</a>
+                <button class="btn hvr-forward" onclick="alert('Opening stories...')">Read More</button>
             </div>
         </div>
     </section>
@@ -788,6 +789,30 @@
         </div>
     </div>
 
+    <!-- Create Group Modal -->
+    <div id="create-group-overlay" class="join-modal-overlay" aria-hidden="true">
+        <div class="join-modal" role="dialog">
+            <h3>Create a Community Group</h3>
+            <p>Start a new group for others to join.</p>
+            <form id="createGroupForm">
+                <label for="new-group-name">Group Name</label>
+                <input type="text" id="new-group-name" required placeholder="E.g. Yoga for Survivors">
+                <label for="new-group-desc">Description</label>
+                <input type="text" id="new-group-desc" required placeholder="What is this group about?">
+                <label for="new-group-category">Category</label>
+                <select id="new-group-category" style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px;">
+                    <option value="support">Support</option>
+                    <option value="wellness">Wellness & Exercise</option>
+                    <option value="discussion">Discussion & Chat</option>
+                </select>
+                <div class="join-modal-actions">
+                    <button type="button" class="btn btn-cancel" id="create-group-cancel">Cancel</button>
+                    <button type="submit" class="btn hvr-forward" id="create-group-submit">Create Group</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 VIT Hope Ribbon. All Rights Reserved.</p>
     </footer>
@@ -801,11 +826,123 @@
     <script src="js/api-config.js"></script>
     <script src="js/chat.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
+        AOS.init({ duration: 1000, once: true });
+
+        // Join Group Logic
+        const joinOverlay = document.getElementById('join-group-overlay');
+        const joinForm = document.getElementById('joinGroupForm');
+        
+        document.querySelectorAll('.join-group-btn').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                const groupName = e.target.parentElement.querySelector('h3').textContent;
+                
+                // If logged in, join automatically via Supabase
+                let user = null;
+                if(typeof SupabaseDB.getCurrentUser === 'function') {
+                    user = await SupabaseDB.getCurrentUser();
+                }
+
+                if (user) {
+                    try {
+                        const sb = SupabaseDB.getClient();
+                        // Find group id by name (hack for static html)
+                        const {data: g} = await sb.from('community_groups').select('id').eq('name', groupName).single();
+                        if(g) {
+                            await sb.from('user_groups').insert({ user_id: user.id, group_id: g.id });
+                            alert(`Successfully joined ${groupName}!`);
+                        } else {
+                            alert('Group not found in DB. Falling back to manual form.');
+                            document.getElementById('join-modal-title').textContent = `Join ${groupName}`;
+                            document.getElementById('join-group-name').value = groupName;
+                            joinOverlay.classList.add('is-open');
+                        }
+                    } catch(err) {
+                        alert('You may have already joined this group.');
+                    }
+                } else {
+                    document.getElementById('join-modal-title').textContent = `Join ${groupName}`;
+                    document.getElementById('join-group-name').value = groupName;
+                    joinOverlay.classList.add('is-open');
+                }
+            });
         });
+
+        document.getElementById('join-group-cancel').addEventListener('click', () => {
+            joinOverlay.classList.remove('is-open');
+        });
+
+        joinForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(joinForm);
+            try {
+                await SupabaseDB.insertCommunityMember(Object.fromEntries(formData));
+                alert(`Successfully requested to join ${formData.get('groupName')}!`);
+                joinOverlay.classList.remove('is-open');
+                joinForm.reset();
+            } catch (err) {
+                alert('Error joining group.');
+            }
+        });
+
+        // Create Group Logic
+        const createOverlay = document.getElementById('create-group-overlay');
+        const createForm = document.getElementById('createGroupForm');
+
+        document.getElementById('open-create-group-btn').addEventListener('click', async () => {
+            let user = null;
+            if(typeof SupabaseDB.getCurrentUser === 'function') {
+                user = await SupabaseDB.getCurrentUser();
+            }
+            if(!user) {
+                alert('You must be logged in to create a community group.');
+                window.location.href = 'login.html';
+                return;
+            }
+            createOverlay.classList.add('is-open');
+        });
+
+        document.getElementById('create-group-cancel').addEventListener('click', () => {
+            createOverlay.classList.remove('is-open');
+        });
+
+        createForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('create-group-submit');
+            btn.disabled = true;
+            btn.textContent = 'Creating...';
+
+            const user = await SupabaseDB.getCurrentUser();
+            const sb = SupabaseDB.getClient();
+
+            try {
+                const { error } = await sb.from('community_groups').insert({
+                    name: document.getElementById('new-group-name').value,
+                    description: document.getElementById('new-group-desc').value,
+                    category: document.getElementById('new-group-category').value,
+                    created_by: user.id
+                });
+                
+                if(error) throw error;
+                alert('Group created successfully!');
+                createOverlay.classList.remove('is-open');
+                createForm.reset();
+            } catch (err) {
+                alert('Error creating group: ' + err.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Create Group';
+            }
+        });
+
+        // Mobile Nav
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+        }
 
         // Initialize Swiper
         const swiper = new Swiper('.swiper', {

@@ -120,6 +120,55 @@
       }
       return { success: true };
     },
+
+    // Authentication Methods
+    async getCurrentUser() {
+        const sb = getClient();
+        if (!sb) return null;
+        const { data: { session }, error } = await sb.auth.getSession();
+        if (error || !session) return null;
+        return session.user;
+    },
+
+    async signUp(email, password, fullName) {
+        const sb = getClient();
+        if (!sb) return { success: false, error: 'Supabase is not configured' };
+        
+        const { data, error } = await sb.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    full_name: fullName
+                }
+            }
+        });
+        
+        if (error) return { success: false, error: formatError(error) };
+        return { success: true, data };
+    },
+
+    async signIn(email, password) {
+        const sb = getClient();
+        if (!sb) return { success: false, error: 'Supabase is not configured' };
+        
+        const { data, error } = await sb.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+        
+        if (error) return { success: false, error: formatError(error) };
+        return { success: true, data };
+    },
+
+    async signOut() {
+        const sb = getClient();
+        if (!sb) return { success: false, error: 'Supabase is not configured' };
+        
+        const { error } = await sb.auth.signOut();
+        if (error) return { success: false, error: formatError(error) };
+        return { success: true };
+    }
   };
 
   global.getSupabaseClient = getClient;

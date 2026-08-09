@@ -37,7 +37,7 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const { symptoms, manualData, imageBase64, sessionId } = await req.json();
+    const { symptoms, manualData, imageBase64, sessionId, userId } = await req.json();
 
     if (!symptoms && !manualData) {
       return new Response(
@@ -117,6 +117,7 @@ Deno.serve(async (req: Request) => {
     // --- Save to risk_assessments ---
     await sb.from("risk_assessments").insert({
       session_id: session,
+      user_id: userId || null,
       risk_level: result.riskLevel,
       risk_percentage: result.riskPercentage,
       recommendations: JSON.stringify(result.recommendations),

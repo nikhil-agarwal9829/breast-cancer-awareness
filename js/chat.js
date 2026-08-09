@@ -1,11 +1,11 @@
 // Chat functionality for medical support
 document.addEventListener('DOMContentLoaded', function() {
-  const chatToggle = document.getElementById('chat-toggle');
-  const chatContainer = document.getElementById('chat-container');
-  const closeChat = document.getElementById('close-chat');
-  const messageInput = document.getElementById('message-input');
-  const sendBtn = document.getElementById('send-btn');
-  const messageDisplay = document.getElementById('message-display');
+  let chatToggle = document.getElementById('chat-toggle');
+  let chatContainer = document.getElementById('chat-container');
+  let closeChat = document.getElementById('close-chat');
+  let messageInput = document.getElementById('message-input');
+  let sendBtn = document.getElementById('send-btn');
+  let messageDisplay = document.getElementById('message-display');
   const tips = [
     'Tip: bring previous mammogram reports when booking a consultation.',
     'Reminder: new lumps, skin changes, or nipple discharge should be checked by a clinician.',
@@ -13,10 +13,31 @@ document.addEventListener('DOMContentLoaded', function() {
     'Reminder: this assistant supports you, but final medical decisions should come from a qualified doctor.'
   ];
 
-  // Check if elements exist
-  if (!chatToggle || !chatContainer || !closeChat || !messageInput || !sendBtn || !messageDisplay) {
-    console.log('Chat elements not found, skipping chat initialization');
-    return;
+  // Check if elements exist, inject if missing
+  if (!chatToggle) {
+    const chatHtml = `
+      <button id="chat-toggle" class="chat-toggle hvr-buzz-out"><i class="fas fa-comments"></i></button>
+      <div id="chat-container" class="chat-container">
+          <div class="chat-header">
+              <h3>AI Health Assistant</h3>
+              <button id="close-chat" class="close-chat">&times;</button>
+          </div>
+          <div id="message-display" class="message-display"></div>
+          <div class="input-area">
+              <textarea id="message-input" placeholder="Ask a question..."></textarea>
+              <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+          </div>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', chatHtml);
+    
+    // Re-assign variables
+    chatToggle = document.getElementById('chat-toggle');
+    chatContainer = document.getElementById('chat-container');
+    closeChat = document.getElementById('close-chat');
+    messageInput = document.getElementById('message-input');
+    sendBtn = document.getElementById('send-btn');
+    messageDisplay = document.getElementById('message-display');
   }
 
   createTipBubble();
