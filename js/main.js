@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // GSAP Animations
     if (typeof gsap !== 'undefined') {
+        if (typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+        }
         // Example: Animate navbar items on load
         gsap.from(".navbar .logo", { duration: 0.8, x: -50, opacity: 0, ease: "power2.out" });
         gsap.from(".nav-links li", { duration: 0.5, y: -30, opacity: 0, stagger: 0.1, ease: "power2.out", delay: 0.3 });
